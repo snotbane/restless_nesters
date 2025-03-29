@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://dugum1qvra8cp"]
+
+[ext_resource type="PackedScene" uid="uid://3xe1fxwafno0" path="res://game/scenes/pawn.tscn" id="1_ce2g5"]
+[ext_resource type="Script" uid="uid://cmcrwushbeje1" path="res://game/scenes/player/brain_player.gd" id="2_hn0xb"]
+
+[node name="player" instance=ExtResource("1_ce2g5")]
+species_id = &"player"
+
+[node name="label" parent="sprite/placeholder" index="1"]
+text = "Player"
+
+[node name="zone" parent="sprite" index="1"]
+position = Vector2(100, 0)
+
+[node name="grabber_offset" parent="sprite" index="2"]
+position = Vector2(100, 0)
+
+[node name="brain" parent="." index="2"]
+script = ExtResource("2_hn0xb")

@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://bgpvs01xchn27"]
+
+[ext_resource type="PackedScene" uid="uid://3xe1fxwafno0" path="res://game/scenes/pawn.tscn" id="1_3s6xy"]
+[ext_resource type="Script" uid="uid://blpo0x34mc0gi" path="res://game/scenes/marmot/marmot_brain.gd" id="2_x3sse"]
+
+[node name="marmot" instance=ExtResource("1_3s6xy")]
+species_id = &"marmot"
+
+[node name="label" parent="sprite/placeholder" index="1"]
+text = "Marmot"
+
+[node name="brain" parent="." index="2"]
+script = ExtResource("2_x3sse")

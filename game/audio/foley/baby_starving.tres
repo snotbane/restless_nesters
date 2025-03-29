@@ -1,0 +1,11 @@
+[gd_resource type="AudioStreamRandomizer" load_steps=4 format=3 uid="uid://bsircxjgg7t2f"]
+
+[ext_resource type="AudioStream" uid="uid://ctyqftuns5afh" path="res://assets/audio/baby_scream_00.ogg" id="1_jkban"]
+[ext_resource type="AudioStream" uid="uid://boervvjcqmfrl" path="res://assets/audio/baby_scream_01.ogg" id="2_d43p4"]
+[ext_resource type="AudioStream" uid="uid://ftbcfr7pfoow" path="res://assets/audio/baby_scream_02.ogg" id="3_87u31"]
+
+[resource]
+streams_count = 3
+stream_0/stream = ExtResource("1_jkban")
+stream_1/stream = ExtResource("2_d43p4")
+stream_2/stream = ExtResource("3_87u31")

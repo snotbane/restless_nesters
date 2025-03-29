@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://cjjpsd347xnf7"]
+
+[ext_resource type="PackedScene" uid="uid://3xe1fxwafno0" path="res://game/scenes/pawn.tscn" id="1_xdrdn"]
+[ext_resource type="Script" uid="uid://b5wyuwl63cr33" path="res://game/scenes/baby/baby_brain.gd" id="2_wyexy"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xdrdn"]
+radius = 100.0
+
+[node name="baby" instance=ExtResource("1_xdrdn")]
+species_id = &"baby"
+
+[node name="label" parent="sprite/placeholder" index="1"]
+text = "Baby"
+
+[node name="shape" parent="sprite/zone" index="0"]
+position = Vector2(0, -40)
+shape = SubResource("CircleShape2D_xdrdn")
+
+[node name="brain" parent="." index="2"]
+script = ExtResource("2_wyexy")

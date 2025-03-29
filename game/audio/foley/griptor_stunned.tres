@@ -1,0 +1,9 @@
+[gd_resource type="AudioStreamRandomizer" load_steps=3 format=3 uid="uid://crhqkya3ofk3o"]
+
+[ext_resource type="AudioStream" uid="uid://dcn6u4eahpok4" path="res://game/audio/foley/griptor_stunned_00.ogg" id="1_0kdq7"]
+[ext_resource type="AudioStream" uid="uid://bli8klbotk5mq" path="res://game/audio/foley/griptor_stunned_01.ogg" id="2_tglhq"]
+
+[resource]
+streams_count = 2
+stream_0/stream = ExtResource("1_0kdq7")
+stream_1/stream = ExtResource("2_tglhq")

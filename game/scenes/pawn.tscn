@@ -1,0 +1,75 @@
+[gd_scene load_steps=8 format=3 uid="uid://3xe1fxwafno0"]
+
+[ext_resource type="Script" uid="uid://bxb8h1xo4i2j2" path="res://game/scenes/pawn.gd" id="1_35ipx"]
+[ext_resource type="Script" uid="uid://cltipo65ku1ta" path="res://game/scripts/brain.gd" id="1_niafa"]
+[ext_resource type="Script" uid="uid://cyit17wf62qt7" path="res://game/scenes/zone.gd" id="2_h3avw"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_h3avw"]
+size = Vector2(4, 4)
+
+[sub_resource type="LabelSettings" id="LabelSettings_8xysa"]
+font_size = 20
+outline_size = 10
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_niafa"]
+size = Vector2(100, 100)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yde1k"]
+size = Vector2(100, 20)
+
+[node name="pawn" type="CharacterBody2D"]
+motion_mode = 1
+script = ExtResource("1_35ipx")
+
+[node name="sprite" type="AnimatedSprite2D" parent="."]
+
+[node name="placeholder" type="Node2D" parent="sprite"]
+position = Vector2(0, -40)
+
+[node name="placeholder_sprite" type="Sprite2D" parent="sprite/placeholder"]
+texture_filter = 1
+scale = Vector2(25, 25)
+texture = SubResource("PlaceholderTexture2D_h3avw")
+
+[node name="label" type="Label" parent="sprite/placeholder"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -21.5
+offset_top = -11.5
+offset_right = 21.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Pawn"
+label_settings = SubResource("LabelSettings_8xysa")
+uppercase = true
+
+[node name="zone" type="Area2D" parent="sprite"]
+script = ExtResource("2_h3avw")
+
+[node name="shape" type="CollisionShape2D" parent="sprite/zone"]
+shape = SubResource("RectangleShape2D_niafa")
+
+[node name="grabber_offset" type="Node2D" parent="sprite"]
+
+[node name="grabber" type="Node2D" parent="sprite/grabber_offset"]
+
+[node name="audio" type="AudioStreamPlayer2D" parent="sprite"]
+
+[node name="shape" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_yde1k")
+
+[node name="brain" type="NavigationAgent2D" parent="."]
+script = ExtResource("1_niafa")
+
+[node name="nav_timer" type="Timer" parent="brain"]
+process_callback = 0
+wait_time = 0.25
+autostart = true
+
+[connection signal="body_entered" from="sprite/zone" to="sprite/zone" method="_on_body_entered"]
+[connection signal="body_exited" from="sprite/zone" to="sprite/zone" method="_on_body_exited"]

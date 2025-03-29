@@ -1,0 +1,46 @@
+[gd_scene load_steps=7 format=3 uid="uid://ri5kmtd4f554"]
+
+[ext_resource type="PackedScene" uid="uid://dugum1qvra8cp" path="res://game/scenes/player/player.tscn" id="1_g6tk3"]
+[ext_resource type="PackedScene" uid="uid://bgpvs01xchn27" path="res://game/scenes/marmot/marmot.tscn" id="2_5fs5m"]
+[ext_resource type="PackedScene" uid="uid://cjjpsd347xnf7" path="res://game/scenes/baby/baby.tscn" id="3_ljcdc"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_i7555"]
+size = Vector2(4, 4)
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_g6tk3"]
+parsed_geometry_type = 1
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g6tk3"]
+size = Vector2(1000, 1000)
+
+[node name="world_2d" type="Node2D"]
+
+[node name="background" type="Node2D" parent="."]
+
+[node name="sprite_2d" type="Sprite2D" parent="background"]
+texture_filter = 1
+scale = Vector2(32, 32)
+texture = SubResource("PlaceholderTexture2D_i7555")
+
+[node name="stuff" type="Node2D" parent="." groups=["stuff"]]
+y_sort_enabled = true
+
+[node name="navigation_region_2d" type="NavigationRegion2D" parent="stuff"]
+navigation_polygon = SubResource("NavigationPolygon_g6tk3")
+
+[node name="walls" type="StaticBody2D" parent="stuff/navigation_region_2d"]
+position = Vector2(905, -519)
+
+[node name="collision_shape_2d" type="CollisionShape2D" parent="stuff/navigation_region_2d/walls"]
+shape = SubResource("RectangleShape2D_g6tk3")
+
+[node name="pawn_player" parent="stuff" instance=ExtResource("1_g6tk3")]
+
+[node name="camera_2d" type="Camera2D" parent="stuff/pawn_player"]
+position = Vector2(0, -36)
+
+[node name="pawn_marmot" parent="." instance=ExtResource("2_5fs5m")]
+position = Vector2(223, 4)
+
+[node name="baby" parent="." instance=ExtResource("3_ljcdc")]
+position = Vector2(135, 204)

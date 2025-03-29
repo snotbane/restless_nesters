@@ -1,0 +1,13 @@
+[gd_resource type="AudioStreamRandomizer" load_steps=5 format=3 uid="uid://p4rwfclo0x8l"]
+
+[ext_resource type="AudioStream" uid="uid://0y5td3mmhcmi" path="res://assets/audio/baby_happy_00.ogg" id="1_247ul"]
+[ext_resource type="AudioStream" uid="uid://de8kpspeks4yl" path="res://assets/audio/baby_happy_01.ogg" id="2_5if3t"]
+[ext_resource type="AudioStream" uid="uid://c3trcdusihgou" path="res://assets/audio/baby_happy_02.ogg" id="3_3awal"]
+[ext_resource type="AudioStream" uid="uid://bm8ey828redql" path="res://assets/audio/baby_happy_03.ogg" id="4_lydg5"]
+
+[resource]
+streams_count = 4
+stream_0/stream = ExtResource("1_247ul")
+stream_1/stream = ExtResource("2_5if3t")
+stream_2/stream = ExtResource("3_3awal")
+stream_3/stream = ExtResource("4_lydg5")

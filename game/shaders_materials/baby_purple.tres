@@ -1,0 +1,9 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://bqap5jtymd87n"]
+
+[ext_resource type="Shader" uid="uid://p8hyipb0825j" path="res://game/shaders/baby_hue_shift.tres" id="1_7q25l"]
+
+[resource]
+shader = ExtResource("1_7q25l")
+shader_parameter/hue_shift = 0.766
+shader_parameter/sat_scalar = 1.0
+shader_parameter/val_scalar = 1.0
