@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://ccbova6rkagb2"]
+
+[ext_resource type="PackedScene" uid="uid://dmqvmpfk33bka" path="res://game/scenes/decor/decor.tscn" id="1_fhyji"]
+
+[node name="decor_grass_1" instance=ExtResource("1_fhyji")]

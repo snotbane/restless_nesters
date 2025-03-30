@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://c0s4mci13w5q0"]
+
+[ext_resource type="PackedScene" uid="uid://dmqvmpfk33bka" path="res://game/scenes/decor/decor.tscn" id="1_abe6n"]
+[ext_resource type="Texture2D" uid="uid://bad7hv37hgmij" path="res://game/sprites/props/gras2.png" id="2_2e7uu"]
+
+[node name="decor_grass_2" instance=ExtResource("1_abe6n")]
+texture = ExtResource("2_2e7uu")
+offset = Vector2(383.4, -461.18)

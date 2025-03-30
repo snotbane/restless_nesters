@@ -82,7 +82,7 @@ func _physics_process(delta: float) -> void:
 	if absf(velocity.x) > 1.0:
 		sprite.scale.x = signf(velocity.x)
 
-	velocity *= Vector2(1.0, 0.5)
+	# velocity *= Vector2(1.0, 0.5)
 	self.move_and_slide()
 	velocity = Vector2.ZERO
 

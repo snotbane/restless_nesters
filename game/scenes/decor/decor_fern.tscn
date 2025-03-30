@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://bkkssva7wccpt"]
+
+[ext_resource type="PackedScene" uid="uid://dmqvmpfk33bka" path="res://game/scenes/decor/decor.tscn" id="1_10yfd"]
+[ext_resource type="Texture2D" uid="uid://desrjcrnjw2sb" path="res://game/sprites/props/fern.png" id="2_upq6v"]
+
+[node name="decor_fern" instance=ExtResource("1_10yfd")]
+texture = ExtResource("2_upq6v")
+offset = Vector2(92.73, -202.54)

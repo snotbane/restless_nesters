@@ -1,9 +1,16 @@
-[gd_scene load_steps=12 format=4 uid="uid://ri5kmtd4f554"]
+[gd_scene load_steps=19 format=4 uid="uid://ri5kmtd4f554"]
 
 [ext_resource type="PackedScene" uid="uid://dugum1qvra8cp" path="res://game/scenes/player/player.tscn" id="1_g6tk3"]
 [ext_resource type="Texture2D" uid="uid://d15at3tktigg6" path="res://game/sprites/tiles/tile_white.png" id="1_ljcdc"]
 [ext_resource type="PackedScene" uid="uid://bgpvs01xchn27" path="res://game/scenes/marmot/marmot.tscn" id="2_5fs5m"]
 [ext_resource type="PackedScene" uid="uid://bmqsp6x1ss53f" path="res://game/scenes/hole.tscn" id="4_ggort"]
+[ext_resource type="PackedScene" uid="uid://btacon0cgft2g" path="res://game/scenes/hole_griptor.tscn" id="5_r4a53"]
+[ext_resource type="PackedScene" uid="uid://clbpih4u8gcmh" path="res://game/scenes/griptor/griptor.tscn" id="6_o53nx"]
+[ext_resource type="PackedScene" uid="uid://cjjpsd347xnf7" path="res://game/scenes/baby/baby.tscn" id="7_iunfk"]
+[ext_resource type="PackedScene" uid="uid://bkkssva7wccpt" path="res://game/scenes/decor/decor_fern.tscn" id="8_b0r63"]
+[ext_resource type="PackedScene" uid="uid://l3ogrdwv3ljr" path="res://game/scenes/decor/decor_rock.tscn" id="9_ud4mg"]
+[ext_resource type="PackedScene" uid="uid://ccbova6rkagb2" path="res://game/scenes/decor/decor_grass_1.tscn" id="10_vc2w7"]
+[ext_resource type="PackedScene" uid="uid://c0s4mci13w5q0" path="res://game/scenes/decor/decor_grass_2.tscn" id="11_a1xw0"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_i7555"]
 size = Vector2(4, 4)
@@ -65,60 +72,56 @@ y_sort_enabled = true
 position = Vector2(-1, 0)
 
 [node name="pawn_player" parent="navigation_region_2d/stuff" instance=ExtResource("1_g6tk3")]
-position = Vector2(182, -130)
-collision_layer = 1
 
 [node name="camera_2d" type="Camera2D" parent="navigation_region_2d/stuff/pawn_player"]
 position = Vector2(0, -36)
 
 [node name="pawn_marmot" parent="navigation_region_2d/stuff" node_paths=PackedStringArray("home_area") instance=ExtResource("2_5fs5m")]
 position = Vector2(-597, -963)
-collision_layer = 1
 home_area = NodePath("../hole")
 
 [node name="pawn_marmot_2" parent="navigation_region_2d/stuff" node_paths=PackedStringArray("home_area") instance=ExtResource("2_5fs5m")]
 position = Vector2(786, -955)
-collision_layer = 1
 home_area = NodePath("../hole")
 
 [node name="pawn_marmot_3" parent="navigation_region_2d/stuff" node_paths=PackedStringArray("home_area") instance=ExtResource("2_5fs5m")]
 position = Vector2(467, -1402)
-collision_layer = 1
 home_area = NodePath("../hole")
 
 [node name="pawn_marmot_4" parent="navigation_region_2d/stuff" node_paths=PackedStringArray("home_area") instance=ExtResource("2_5fs5m")]
 position = Vector2(-214, -1413)
-collision_layer = 1
 home_area = NodePath("../hole")
 
 [node name="pawn_marmot_10" parent="navigation_region_2d/stuff" node_paths=PackedStringArray("home_area") instance=ExtResource("2_5fs5m")]
 position = Vector2(1550, -2053)
-collision_layer = 1
 home_area = NodePath("../hole_2")
 
 [node name="pawn_marmot_9" parent="navigation_region_2d/stuff" node_paths=PackedStringArray("home_area") instance=ExtResource("2_5fs5m")]
 position = Vector2(997, -1657)
-collision_layer = 1
+home_area = NodePath("../hole_2")
+
+[node name="pawn_marmot_12" parent="navigation_region_2d/stuff" node_paths=PackedStringArray("home_area") instance=ExtResource("2_5fs5m")]
+position = Vector2(7, -2083)
 home_area = NodePath("../hole_2")
 
 [node name="pawn_marmot_5" parent="navigation_region_2d/stuff" node_paths=PackedStringArray("home_area") instance=ExtResource("2_5fs5m")]
 position = Vector2(-725, -2286)
-collision_layer = 1
 home_area = NodePath("../hole_3")
 
 [node name="pawn_marmot_7" parent="navigation_region_2d/stuff" node_paths=PackedStringArray("home_area") instance=ExtResource("2_5fs5m")]
 position = Vector2(-1810, -1921)
-collision_layer = 1
 home_area = NodePath("../hole_3")
 
 [node name="pawn_marmot_8" parent="navigation_region_2d/stuff" node_paths=PackedStringArray("home_area") instance=ExtResource("2_5fs5m")]
 position = Vector2(-969, -1471)
-collision_layer = 1
+home_area = NodePath("../hole_3")
+
+[node name="pawn_marmot_11" parent="navigation_region_2d/stuff" node_paths=PackedStringArray("home_area") instance=ExtResource("2_5fs5m")]
+position = Vector2(-1408, -1665)
 home_area = NodePath("../hole_3")
 
 [node name="pawn_marmot_6" parent="navigation_region_2d/stuff" node_paths=PackedStringArray("home_area") instance=ExtResource("2_5fs5m")]
 position = Vector2(696, -2299)
-collision_layer = 1
 home_area = NodePath("../hole_2")
 
 [node name="hole" parent="navigation_region_2d/stuff" instance=ExtResource("4_ggort")]
@@ -129,6 +132,222 @@ position = Vector2(1094, -2018)
 
 [node name="hole_3" parent="navigation_region_2d/stuff" instance=ExtResource("4_ggort")]
 position = Vector2(-1048, -1965)
+
+[node name="hole_griptor" parent="navigation_region_2d/stuff" instance=ExtResource("5_r4a53")]
+position = Vector2(-3257, -1446)
+
+[node name="hole_griptor_2" parent="navigation_region_2d/stuff" instance=ExtResource("5_r4a53")]
+position = Vector2(10, -3077)
+
+[node name="hole_griptor_3" parent="navigation_region_2d/stuff" instance=ExtResource("5_r4a53")]
+position = Vector2(3415, -1406)
+
+[node name="griptor" parent="navigation_region_2d/stuff" node_paths=PackedStringArray("home_area") instance=ExtResource("6_o53nx")]
+position = Vector2(3068, -1414)
+home_area = NodePath("../hole_griptor_3")
+
+[node name="griptor_2" parent="navigation_region_2d/stuff" node_paths=PackedStringArray("home_area") instance=ExtResource("6_o53nx")]
+position = Vector2(14, -2957)
+home_area = NodePath("../hole_griptor_2")
+
+[node name="griptor_3" parent="navigation_region_2d/stuff" node_paths=PackedStringArray("home_area") instance=ExtResource("6_o53nx")]
+position = Vector2(-3027, -1451)
+home_area = NodePath("../hole_griptor")
+
+[node name="baby" parent="navigation_region_2d/stuff" instance=ExtResource("7_iunfk")]
+position = Vector2(-151, 105)
+
+[node name="baby_2" parent="navigation_region_2d/stuff" instance=ExtResource("7_iunfk")]
+position = Vector2(163, 107)
+
+[node name="baby_3" parent="navigation_region_2d/stuff" instance=ExtResource("7_iunfk")]
+position = Vector2(7, -180)
+
+[node name="decor" type="Node2D" parent="navigation_region_2d/stuff"]
+y_sort_enabled = true
+
+[node name="decor_fern" parent="navigation_region_2d/stuff/decor" instance=ExtResource("8_b0r63")]
+position = Vector2(-2290, -1733)
+
+[node name="decor_fern_2" parent="navigation_region_2d/stuff/decor" instance=ExtResource("8_b0r63")]
+position = Vector2(-2127, -969)
+
+[node name="decor_fern_3" parent="navigation_region_2d/stuff/decor" instance=ExtResource("8_b0r63")]
+position = Vector2(-643, -1159)
+
+[node name="decor_fern_4" parent="navigation_region_2d/stuff/decor" instance=ExtResource("8_b0r63")]
+position = Vector2(-1206, -378)
+
+[node name="decor_fern_5" parent="navigation_region_2d/stuff/decor" instance=ExtResource("8_b0r63")]
+position = Vector2(-1380, -2224)
+
+[node name="decor_fern_6" parent="navigation_region_2d/stuff/decor" instance=ExtResource("8_b0r63")]
+position = Vector2(-1780, -1225)
+
+[node name="decor_fern_7" parent="navigation_region_2d/stuff/decor" instance=ExtResource("8_b0r63")]
+position = Vector2(-348, -2756)
+
+[node name="decor_fern_8" parent="navigation_region_2d/stuff/decor" instance=ExtResource("8_b0r63")]
+position = Vector2(-414, -253)
+
+[node name="decor_fern_9" parent="navigation_region_2d/stuff/decor" instance=ExtResource("8_b0r63")]
+position = Vector2(182, -786)
+
+[node name="decor_rock" parent="navigation_region_2d/stuff/decor" instance=ExtResource("9_ud4mg")]
+position = Vector2(447, -2836)
+
+[node name="decor_rock_2" parent="navigation_region_2d/stuff/decor" instance=ExtResource("9_ud4mg")]
+position = Vector2(-828, -2643)
+
+[node name="decor_rock_3" parent="navigation_region_2d/stuff/decor" instance=ExtResource("9_ud4mg")]
+position = Vector2(-6, -2389)
+
+[node name="decor_rock_4" parent="navigation_region_2d/stuff/decor" instance=ExtResource("9_ud4mg")]
+position = Vector2(1158, -2182)
+
+[node name="decor_rock_5" parent="navigation_region_2d/stuff/decor" instance=ExtResource("9_ud4mg")]
+position = Vector2(-478, -1895)
+
+[node name="decor_rock_6" parent="navigation_region_2d/stuff/decor" instance=ExtResource("9_ud4mg")]
+position = Vector2(308, -1539)
+
+[node name="decor_grass_1" parent="navigation_region_2d/stuff/decor" instance=ExtResource("10_vc2w7")]
+position = Vector2(1912, -2067)
+
+[node name="decor_grass_2" parent="navigation_region_2d/stuff/decor" instance=ExtResource("10_vc2w7")]
+position = Vector2(1059, -980)
+
+[node name="decor_grass_3" parent="navigation_region_2d/stuff/decor" instance=ExtResource("10_vc2w7")]
+position = Vector2(474, -1835)
+
+[node name="decor_grass_4" parent="navigation_region_2d/stuff/decor" instance=ExtResource("10_vc2w7")]
+position = Vector2(-202, -1686)
+
+[node name="decor_grass_5" parent="navigation_region_2d/stuff/decor" instance=ExtResource("10_vc2w7")]
+position = Vector2(262, -2401)
+
+[node name="decor_grass_6" parent="navigation_region_2d/stuff/decor" instance=ExtResource("10_vc2w7")]
+position = Vector2(-640, -2558)
+
+[node name="decor_grass_7" parent="navigation_region_2d/stuff/decor" instance=ExtResource("10_vc2w7")]
+position = Vector2(-803, -615)
+
+[node name="decor_grass_8" parent="navigation_region_2d/stuff/decor" instance=ExtResource("10_vc2w7")]
+position = Vector2(91, -1128)
+
+[node name="decor_grass_9" parent="navigation_region_2d/stuff/decor" instance=ExtResource("10_vc2w7")]
+position = Vector2(-1589, -1443)
+
+[node name="decor_grass_10" parent="navigation_region_2d/stuff/decor" instance=ExtResource("10_vc2w7")]
+position = Vector2(-2660, -1647)
+
+[node name="decor_grass_11" parent="navigation_region_2d/stuff/decor" instance=ExtResource("10_vc2w7")]
+position = Vector2(-2348, -949)
+
+[node name="decor_grass_12" parent="navigation_region_2d/stuff/decor" instance=ExtResource("10_vc2w7")]
+position = Vector2(466, -276)
+
+[node name="decor_grass_13" parent="navigation_region_2d/stuff/decor" instance=ExtResource("10_vc2w7")]
+position = Vector2(-861, -215)
+
+[node name="decor_grass_14" parent="navigation_region_2d/stuff/decor" instance=ExtResource("10_vc2w7")]
+position = Vector2(-1625, -1018)
+
+[node name="decor_grass_15" parent="navigation_region_2d/stuff/decor" instance=ExtResource("10_vc2w7")]
+position = Vector2(-1035, -1219)
+
+[node name="decor_grass_16" parent="navigation_region_2d/stuff/decor" instance=ExtResource("10_vc2w7")]
+position = Vector2(-1112, -2127)
+
+[node name="decor_grass_17" parent="navigation_region_2d/stuff/decor" instance=ExtResource("10_vc2w7")]
+position = Vector2(820, -2588)
+
+[node name="decor_grass_18" parent="navigation_region_2d/stuff/decor" instance=ExtResource("10_vc2w7")]
+position = Vector2(2454, -1843)
+
+[node name="decor_grass_19" parent="navigation_region_2d/stuff/decor" instance=ExtResource("10_vc2w7")]
+position = Vector2(2101, -839)
+
+[node name="decor_grass_20" parent="navigation_region_2d/stuff/decor" instance=ExtResource("10_vc2w7")]
+position = Vector2(1877, -861)
+
+[node name="decor_grass_21" parent="navigation_region_2d/stuff/decor" instance=ExtResource("10_vc2w7")]
+position = Vector2(2034, -1004)
+
+[node name="decor_grass_22" parent="navigation_region_2d/stuff/decor" instance=ExtResource("10_vc2w7")]
+position = Vector2(1849, -1443)
+
+[node name="decor_grass_23" parent="navigation_region_2d/stuff/decor" instance=ExtResource("11_a1xw0")]
+position = Vector2(1829, -1780)
+
+[node name="decor_grass_24" parent="navigation_region_2d/stuff/decor" instance=ExtResource("11_a1xw0")]
+position = Vector2(2508, -1465)
+
+[node name="decor_grass_25" parent="navigation_region_2d/stuff/decor" instance=ExtResource("11_a1xw0")]
+position = Vector2(2130, -1294)
+
+[node name="decor_grass_26" parent="navigation_region_2d/stuff/decor" instance=ExtResource("11_a1xw0")]
+position = Vector2(1647, -1115)
+
+[node name="decor_grass_27" parent="navigation_region_2d/stuff/decor" instance=ExtResource("11_a1xw0")]
+position = Vector2(1534, -1430)
+
+[node name="decor_grass_28" parent="navigation_region_2d/stuff/decor" instance=ExtResource("11_a1xw0")]
+position = Vector2(1142, -1184)
+
+[node name="decor_grass_29" parent="navigation_region_2d/stuff/decor" instance=ExtResource("11_a1xw0")]
+position = Vector2(1332, -1706)
+
+[node name="decor_grass_30" parent="navigation_region_2d/stuff/decor" instance=ExtResource("11_a1xw0")]
+position = Vector2(764, -1449)
+
+[node name="decor_grass_31" parent="navigation_region_2d/stuff/decor" instance=ExtResource("11_a1xw0")]
+position = Vector2(309, -2092)
+
+[node name="decor_grass_32" parent="navigation_region_2d/stuff/decor" instance=ExtResource("11_a1xw0")]
+position = Vector2(97, -1755)
+
+[node name="decor_grass_33" parent="navigation_region_2d/stuff/decor" instance=ExtResource("11_a1xw0")]
+position = Vector2(489, -858)
+
+[node name="decor_grass_34" parent="navigation_region_2d/stuff/decor" instance=ExtResource("11_a1xw0")]
+position = Vector2(958, -665)
+
+[node name="decor_grass_35" parent="navigation_region_2d/stuff/decor" instance=ExtResource("11_a1xw0")]
+position = Vector2(1474, -938)
+
+[node name="decor_grass_36" parent="navigation_region_2d/stuff/decor" instance=ExtResource("11_a1xw0")]
+position = Vector2(2779, -1316)
+
+[node name="decor_grass_37" parent="navigation_region_2d/stuff/decor" instance=ExtResource("11_a1xw0")]
+position = Vector2(1179, -425)
+
+[node name="decor_grass_38" parent="navigation_region_2d/stuff/decor" instance=ExtResource("11_a1xw0")]
+position = Vector2(2465, -1060)
+
+[node name="decor_grass_39" parent="navigation_region_2d/stuff/decor" instance=ExtResource("11_a1xw0")]
+position = Vector2(2189, -1819)
+
+[node name="decor_grass_40" parent="navigation_region_2d/stuff/decor" instance=ExtResource("11_a1xw0")]
+position = Vector2(-1139, -839)
+
+[node name="decor_grass_41" parent="navigation_region_2d/stuff/decor" instance=ExtResource("11_a1xw0")]
+position = Vector2(-2535, -1349)
+
+[node name="decor_grass_42" parent="navigation_region_2d/stuff/decor" instance=ExtResource("11_a1xw0")]
+position = Vector2(-2052, -1920)
+
+[node name="decor_grass_43" parent="navigation_region_2d/stuff/decor" instance=ExtResource("11_a1xw0")]
+position = Vector2(-1837, -758)
+
+[node name="decor_grass_44" parent="navigation_region_2d/stuff/decor" instance=ExtResource("11_a1xw0")]
+position = Vector2(-1042, -2430)
+
+[node name="decor_grass_45" parent="navigation_region_2d/stuff/decor" instance=ExtResource("11_a1xw0")]
+position = Vector2(-272, -2331)
+
+[node name="decor_grass_46" parent="navigation_region_2d/stuff/decor" instance=ExtResource("11_a1xw0")]
+position = Vector2(396, -2701)
 
 [node name="tile_map_ahead" type="TileMapLayer" parent="navigation_region_2d"]
 y_sort_enabled = true
