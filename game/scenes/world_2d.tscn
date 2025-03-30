@@ -1,17 +1,46 @@
-[gd_scene load_steps=7 format=3 uid="uid://ri5kmtd4f554"]
+[gd_scene load_steps=12 format=4 uid="uid://ri5kmtd4f554"]
 
 [ext_resource type="PackedScene" uid="uid://dugum1qvra8cp" path="res://game/scenes/player/player.tscn" id="1_g6tk3"]
+[ext_resource type="Texture2D" uid="uid://d15at3tktigg6" path="res://game/sprites/tiles/tile_white.png" id="1_ljcdc"]
 [ext_resource type="PackedScene" uid="uid://bgpvs01xchn27" path="res://game/scenes/marmot/marmot.tscn" id="2_5fs5m"]
-[ext_resource type="PackedScene" uid="uid://cjjpsd347xnf7" path="res://game/scenes/baby/baby.tscn" id="3_ljcdc"]
+[ext_resource type="PackedScene" uid="uid://bmqsp6x1ss53f" path="res://game/scenes/hole.tscn" id="4_ggort"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_i7555"]
 size = Vector2(4, 4)
 
-[sub_resource type="NavigationPolygon" id="NavigationPolygon_g6tk3"]
-parsed_geometry_type = 1
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_ggort"]
+vertices = PackedVector2Array(818, -481.102, 3471.2, -1408, -0.5, 327.852, 256, -200.102, 818, -542.898, -0.5, -3143.85, 256, -823.898, -3472.2, -1408, -256, -823.898, 0, -328.102, -256, -200.102, -818, -481.102, -818, -542.898, 0, -695.898)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(1, 0, 4), PackedInt32Array(5, 1, 4, 6), PackedInt32Array(7, 5, 6, 8), PackedInt32Array(9, 3, 2, 10), PackedInt32Array(10, 2, 7, 11), PackedInt32Array(12, 11, 7), PackedInt32Array(6, 13, 8), PackedInt32Array(7, 8, 12)])
+agent_radius = 50.0
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_g6tk3"]
-size = Vector2(1000, 1000)
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_ljcdc"]
+vertices = PackedVector2Array(256, 0, 0, 128, -256, 0, 0, -128)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-256, 0, 0, -128, 256, 0, 0, 128)])
+agent_radius = 0.0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ljcdc"]
+texture = ExtResource("1_ljcdc")
+texture_region_size = Vector2i(512, 512)
+2:0/0 = 0
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(0, -128, -256, 0, 0, 128, 256, 0)
+1:0/0 = 0
+1:0/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_ljcdc")
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(0, -128, 256, 0, 0, 128, -256, 0)
+
+[sub_resource type="TileSet" id="TileSet_5fs5m"]
+tile_shape = 1
+tile_size = Vector2i(512, 256)
+physics_layer_0/collision_layer = 1
+navigation_layer_0/layers = 2
+sources/1 = SubResource("TileSetAtlasSource_ljcdc")
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ljcdc"]
+radius = 312.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ljcdc"]
+size = Vector2(920, 350)
 
 [node name="world_2d" type="Node2D"]
 
@@ -22,25 +51,97 @@ texture_filter = 1
 scale = Vector2(32, 32)
 texture = SubResource("PlaceholderTexture2D_i7555")
 
-[node name="stuff" type="Node2D" parent="." groups=["stuff"]]
+[node name="navigation_region_2d" type="NavigationRegion2D" parent="."]
+position = Vector2(1, 0)
+navigation_polygon = SubResource("NavigationPolygon_ggort")
+
+[node name="tile_map_behind" type="TileMapLayer" parent="navigation_region_2d"]
 y_sort_enabled = true
+tile_map_data = PackedByteArray("AAD///3/AQABAAAAAAD///7/AQABAAAAAAAAAP7/AQABAAAAAAD/////AQABAAAAAAAAAP//AQABAAAAAAAAAAAAAQABAAAAAAD//wEAAQABAAAAAAD+////AQABAAAAAAD//wAAAQABAAAAAAD///z/AQAAAAAAAAAAAPr/AQAAAAAAAAD///r/AQAAAAAAAAAAAPz/AQAAAAAAAAAAAPv/AQAAAAAAAAAAAP3/AQABAAAAAAABAPv/AQABAAAAAAABAPz/AQABAAAAAAABAP3/AQABAAAAAAABAP7/AQABAAAAAAD+//v/AQAAAAAAAAD+//z/AQABAAAAAAD9//3/AQABAAAAAAD+//7/AQABAAAAAAD+//3/AQABAAAAAAD9//z/AQABAAAAAAD9//v/AQABAAAAAAD+//r/AQABAAAAAAD+//n/AQABAAAAAAD///j/AQABAAAAAAD///n/AQABAAAAAAAAAPj/AQABAAAAAAAAAPn/AQABAAAAAAABAPr/AQABAAAAAAACAPz/AQABAAAAAAD///f/AQABAAAAAAD///v/AQAAAAAAAAD8//v/AQABAAAAAAD9//r/AQABAAAAAAD9//n/AQABAAAAAAD+//j/AQABAAAAAAD+//f/AQABAAAAAAD///b/AQABAAAAAAD///X/AQABAAAAAAAAAPb/AQABAAAAAAAAAPf/AQABAAAAAAABAPj/AQABAAAAAAABAPn/AQABAAAAAAACAPr/AQABAAAAAAACAPv/AQABAAAAAAADAPr/AQABAAAAAAACAPn/AQABAAAAAAACAPj/AQABAAAAAAABAPf/AQABAAAAAAABAPb/AQABAAAAAAAAAPX/AQABAAAAAAAAAPT/AQABAAAAAAD///P/AQABAAAAAAD///T/AQABAAAAAAD+//X/AQABAAAAAAD+//b/AQABAAAAAAD9//f/AQABAAAAAAD9//j/AQABAAAAAAD8//n/AQABAAAAAAD8//r/AQABAAAAAAD8//T/AQABAAAAAAD8//X/AQABAAAAAAD8//b/AQABAAAAAAD8//f/AQABAAAAAAD8//j/AQABAAAAAAD9//T/AQABAAAAAAD9//X/AQABAAAAAAD9//b/AQABAAAAAAD8/+3/AQABAAAAAAD8/+7/AQABAAAAAAD8/+//AQABAAAAAAD8//D/AQABAAAAAAD8//H/AQABAAAAAAD8//L/AQABAAAAAAD8//P/AQABAAAAAAD9/+3/AQABAAAAAAD9/+7/AQABAAAAAAD9/+//AQABAAAAAAD9//D/AQABAAAAAAD9//H/AQABAAAAAAD9//L/AQABAAAAAAD9//P/AQABAAAAAAD+/+3/AQABAAAAAAD+/+7/AQABAAAAAAD+/+//AQABAAAAAAD+//D/AQABAAAAAAD+//H/AQABAAAAAAD+//L/AQABAAAAAAD+//P/AQABAAAAAAD//+3/AQABAAAAAAD//+7/AQABAAAAAAD//+//AQABAAAAAAD///D/AQABAAAAAAD///H/AQABAAAAAAD///L/AQABAAAAAAAAAO3/AQABAAAAAAAAAO7/AQABAAAAAAAAAO//AQABAAAAAAAAAPD/AQABAAAAAAAAAPH/AQABAAAAAAAAAPL/AQABAAAAAAAAAPP/AQABAAAAAAABAO3/AQABAAAAAAABAO7/AQABAAAAAAABAO//AQABAAAAAAABAPD/AQABAAAAAAABAPH/AQABAAAAAAABAPL/AQABAAAAAAABAPP/AQABAAAAAAABAPT/AQABAAAAAAABAPX/AQABAAAAAAACAO3/AQABAAAAAAACAO7/AQABAAAAAAACAO//AQABAAAAAAACAPD/AQABAAAAAAACAPH/AQABAAAAAAACAPL/AQABAAAAAAACAPP/AQABAAAAAAACAPT/AQABAAAAAAACAPX/AQABAAAAAAACAPb/AQABAAAAAAACAPf/AQABAAAAAAADAPj/AQABAAAAAAD+//T/AQABAAAAAAADAO7/AQABAAAAAAADAPD/AQABAAAAAAADAPL/AQABAAAAAAADAPT/AQABAAAAAAADAPb/AQABAAAAAAD9/+z/AQABAAAAAAD9/+v/AQABAAAAAAD+/+r/AQABAAAAAAD+/+n/AQABAAAAAAD//+j/AQABAAAAAAD//+f/AQABAAAAAAAAAOj/AQABAAAAAAAAAOn/AQABAAAAAAABAOr/AQABAAAAAAABAOv/AQABAAAAAAACAOz/AQABAAAAAAD//+v/AQABAAAAAAAAAOr/AQABAAAAAAD//+n/AQABAAAAAAD//+r/AQABAAAAAAD+/+v/AQABAAAAAAD+/+z/AQABAAAAAAD//+z/AQABAAAAAAAAAOv/AQABAAAAAAAAAOz/AQABAAAAAAABAOz/AQABAAAAAAD7/+//AQABAAAAAAD7//D/AQABAAAAAAD6//H/AQABAAAAAAD6//L/AQABAAAAAAD5//P/AQABAAAAAAD5//T/AQABAAAAAAD5//X/AQABAAAAAAD6//b/AQABAAAAAAD6//f/AQABAAAAAAD7//j/AQABAAAAAAD7//n/AQABAAAAAAADAPn/AQABAAAAAAAEAPj/AQABAAAAAAAEAPf/AQABAAAAAAAFAPb/AQABAAAAAAAFAPX/AQABAAAAAAADAO//AQABAAAAAAAEAPD/AQABAAAAAAAEAPH/AQABAAAAAAAFAPL/AQABAAAAAAAFAPP/AQABAAAAAAAGAPT/AQABAAAAAAAEAPb/AQABAAAAAAAEAPX/AQABAAAAAAAFAPT/AQABAAAAAAAEAPP/AQABAAAAAAAEAPL/AQABAAAAAAADAPH/AQABAAAAAAADAPP/AQABAAAAAAAEAPT/AQABAAAAAAADAPX/AQABAAAAAAADAPf/AQABAAAAAAD7//T/AQABAAAAAAD7//P/AQABAAAAAAD7//L/AQABAAAAAAD7//H/AQABAAAAAAD6//P/AQABAAAAAAD6//T/AQABAAAAAAD6//X/AQABAAAAAAD7//b/AQABAAAAAAD7//X/AQABAAAAAAD7//f/AQABAAAAAAD4//P/AQACAAAAAAD5//L/AQACAAAAAAD5//H/AQACAAAAAAD6//D/AQACAAAAAAD6/+//AQACAAAAAAD7/+7/AQACAAAAAAD7/+3/AQACAAAAAAD8/+z/AQACAAAAAAD8/+v/AQACAAAAAAD9/+r/AQACAAAAAAD9/+n/AQACAAAAAAD+/+j/AQACAAAAAAD+/+f/AQACAAAAAAD//+b/AQACAAAAAAD//+X/AQACAAAAAAAAAOb/AQACAAAAAAAAAOf/AQACAAAAAAABAOj/AQACAAAAAAABAOn/AQACAAAAAAACAOr/AQACAAAAAAACAOv/AQACAAAAAAADAOz/AQACAAAAAAADAO3/AQACAAAAAAAEAO7/AQACAAAAAAAEAO//AQACAAAAAAAFAPD/AQACAAAAAAAFAPH/AQACAAAAAAAGAPL/AQACAAAAAAAGAPP/AQACAAAAAAA=")
+tile_set = SubResource("TileSet_5fs5m")
 
-[node name="navigation_region_2d" type="NavigationRegion2D" parent="stuff"]
-navigation_polygon = SubResource("NavigationPolygon_g6tk3")
+[node name="stuff" type="Node2D" parent="navigation_region_2d" groups=["stuff"]]
+y_sort_enabled = true
+position = Vector2(-1, 0)
 
-[node name="walls" type="StaticBody2D" parent="stuff/navigation_region_2d"]
-position = Vector2(905, -519)
+[node name="pawn_player" parent="navigation_region_2d/stuff" instance=ExtResource("1_g6tk3")]
+position = Vector2(182, -130)
+collision_layer = 1
 
-[node name="collision_shape_2d" type="CollisionShape2D" parent="stuff/navigation_region_2d/walls"]
-shape = SubResource("RectangleShape2D_g6tk3")
-
-[node name="pawn_player" parent="stuff" instance=ExtResource("1_g6tk3")]
-
-[node name="camera_2d" type="Camera2D" parent="stuff/pawn_player"]
+[node name="camera_2d" type="Camera2D" parent="navigation_region_2d/stuff/pawn_player"]
 position = Vector2(0, -36)
 
-[node name="pawn_marmot" parent="." instance=ExtResource("2_5fs5m")]
-position = Vector2(223, 4)
+[node name="pawn_marmot" parent="navigation_region_2d/stuff" node_paths=PackedStringArray("home_area") instance=ExtResource("2_5fs5m")]
+position = Vector2(-597, -963)
+collision_layer = 1
+home_area = NodePath("../hole")
 
-[node name="baby" parent="." instance=ExtResource("3_ljcdc")]
-position = Vector2(135, 204)
+[node name="pawn_marmot_2" parent="navigation_region_2d/stuff" node_paths=PackedStringArray("home_area") instance=ExtResource("2_5fs5m")]
+position = Vector2(786, -955)
+collision_layer = 1
+home_area = NodePath("../hole")
+
+[node name="pawn_marmot_3" parent="navigation_region_2d/stuff" node_paths=PackedStringArray("home_area") instance=ExtResource("2_5fs5m")]
+position = Vector2(467, -1402)
+collision_layer = 1
+home_area = NodePath("../hole")
+
+[node name="pawn_marmot_4" parent="navigation_region_2d/stuff" node_paths=PackedStringArray("home_area") instance=ExtResource("2_5fs5m")]
+position = Vector2(-214, -1413)
+collision_layer = 1
+home_area = NodePath("../hole")
+
+[node name="pawn_marmot_10" parent="navigation_region_2d/stuff" node_paths=PackedStringArray("home_area") instance=ExtResource("2_5fs5m")]
+position = Vector2(1550, -2053)
+collision_layer = 1
+home_area = NodePath("../hole_2")
+
+[node name="pawn_marmot_9" parent="navigation_region_2d/stuff" node_paths=PackedStringArray("home_area") instance=ExtResource("2_5fs5m")]
+position = Vector2(997, -1657)
+collision_layer = 1
+home_area = NodePath("../hole_2")
+
+[node name="pawn_marmot_5" parent="navigation_region_2d/stuff" node_paths=PackedStringArray("home_area") instance=ExtResource("2_5fs5m")]
+position = Vector2(-725, -2286)
+collision_layer = 1
+home_area = NodePath("../hole_3")
+
+[node name="pawn_marmot_7" parent="navigation_region_2d/stuff" node_paths=PackedStringArray("home_area") instance=ExtResource("2_5fs5m")]
+position = Vector2(-1810, -1921)
+collision_layer = 1
+home_area = NodePath("../hole_3")
+
+[node name="pawn_marmot_8" parent="navigation_region_2d/stuff" node_paths=PackedStringArray("home_area") instance=ExtResource("2_5fs5m")]
+position = Vector2(-969, -1471)
+collision_layer = 1
+home_area = NodePath("../hole_3")
+
+[node name="pawn_marmot_6" parent="navigation_region_2d/stuff" node_paths=PackedStringArray("home_area") instance=ExtResource("2_5fs5m")]
+position = Vector2(696, -2299)
+collision_layer = 1
+home_area = NodePath("../hole_2")
+
+[node name="hole" parent="navigation_region_2d/stuff" instance=ExtResource("4_ggort")]
+position = Vector2(0, -959)
+
+[node name="hole_2" parent="navigation_region_2d/stuff" instance=ExtResource("4_ggort")]
+position = Vector2(1094, -2018)
+
+[node name="hole_3" parent="navigation_region_2d/stuff" instance=ExtResource("4_ggort")]
+position = Vector2(-1048, -1965)
+
+[node name="tile_map_ahead" type="TileMapLayer" parent="navigation_region_2d"]
+y_sort_enabled = true
+position = Vector2(-1, 0)
+tile_map_data = PackedByteArray("AAD+/wAAAQACAAAAAAD+/wEAAQACAAAAAAD//wIAAQACAAAAAAD//wMAAQACAAAAAAAAAAIAAQACAAAAAAAAAAEAAQACAAAAAAABAAAAAQACAAAAAAABAP//AQACAAAAAAACAP7/AQACAAAAAAACAP3/AQACAAAAAAD9////AQACAAAAAAD9//7/AQACAAAAAAD8//3/AQACAAAAAAD8//z/AQACAAAAAAD7//v/AQACAAAAAAADAPv/AQACAAAAAAADAPz/AQACAAAAAAD7//r/AQACAAAAAAD6//n/AQACAAAAAAD6//j/AQACAAAAAAD5//f/AQACAAAAAAD5//b/AQACAAAAAAD4//X/AQACAAAAAAD4//T/AQACAAAAAAAHAPT/AQACAAAAAAAGAPX/AQACAAAAAAAGAPb/AQACAAAAAAAFAPf/AQACAAAAAAAFAPj/AQACAAAAAAAEAPn/AQACAAAAAAAEAPr/AQACAAAAAAA=")
+tile_set = SubResource("TileSet_5fs5m")
+
+[node name="home_area" type="Area2D" parent="."]
+
+[node name="home_circle" type="CollisionShape2D" parent="home_area"]
+position = Vector2(0, -25)
+shape = SubResource("CircleShape2D_ljcdc")
+
+[node name="collision_shape_2d" type="CollisionShape2D" parent="home_area"]
+position = Vector2(0, -75)
+shape = SubResource("RectangleShape2D_ljcdc")

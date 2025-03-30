@@ -5,6 +5,7 @@
 
 [node name="player" instance=ExtResource("1_ce2g5")]
 species_id = &"player"
+walk_speed = 300.0
 
 [node name="label" parent="sprite/placeholder" index="1"]
 text = "Player"
@@ -17,3 +18,10 @@ position = Vector2(100, 0)
 
 [node name="brain" parent="." index="2"]
 script = ExtResource("2_hn0xb")
+
+[node name="nav_timer" parent="brain" index="0"]
+process_mode = 4
+autostart = false
+
+[node name="wander_timer" parent="brain" index="1"]
+process_mode = 4

@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://bmqsp6x1ss53f"]
+
+[ext_resource type="Texture2D" uid="uid://d3rgdgoou5wqo" path="res://game/sprites/props/marmot hole.png" id="1_2inlo"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qpuhg"]
+radius = 36.7151
+
+[node name="hole" type="Area2D"]
+
+[node name="shape" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_qpuhg")
+
+[node name="sprite_2d" type="Sprite2D" parent="."]
+texture = ExtResource("1_2inlo")
+offset = Vector2(220, -300.76)

@@ -3,6 +3,7 @@ class_name Pawn extends CharacterBody2D
 static var PLAYER : Pawn
 
 @export var species_id : StringName
+@export var home_area : Area2D
 @export var walk_speed : float = 256.0
 
 @onready var sprite : AnimatedSprite2D = self.find_child("sprite")
@@ -63,6 +64,8 @@ var is_phased : bool :
 
 
 func _ready() -> void:
+	# if home_area:
+	# 	home_area.body_entered.connect(_on_home_body_entered)
 	pass
 
 
@@ -76,8 +79,13 @@ func _physics_process(delta: float) -> void:
 	velocity += walk_vector * walk_speed
 	walk_vector = Vector2.ZERO
 
-	if not is_zero_approx(velocity.x):
-		sprite.scale.x = sign(velocity.x)
+	if absf(velocity.x) > 1.0:
+		sprite.scale.x = signf(velocity.x)
 
+	velocity *= Vector2(1.0, 0.5)
 	self.move_and_slide()
 	velocity = Vector2.ZERO
+
+
+# func _on_home_body_entered(other: Node2D) -> void:
+# 	if other == self: brain._on_home_reached()
