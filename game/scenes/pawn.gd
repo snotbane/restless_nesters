@@ -64,8 +64,8 @@ var is_phased : bool :
 
 
 func _ready() -> void:
-	# if home_area:
-	# 	home_area.body_entered.connect(_on_home_body_entered)
+	if home_area:
+		home_area.body_entered.connect(_on_home_body_entered)
 	pass
 
 
@@ -87,5 +87,5 @@ func _physics_process(delta: float) -> void:
 	velocity = Vector2.ZERO
 
 
-# func _on_home_body_entered(other: Node2D) -> void:
-# 	if other == self: brain._on_home_reached()
+func _on_home_body_entered(other: Node2D) -> void:
+	if other == self: brain._on_home_reached()

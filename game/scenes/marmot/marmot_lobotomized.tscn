@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://b1yhpt0a7446m"]
+
+[ext_resource type="PackedScene" uid="uid://bgpvs01xchn27" path="res://game/scenes/marmot/marmot.tscn" id="1_3cqvq"]
+[ext_resource type="Script" uid="uid://cltipo65ku1ta" path="res://game/scripts/brain.gd" id="2_st7ft"]
+
+[node name="marmot_lobotomized" instance=ExtResource("1_3cqvq")]
+
+[node name="label" parent="sprite/placeholder" index="1"]
+text = "Food"
+
+[node name="brain" parent="." index="2"]
+script = ExtResource("2_st7ft")
+wander_distance_min = 5.0
+wander_distance_max = 10.0

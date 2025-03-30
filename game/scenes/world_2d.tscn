@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=4 uid="uid://ri5kmtd4f554"]
+[gd_scene load_steps=23 format=4 uid="uid://ri5kmtd4f554"]
 
 [ext_resource type="PackedScene" uid="uid://dugum1qvra8cp" path="res://game/scenes/player/player.tscn" id="1_g6tk3"]
 [ext_resource type="Texture2D" uid="uid://d15at3tktigg6" path="res://game/sprites/tiles/tile_white.png" id="1_ljcdc"]
@@ -11,19 +11,28 @@
 [ext_resource type="PackedScene" uid="uid://l3ogrdwv3ljr" path="res://game/scenes/decor/decor_rock.tscn" id="9_ud4mg"]
 [ext_resource type="PackedScene" uid="uid://ccbova6rkagb2" path="res://game/scenes/decor/decor_grass_1.tscn" id="10_vc2w7"]
 [ext_resource type="PackedScene" uid="uid://c0s4mci13w5q0" path="res://game/scenes/decor/decor_grass_2.tscn" id="11_a1xw0"]
+[ext_resource type="PackedScene" uid="uid://bucc76nt8ahf2" path="res://game/scenes/decor/decor_flower.tscn" id="12_a1xw0"]
+[ext_resource type="PackedScene" uid="uid://b1yhpt0a7446m" path="res://game/scenes/marmot/marmot_lobotomized.tscn" id="12_ud4mg"]
+[ext_resource type="AudioStream" uid="uid://dj5mxur2mkptg" path="res://game/audio/music/music.ogg" id="13_vc2w7"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_i7555"]
 size = Vector2(4, 4)
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_ljcdc"]
+radius = 312.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ljcdc"]
+size = Vector2(920, 350)
+
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_ggort"]
-vertices = PackedVector2Array(818, -481.102, 3471.2, -1408, -0.5, 327.852, 256, -200.102, 818, -542.898, -0.5, -3143.85, 256, -823.898, -3472.2, -1408, -256, -823.898, 0, -328.102, -256, -200.102, -818, -481.102, -818, -542.898, 0, -695.898)
-polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(1, 0, 4), PackedInt32Array(5, 1, 4, 6), PackedInt32Array(7, 5, 6, 8), PackedInt32Array(9, 3, 2, 10), PackedInt32Array(10, 2, 7, 11), PackedInt32Array(12, 11, 7), PackedInt32Array(6, 13, 8), PackedInt32Array(7, 8, 12)])
+vertices = PackedVector2Array(1275, -2483.1, 1248.56, -2246, 1076.44, -2246, 301.75, -2251, 292.969, -2283.87, 1050.11, -2238.97, 255.5, -2991.35, 438.203, -2900, 365.438, -2900, -737.438, -2707, -826.203, -2707, -765.5, -2737.35, -765, -2737.1, 1530.5, -2356.35, 1785, -2229.1, 1298.97, -2149.11, 1307.75, -2182, 1530, -2356.1, 1026.06, -2214.87, 3315.49, -1467.34, 3456.19, -1396.99, 3315.49, -1326.65, 3315, -1326.9, 3315, -1467.1, -3315, -1326.9, -3315.49, -1326.65, -3456.19, -1396.99, -3315.49, -1467.34, -3315, -1467.1, 339.109, -2892.97, 1275.5, -2483.35, 1298.97, -2214.87, 1274.87, -2238.97, -510.5, -2864.35, -711.109, -2699.97, 1017.23, -2182, 292.969, -2218.11, -1020, -2610.1, -967.031, -2636.58, -959.969, -2610.11, -1020, -183.898, 587.969, -2803.11, 593.273, -2822.96, 765, -2737.1, -687.062, -2675.87, -510, -2864.1, 315.062, -2868.87, 255, -2991.1, 1530, -437.898, 187.75, -372, 178.969, -404.867, 3060, -1594.1, -345.227, -1548, -354.062, -1580.87, 2805, -1721.1, -354.062, -1515.11, 3060, -1199.9, 2805, -1072.9, 178.969, -339.109, 1275, -310.898, 1026.06, -2149.11, 268.867, -2194.06, 268.867, -2307.97, 563.867, -2779.06, 1020, -2610.1, 3060.5, -1594.35, 3060.5, -1199.65, -3060, -1199.9, -3060.5, -1199.65, -3060.5, -1594.35, -3060, -1594.1, -2805, -1072.9, -2805.5, -1072.65, -2805.5, -1721.35, -2805, -1721.1, -2550, -945.898, -2550.5, -945.648, -2550.5, -1848.35, -2550, -1848.1, -2295, -818.898, -2295.5, -818.648, -2295.5, -1975.35, -2295, -1975.1, -2040, -691.898, -2040.5, -691.648, -2040.5, -2102.35, -2040, -2102.1, -1785, -564.898, -1785.5, -564.648, -1785.5, -2229.35, -1785, -2229.1, -1530, -437.898, -1530.5, -437.648, -1530.5, -2356.35, -1530, -2356.1, -1275, -310.898, -1275.5, -310.648, -1275.5, -2483.35, -1275, -2483.1, -1020.5, -183.648, -1020.5, -2610.35, -935.867, -2586.06, -909.602, -2579, -765.5, -56.6484, -737.398, -2579, -765, -56.8984, -711.109, -2586.06, -635.75, -1548, -255, -2991.1, 44.1094, -2307.97, 20.0625, -2283.87, -678.227, -2643, -255.5, -2991.35, 765.5, -2737.35, 1020.5, -2610.35, 537.602, -2772, 365.398, -2772, 242.562, -2315, 339.109, -2779.06, 70.4375, -2315, 315.062, -2803.11, 1785.5, -2229.35, 2040, -2102.1, 2040.5, -2102.35, 2295, -1975.1, 2295.5, -1975.35, 2550, -1848.1, 2550.5, -1848.35, 2805.5, -1721.35, 1274.87, -2125.06, -378.109, -1604.97, 1248.6, -2118, 2805.5, -1072.65, 2550.5, -945.648, 2550, -945.898, -378.109, -1491.06, 2295.5, -818.648, 2295, -818.898, 2040.5, -691.648, 2040, -691.898, 1785.5, -564.648, 1785, -564.898, 1530.5, -437.648, 154.867, -428.969, 128.562, -436, -43.5625, -436, -69.8672, -428.969, -404.398, -1484, -576.602, -1484, -93.9688, -404.867, 1275.5, -310.648, 1020.5, -183.648, 1020, -183.898, 154.867, -315.062, 765.5, -56.6484, 765, -56.8984, 510.5, 70.3516, 510, 70.1016, 255.5, 197.352, 255, 197.102, 128.602, -308, 0.5, 324.352, 0, 324.102, -43.6016, -308, -69.8672, -315.062, -0.5, 324.352, -255, 197.102, -510, 70.1016, -93.9688, -339.109, -255.5, 197.352, -102.75, -372, -510.5, 70.3516, -0.5, -3118.35, 0, -3118.1, 0.5, -3118.35, 306.227, -2836, -687.062, -2610.11, 11.2266, -2251, 20.0625, -2218.11, -404.438, -1612, -602.867, -1491.06, -626.969, -1515.11, 1050.11, -2125.06, 242.602, -2187, 1076.4, -2118, 70.3984, -2187, 44.1094, -2194.06, -576.562, -1612, -602.867, -1604.97, -626.969, -1580.87)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4), PackedInt32Array(3, 2, 5), PackedInt32Array(6, 7, 8), PackedInt32Array(9, 10, 11, 12), PackedInt32Array(13, 14, 15, 16, 17), PackedInt32Array(3, 5, 18), PackedInt32Array(19, 20, 21, 22, 23), PackedInt32Array(24, 25, 26, 27, 28), PackedInt32Array(6, 8, 29), PackedInt32Array(30, 17, 16, 31), PackedInt32Array(30, 31, 32, 0), PackedInt32Array(9, 12, 33, 34), PackedInt32Array(0, 32, 1), PackedInt32Array(3, 18, 35, 36), PackedInt32Array(37, 38, 39, 40), PackedInt32Array(41, 42, 43), PackedInt32Array(44, 34, 33, 45), PackedInt32Array(6, 29, 46, 47), PackedInt32Array(48, 49, 50), PackedInt32Array(51, 52, 53, 54), PackedInt32Array(55, 52, 51, 56, 57), PackedInt32Array(58, 49, 48, 59), PackedInt32Array(36, 35, 60, 61), PackedInt32Array(62, 63, 41, 43, 64), PackedInt32Array(51, 65, 23, 22, 66, 56), PackedInt32Array(67, 68, 24, 28, 69, 70), PackedInt32Array(71, 72, 67, 70, 73, 74), PackedInt32Array(75, 76, 71, 74, 77, 78), PackedInt32Array(79, 80, 75, 78, 81, 82), PackedInt32Array(83, 84, 79, 82, 85, 86), PackedInt32Array(87, 88, 83, 86, 89, 90), PackedInt32Array(91, 92, 87, 90, 93, 94), PackedInt32Array(95, 96, 91, 94, 97, 98), PackedInt32Array(40, 99, 95, 98, 100, 37), PackedInt32Array(40, 39, 101), PackedInt32Array(40, 101, 102), PackedInt32Array(103, 40, 102, 104, 105), PackedInt32Array(105, 104, 106, 107), PackedInt32Array(108, 109, 110, 111, 44, 45, 112), PackedInt32Array(0, 4, 62, 64), PackedInt32Array(43, 113, 64), PackedInt32Array(64, 114, 0), PackedInt32Array(115, 63, 62), PackedInt32Array(116, 115, 62, 117), PackedInt32Array(118, 116, 117, 119), PackedInt32Array(108, 120, 118, 119, 109), PackedInt32Array(14, 121, 122), PackedInt32Array(122, 123, 124), PackedInt32Array(124, 125, 126), PackedInt32Array(126, 127, 54), PackedInt32Array(54, 128, 51), PackedInt32Array(126, 54, 53), PackedInt32Array(124, 126, 53), PackedInt32Array(122, 124, 53), PackedInt32Array(129, 14, 122, 53, 130, 131), PackedInt32Array(56, 132, 57), PackedInt32Array(57, 133, 134), PackedInt32Array(55, 57, 134, 135), PackedInt32Array(134, 136, 137), PackedInt32Array(135, 134, 137), PackedInt32Array(137, 138, 139), PackedInt32Array(135, 137, 139), PackedInt32Array(139, 140, 141), PackedInt32Array(135, 139, 141), PackedInt32Array(135, 141, 142, 48), PackedInt32Array(135, 48, 50, 143), PackedInt32Array(135, 143, 144), PackedInt32Array(135, 144, 145), PackedInt32Array(135, 145, 146, 147), PackedInt32Array(148, 147, 146, 149), PackedInt32Array(48, 150, 59), PackedInt32Array(59, 151, 152), PackedInt32Array(58, 59, 152, 153), PackedInt32Array(152, 154, 155), PackedInt32Array(153, 152, 155), PackedInt32Array(153, 155, 156, 157), PackedInt32Array(153, 157, 158, 159, 160), PackedInt32Array(160, 159, 161, 162, 163), PackedInt32Array(164, 163, 162, 165, 166), PackedInt32Array(167, 168, 164, 166, 169), PackedInt32Array(105, 170, 168, 167, 171), PackedInt32Array(108, 172, 173), PackedInt32Array(173, 174, 47), PackedInt32Array(108, 173, 47, 46, 175), PackedInt32Array(108, 175, 120), PackedInt32Array(176, 111, 110, 177), PackedInt32Array(106, 176, 177, 178, 130, 179), PackedInt32Array(105, 180, 148, 149, 170), PackedInt32Array(181, 180, 105), PackedInt32Array(61, 60, 182, 130, 183), PackedInt32Array(129, 15, 14), PackedInt32Array(184, 131, 130), PackedInt32Array(182, 184, 130), PackedInt32Array(185, 183, 130), PackedInt32Array(186, 185, 130), PackedInt32Array(178, 186, 130), PackedInt32Array(106, 179, 187), PackedInt32Array(106, 187, 188), PackedInt32Array(106, 188, 189), PackedInt32Array(107, 181, 105), PackedInt32Array(106, 189, 107)])
 agent_radius = 50.0
 
-[sub_resource type="NavigationPolygon" id="NavigationPolygon_ljcdc"]
-vertices = PackedVector2Array(256, 0, 0, 128, -256, 0, 0, -128)
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_ud4mg"]
+vertices = PackedVector2Array(255, 0, 0, 127, -255, 0, 0, -127)
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(-256, 0, 0, -128, 256, 0, 0, 128)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(0, -127, -255, 0, 0, 127, 255, 0)])
 agent_radius = 0.0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ljcdc"]
@@ -32,22 +41,63 @@ texture_region_size = Vector2i(512, 512)
 2:0/0 = 0
 2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(0, -128, -256, 0, 0, 128, 256, 0)
 1:0/0 = 0
-1:0/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_ljcdc")
+1:0/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_ud4mg")
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(0, -128, 256, 0, 0, 128, -256, 0)
 
 [sub_resource type="TileSet" id="TileSet_5fs5m"]
 tile_shape = 1
-tile_size = Vector2i(512, 256)
+tile_size = Vector2i(510, 254)
 physics_layer_0/collision_layer = 1
 navigation_layer_0/layers = 2
 sources/1 = SubResource("TileSetAtlasSource_ljcdc")
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_ljcdc"]
-radius = 312.0
+[sub_resource type="GDScript" id="GDScript_ud4mg"]
+resource_name = "game"
+script/source = "extends Node
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ljcdc"]
-size = Vector2(920, 350)
+signal game_end
+
+@export_file(\"*.tscn\") var cutscenes : Array[String]
+
+@export var babies_to_be_fed : Array[Pawn]
+var baby_brains : Array[Brain]
+var babies_fed := 0
+
+func _ready() -> void:
+	for baby in babies_to_be_fed:
+		baby_brains.push_back(baby.find_child(\"brain\"))
+		baby.tree_exiting.connect(_on_baby_died.bind(baby))
+	for brain in baby_brains:
+		brain.filled.connect(self._on_baby_filled)
+		
+		
+func proceed_to_cutscene() -> void:
+	var scene : PackedScene
+	if babies_to_be_fed.size() == 0:
+		scene = preload(\"res://game/scenes/ui/cutscene_gameover.tscn\")
+	elif babies_fed < babies_to_be_fed.size():
+		scene = preload(\"res://game/scenes/ui/cutscene_survival.tscn\")
+	else:
+		scene = preload(\"res://game/scenes/ui/cutscene_perfect.tscn\")
+	
+		
+
+
+func check_game() -> void:
+	if babies_fed >= babies_to_be_fed.size():
+		game_end.emit()
+
+
+func _on_baby_died(baby: Pawn) -> void:
+	babies_to_be_fed.erase(baby)
+	check_game()
+	
+
+func _on_baby_filled() -> void:
+	babies_fed += 1
+	check_game()
+"
 
 [node name="world_2d" type="Node2D"]
 
@@ -58,23 +108,44 @@ texture_filter = 1
 scale = Vector2(32, 32)
 texture = SubResource("PlaceholderTexture2D_i7555")
 
+[node name="home_area" type="Area2D" parent="."]
+
+[node name="home_circle" type="CollisionShape2D" parent="home_area"]
+position = Vector2(0, -25)
+shape = SubResource("CircleShape2D_ljcdc")
+
+[node name="collision_shape_2d" type="CollisionShape2D" parent="home_area"]
+visible = false
+position = Vector2(0, -75)
+shape = SubResource("RectangleShape2D_ljcdc")
+
 [node name="navigation_region_2d" type="NavigationRegion2D" parent="."]
 position = Vector2(1, 0)
 navigation_polygon = SubResource("NavigationPolygon_ggort")
 
 [node name="tile_map_behind" type="TileMapLayer" parent="navigation_region_2d"]
 y_sort_enabled = true
-tile_map_data = PackedByteArray("AAD///3/AQABAAAAAAD///7/AQABAAAAAAAAAP7/AQABAAAAAAD/////AQABAAAAAAAAAP//AQABAAAAAAAAAAAAAQABAAAAAAD//wEAAQABAAAAAAD+////AQABAAAAAAD//wAAAQABAAAAAAD///z/AQAAAAAAAAAAAPr/AQAAAAAAAAD///r/AQAAAAAAAAAAAPz/AQAAAAAAAAAAAPv/AQAAAAAAAAAAAP3/AQABAAAAAAABAPv/AQABAAAAAAABAPz/AQABAAAAAAABAP3/AQABAAAAAAABAP7/AQABAAAAAAD+//v/AQAAAAAAAAD+//z/AQABAAAAAAD9//3/AQABAAAAAAD+//7/AQABAAAAAAD+//3/AQABAAAAAAD9//z/AQABAAAAAAD9//v/AQABAAAAAAD+//r/AQABAAAAAAD+//n/AQABAAAAAAD///j/AQABAAAAAAD///n/AQABAAAAAAAAAPj/AQABAAAAAAAAAPn/AQABAAAAAAABAPr/AQABAAAAAAACAPz/AQABAAAAAAD///f/AQABAAAAAAD///v/AQAAAAAAAAD8//v/AQABAAAAAAD9//r/AQABAAAAAAD9//n/AQABAAAAAAD+//j/AQABAAAAAAD+//f/AQABAAAAAAD///b/AQABAAAAAAD///X/AQABAAAAAAAAAPb/AQABAAAAAAAAAPf/AQABAAAAAAABAPj/AQABAAAAAAABAPn/AQABAAAAAAACAPr/AQABAAAAAAACAPv/AQABAAAAAAADAPr/AQABAAAAAAACAPn/AQABAAAAAAACAPj/AQABAAAAAAABAPf/AQABAAAAAAABAPb/AQABAAAAAAAAAPX/AQABAAAAAAAAAPT/AQABAAAAAAD///P/AQABAAAAAAD///T/AQABAAAAAAD+//X/AQABAAAAAAD+//b/AQABAAAAAAD9//f/AQABAAAAAAD9//j/AQABAAAAAAD8//n/AQABAAAAAAD8//r/AQABAAAAAAD8//T/AQABAAAAAAD8//X/AQABAAAAAAD8//b/AQABAAAAAAD8//f/AQABAAAAAAD8//j/AQABAAAAAAD9//T/AQABAAAAAAD9//X/AQABAAAAAAD9//b/AQABAAAAAAD8/+3/AQABAAAAAAD8/+7/AQABAAAAAAD8/+//AQABAAAAAAD8//D/AQABAAAAAAD8//H/AQABAAAAAAD8//L/AQABAAAAAAD8//P/AQABAAAAAAD9/+3/AQABAAAAAAD9/+7/AQABAAAAAAD9/+//AQABAAAAAAD9//D/AQABAAAAAAD9//H/AQABAAAAAAD9//L/AQABAAAAAAD9//P/AQABAAAAAAD+/+3/AQABAAAAAAD+/+7/AQABAAAAAAD+/+//AQABAAAAAAD+//D/AQABAAAAAAD+//H/AQABAAAAAAD+//L/AQABAAAAAAD+//P/AQABAAAAAAD//+3/AQABAAAAAAD//+7/AQABAAAAAAD//+//AQABAAAAAAD///D/AQABAAAAAAD///H/AQABAAAAAAD///L/AQABAAAAAAAAAO3/AQABAAAAAAAAAO7/AQABAAAAAAAAAO//AQABAAAAAAAAAPD/AQABAAAAAAAAAPH/AQABAAAAAAAAAPL/AQABAAAAAAAAAPP/AQABAAAAAAABAO3/AQABAAAAAAABAO7/AQABAAAAAAABAO//AQABAAAAAAABAPD/AQABAAAAAAABAPH/AQABAAAAAAABAPL/AQABAAAAAAABAPP/AQABAAAAAAABAPT/AQABAAAAAAABAPX/AQABAAAAAAACAO3/AQABAAAAAAACAO7/AQABAAAAAAACAO//AQABAAAAAAACAPD/AQABAAAAAAACAPH/AQABAAAAAAACAPL/AQABAAAAAAACAPP/AQABAAAAAAACAPT/AQABAAAAAAACAPX/AQABAAAAAAACAPb/AQABAAAAAAACAPf/AQABAAAAAAADAPj/AQABAAAAAAD+//T/AQABAAAAAAADAO7/AQABAAAAAAADAPD/AQABAAAAAAADAPL/AQABAAAAAAADAPT/AQABAAAAAAADAPb/AQABAAAAAAD9/+z/AQABAAAAAAD9/+v/AQABAAAAAAD+/+r/AQABAAAAAAD+/+n/AQABAAAAAAD//+j/AQABAAAAAAD//+f/AQABAAAAAAAAAOj/AQABAAAAAAAAAOn/AQABAAAAAAABAOr/AQABAAAAAAABAOv/AQABAAAAAAACAOz/AQABAAAAAAD//+v/AQABAAAAAAAAAOr/AQABAAAAAAD//+n/AQABAAAAAAD//+r/AQABAAAAAAD+/+v/AQABAAAAAAD+/+z/AQABAAAAAAD//+z/AQABAAAAAAAAAOv/AQABAAAAAAAAAOz/AQABAAAAAAABAOz/AQABAAAAAAD7/+//AQABAAAAAAD7//D/AQABAAAAAAD6//H/AQABAAAAAAD6//L/AQABAAAAAAD5//P/AQABAAAAAAD5//T/AQABAAAAAAD5//X/AQABAAAAAAD6//b/AQABAAAAAAD6//f/AQABAAAAAAD7//j/AQABAAAAAAD7//n/AQABAAAAAAADAPn/AQABAAAAAAAEAPj/AQABAAAAAAAEAPf/AQABAAAAAAAFAPb/AQABAAAAAAAFAPX/AQABAAAAAAADAO//AQABAAAAAAAEAPD/AQABAAAAAAAEAPH/AQABAAAAAAAFAPL/AQABAAAAAAAFAPP/AQABAAAAAAAGAPT/AQABAAAAAAAEAPb/AQABAAAAAAAEAPX/AQABAAAAAAAFAPT/AQABAAAAAAAEAPP/AQABAAAAAAAEAPL/AQABAAAAAAADAPH/AQABAAAAAAADAPP/AQABAAAAAAAEAPT/AQABAAAAAAADAPX/AQABAAAAAAADAPf/AQABAAAAAAD7//T/AQABAAAAAAD7//P/AQABAAAAAAD7//L/AQABAAAAAAD7//H/AQABAAAAAAD6//P/AQABAAAAAAD6//T/AQABAAAAAAD6//X/AQABAAAAAAD7//b/AQABAAAAAAD7//X/AQABAAAAAAD7//f/AQABAAAAAAD4//P/AQACAAAAAAD5//L/AQACAAAAAAD5//H/AQACAAAAAAD6//D/AQACAAAAAAD6/+//AQACAAAAAAD7/+7/AQACAAAAAAD7/+3/AQACAAAAAAD8/+z/AQACAAAAAAD8/+v/AQACAAAAAAD9/+r/AQACAAAAAAD9/+n/AQACAAAAAAD+/+j/AQACAAAAAAD+/+f/AQACAAAAAAD//+b/AQACAAAAAAD//+X/AQACAAAAAAAAAOb/AQACAAAAAAAAAOf/AQACAAAAAAABAOj/AQACAAAAAAABAOn/AQACAAAAAAACAOr/AQACAAAAAAACAOv/AQACAAAAAAADAOz/AQACAAAAAAADAO3/AQACAAAAAAAEAO7/AQACAAAAAAAEAO//AQACAAAAAAAFAPD/AQACAAAAAAAFAPH/AQACAAAAAAAGAPL/AQACAAAAAAAGAPP/AQACAAAAAAA=")
+tile_map_data = PackedByteArray("AAD///3/AQABAAAAAAD///7/AQABAAAAAAAAAP7/AQABAAAAAAD/////AQABAAAAAAAAAP//AQABAAAAAAAAAAAAAQABAAAAAAD//wEAAQABAAAAAAD+////AQABAAAAAAD//wAAAQABAAAAAAD///z/AQABAAAAAAAAAPr/AQABAAAAAAD///r/AQABAAAAAAAAAPz/AQABAAAAAAAAAPv/AQABAAAAAAAAAP3/AQABAAAAAAABAPv/AQABAAAAAAABAPz/AQABAAAAAAABAP3/AQABAAAAAAABAP7/AQABAAAAAAD+//v/AQABAAAAAAD+//z/AQABAAAAAAD9//3/AQABAAAAAAD+//7/AQABAAAAAAD+//3/AQABAAAAAAD9//z/AQABAAAAAAD9//v/AQABAAAAAAD+//r/AQABAAAAAAD+//n/AQABAAAAAAD///j/AQABAAAAAAD///n/AQABAAAAAAAAAPj/AQABAAAAAAAAAPn/AQABAAAAAAABAPr/AQABAAAAAAACAPz/AQABAAAAAAD///f/AQABAAAAAAD///v/AQABAAAAAAD8//v/AQABAAAAAAD9//r/AQABAAAAAAD9//n/AQABAAAAAAD+//j/AQABAAAAAAD+//f/AQABAAAAAAD///b/AQABAAAAAAD///X/AQABAAAAAAAAAPb/AQABAAAAAAAAAPf/AQABAAAAAAABAPj/AQABAAAAAAABAPn/AQABAAAAAAACAPr/AQABAAAAAAACAPv/AQABAAAAAAADAPr/AQABAAAAAAACAPn/AQABAAAAAAACAPj/AQABAAAAAAABAPf/AQABAAAAAAABAPb/AQABAAAAAAAAAPX/AQABAAAAAAAAAPT/AQABAAAAAAD///P/AQABAAAAAAD///T/AQABAAAAAAD+//X/AQABAAAAAAD+//b/AQABAAAAAAD9//f/AQABAAAAAAD9//j/AQABAAAAAAD8//n/AQABAAAAAAD8//r/AQABAAAAAAD8//T/AQABAAAAAAD8//X/AQABAAAAAAD8//b/AQABAAAAAAD8//f/AQABAAAAAAD8//j/AQABAAAAAAD9//T/AQABAAAAAAD9//X/AQABAAAAAAD9//b/AQABAAAAAAD8/+3/AQABAAAAAAD8/+7/AQABAAAAAAD8/+//AQABAAAAAAD8//D/AQABAAAAAAD8//H/AQABAAAAAAD8//L/AQABAAAAAAD8//P/AQABAAAAAAD9/+3/AQABAAAAAAD9/+7/AQABAAAAAAD9/+//AQABAAAAAAD9//D/AQABAAAAAAD9//H/AQABAAAAAAD9//L/AQABAAAAAAD9//P/AQABAAAAAAD+/+3/AQABAAAAAAD+/+7/AQABAAAAAAD+/+//AQABAAAAAAD+//D/AQABAAAAAAD+//H/AQABAAAAAAD+//L/AQABAAAAAAD+//P/AQABAAAAAAD//+3/AQABAAAAAAD//+7/AQABAAAAAAD//+//AQABAAAAAAD///D/AQABAAAAAAD///H/AQABAAAAAAD///L/AQABAAAAAAAAAO3/AQABAAAAAAAAAO7/AQABAAAAAAAAAO//AQABAAAAAAAAAPD/AQABAAAAAAAAAPH/AQABAAAAAAAAAPL/AQABAAAAAAAAAPP/AQABAAAAAAABAO3/AQABAAAAAAABAO7/AQABAAAAAAABAO//AQABAAAAAAABAPD/AQABAAAAAAABAPH/AQABAAAAAAABAPL/AQABAAAAAAABAPP/AQABAAAAAAABAPT/AQABAAAAAAABAPX/AQABAAAAAAACAO3/AQABAAAAAAACAO7/AQABAAAAAAACAO//AQABAAAAAAACAPD/AQABAAAAAAACAPH/AQABAAAAAAACAPL/AQABAAAAAAACAPP/AQABAAAAAAACAPT/AQABAAAAAAACAPX/AQABAAAAAAACAPb/AQABAAAAAAACAPf/AQABAAAAAAADAPj/AQABAAAAAAD+//T/AQABAAAAAAADAO7/AQABAAAAAAADAPD/AQABAAAAAAADAPL/AQABAAAAAAADAPT/AQABAAAAAAADAPb/AQABAAAAAAD9/+z/AQABAAAAAAD9/+v/AQABAAAAAAD+/+r/AQABAAAAAAD+/+n/AQABAAAAAAD//+j/AQABAAAAAAD//+f/AQABAAAAAAAAAOj/AQABAAAAAAAAAOn/AQABAAAAAAABAOr/AQABAAAAAAABAOv/AQABAAAAAAACAOz/AQABAAAAAAD//+v/AQABAAAAAAAAAOr/AQABAAAAAAD//+n/AQABAAAAAAD//+r/AQABAAAAAAD+/+v/AQABAAAAAAD+/+z/AQABAAAAAAD//+z/AQABAAAAAAAAAOv/AQABAAAAAAAAAOz/AQABAAAAAAABAOz/AQABAAAAAAD7/+//AQABAAAAAAD7//D/AQABAAAAAAD6//H/AQABAAAAAAD6//L/AQABAAAAAAD5//P/AQABAAAAAAD5//T/AQABAAAAAAD5//X/AQABAAAAAAD6//b/AQABAAAAAAD6//f/AQABAAAAAAD7//j/AQABAAAAAAD7//n/AQABAAAAAAADAPn/AQABAAAAAAAEAPj/AQABAAAAAAAEAPf/AQABAAAAAAAFAPb/AQABAAAAAAAFAPX/AQABAAAAAAADAO//AQABAAAAAAAEAPD/AQABAAAAAAAEAPH/AQABAAAAAAAFAPL/AQABAAAAAAAFAPP/AQABAAAAAAAGAPT/AQABAAAAAAAEAPb/AQABAAAAAAAEAPX/AQABAAAAAAAFAPT/AQABAAAAAAAEAPP/AQABAAAAAAAEAPL/AQABAAAAAAADAPH/AQABAAAAAAADAPP/AQABAAAAAAAEAPT/AQABAAAAAAADAPX/AQABAAAAAAADAPf/AQABAAAAAAD7//T/AQABAAAAAAD7//P/AQABAAAAAAD7//L/AQABAAAAAAD7//H/AQABAAAAAAD6//P/AQABAAAAAAD6//T/AQABAAAAAAD6//X/AQABAAAAAAD7//b/AQABAAAAAAD7//X/AQABAAAAAAD7//f/AQABAAAAAAD4//P/AQACAAAAAAD5//L/AQACAAAAAAD5//H/AQACAAAAAAD6//D/AQACAAAAAAD6/+//AQACAAAAAAD7/+7/AQACAAAAAAD7/+3/AQACAAAAAAD8/+z/AQACAAAAAAD8/+v/AQACAAAAAAD9/+r/AQACAAAAAAD9/+n/AQACAAAAAAD+/+j/AQACAAAAAAD+/+f/AQACAAAAAAD//+b/AQACAAAAAAD//+X/AQACAAAAAAAAAOb/AQACAAAAAAAAAOf/AQACAAAAAAABAOj/AQACAAAAAAABAOn/AQACAAAAAAACAOr/AQACAAAAAAACAOv/AQACAAAAAAADAOz/AQACAAAAAAADAO3/AQACAAAAAAAEAO7/AQACAAAAAAAEAO//AQACAAAAAAAFAPD/AQACAAAAAAAFAPH/AQACAAAAAAAGAPL/AQACAAAAAAAGAPP/AQACAAAAAAD4//T/AQAAAAAAAAD4//X/AQAAAAAAAAD5//b/AQAAAAAAAAD5//f/AQAAAAAAAAD6//j/AQAAAAAAAAD6//n/AQAAAAAAAAD7//r/AQAAAAAAAAD7//v/AQAAAAAAAAD8//z/AQAAAAAAAAD8//3/AQAAAAAAAAD9//7/AQAAAAAAAAD9////AQAAAAAAAAD+/wAAAQAAAAAAAAD+/wEAAQAAAAAAAAD//wIAAQAAAAAAAAD//wMAAQAAAAAAAAAAAAIAAQAAAAAAAAAAAAEAAQAAAAAAAAABAAAAAQAAAAAAAAABAP//AQAAAAAAAAACAP7/AQAAAAAAAAACAP3/AQAAAAAAAAADAPz/AQAAAAAAAAADAPv/AQAAAAAAAAAEAPr/AQAAAAAAAAAEAPn/AQAAAAAAAAAFAPj/AQAAAAAAAAAFAPf/AQAAAAAAAAAGAPb/AQAAAAAAAAAGAPX/AQAAAAAAAAAHAPT/AQAAAAAAAAA=")
 tile_set = SubResource("TileSet_5fs5m")
 
 [node name="stuff" type="Node2D" parent="navigation_region_2d" groups=["stuff"]]
 y_sort_enabled = true
 position = Vector2(-1, 0)
 
-[node name="pawn_player" parent="navigation_region_2d/stuff" instance=ExtResource("1_g6tk3")]
+[node name="pawn_player" parent="navigation_region_2d/stuff" node_paths=PackedStringArray("home_area") instance=ExtResource("1_g6tk3")]
+home_area = NodePath("../../../home_area")
 
 [node name="camera_2d" type="Camera2D" parent="navigation_region_2d/stuff/pawn_player"]
 position = Vector2(0, -36)
+
+[node name="baby" parent="navigation_region_2d/stuff" instance=ExtResource("7_iunfk")]
+position = Vector2(-151, 105)
+
+[node name="baby_2" parent="navigation_region_2d/stuff" instance=ExtResource("7_iunfk")]
+position = Vector2(163, 107)
+
+[node name="baby_3" parent="navigation_region_2d/stuff" instance=ExtResource("7_iunfk")]
+position = Vector2(7, -180)
 
 [node name="pawn_marmot" parent="navigation_region_2d/stuff" node_paths=PackedStringArray("home_area") instance=ExtResource("2_5fs5m")]
 position = Vector2(-597, -963)
@@ -133,6 +204,18 @@ position = Vector2(1094, -2018)
 [node name="hole_3" parent="navigation_region_2d/stuff" instance=ExtResource("4_ggort")]
 position = Vector2(-1048, -1965)
 
+[node name="griptor" parent="navigation_region_2d/stuff" node_paths=PackedStringArray("home_area") instance=ExtResource("6_o53nx")]
+position = Vector2(-3027, -1451)
+home_area = NodePath("../hole_griptor")
+
+[node name="griptor_2" parent="navigation_region_2d/stuff" node_paths=PackedStringArray("home_area") instance=ExtResource("6_o53nx")]
+position = Vector2(14, -2957)
+home_area = NodePath("../hole_griptor_2")
+
+[node name="griptor_3" parent="navigation_region_2d/stuff" node_paths=PackedStringArray("home_area") instance=ExtResource("6_o53nx")]
+position = Vector2(3068, -1414)
+home_area = NodePath("../hole_griptor_3")
+
 [node name="hole_griptor" parent="navigation_region_2d/stuff" instance=ExtResource("5_r4a53")]
 position = Vector2(-3257, -1446)
 
@@ -141,27 +224,6 @@ position = Vector2(10, -3077)
 
 [node name="hole_griptor_3" parent="navigation_region_2d/stuff" instance=ExtResource("5_r4a53")]
 position = Vector2(3415, -1406)
-
-[node name="griptor" parent="navigation_region_2d/stuff" node_paths=PackedStringArray("home_area") instance=ExtResource("6_o53nx")]
-position = Vector2(3068, -1414)
-home_area = NodePath("../hole_griptor_3")
-
-[node name="griptor_2" parent="navigation_region_2d/stuff" node_paths=PackedStringArray("home_area") instance=ExtResource("6_o53nx")]
-position = Vector2(14, -2957)
-home_area = NodePath("../hole_griptor_2")
-
-[node name="griptor_3" parent="navigation_region_2d/stuff" node_paths=PackedStringArray("home_area") instance=ExtResource("6_o53nx")]
-position = Vector2(-3027, -1451)
-home_area = NodePath("../hole_griptor")
-
-[node name="baby" parent="navigation_region_2d/stuff" instance=ExtResource("7_iunfk")]
-position = Vector2(-151, 105)
-
-[node name="baby_2" parent="navigation_region_2d/stuff" instance=ExtResource("7_iunfk")]
-position = Vector2(163, 107)
-
-[node name="baby_3" parent="navigation_region_2d/stuff" instance=ExtResource("7_iunfk")]
-position = Vector2(7, -180)
 
 [node name="decor" type="Node2D" parent="navigation_region_2d/stuff"]
 y_sort_enabled = true
@@ -188,7 +250,7 @@ position = Vector2(-1780, -1225)
 position = Vector2(-348, -2756)
 
 [node name="decor_fern_8" parent="navigation_region_2d/stuff/decor" instance=ExtResource("8_b0r63")]
-position = Vector2(-414, -253)
+position = Vector2(-395, 77)
 
 [node name="decor_fern_9" parent="navigation_region_2d/stuff/decor" instance=ExtResource("8_b0r63")]
 position = Vector2(182, -786)
@@ -200,16 +262,16 @@ position = Vector2(447, -2836)
 position = Vector2(-828, -2643)
 
 [node name="decor_rock_3" parent="navigation_region_2d/stuff/decor" instance=ExtResource("9_ud4mg")]
-position = Vector2(-6, -2389)
+position = Vector2(152, -2251)
 
 [node name="decor_rock_4" parent="navigation_region_2d/stuff/decor" instance=ExtResource("9_ud4mg")]
 position = Vector2(1158, -2182)
 
 [node name="decor_rock_5" parent="navigation_region_2d/stuff/decor" instance=ExtResource("9_ud4mg")]
-position = Vector2(-478, -1895)
+position = Vector2(-495, -1548)
 
 [node name="decor_rock_6" parent="navigation_region_2d/stuff/decor" instance=ExtResource("9_ud4mg")]
-position = Vector2(308, -1539)
+position = Vector2(38, -372)
 
 [node name="decor_grass_1" parent="navigation_region_2d/stuff/decor" instance=ExtResource("10_vc2w7")]
 position = Vector2(1912, -2067)
@@ -349,18 +411,74 @@ position = Vector2(-272, -2331)
 [node name="decor_grass_46" parent="navigation_region_2d/stuff/decor" instance=ExtResource("11_a1xw0")]
 position = Vector2(396, -2701)
 
-[node name="tile_map_ahead" type="TileMapLayer" parent="navigation_region_2d"]
-y_sort_enabled = true
-position = Vector2(-1, 0)
-tile_map_data = PackedByteArray("AAD+/wAAAQACAAAAAAD+/wEAAQACAAAAAAD//wIAAQACAAAAAAD//wMAAQACAAAAAAAAAAIAAQACAAAAAAAAAAEAAQACAAAAAAABAAAAAQACAAAAAAABAP//AQACAAAAAAACAP7/AQACAAAAAAACAP3/AQACAAAAAAD9////AQACAAAAAAD9//7/AQACAAAAAAD8//3/AQACAAAAAAD8//z/AQACAAAAAAD7//v/AQACAAAAAAADAPv/AQACAAAAAAADAPz/AQACAAAAAAD7//r/AQACAAAAAAD6//n/AQACAAAAAAD6//j/AQACAAAAAAD5//f/AQACAAAAAAD5//b/AQACAAAAAAD4//X/AQACAAAAAAD4//T/AQACAAAAAAAHAPT/AQACAAAAAAAGAPX/AQACAAAAAAAGAPb/AQACAAAAAAAFAPf/AQACAAAAAAAFAPj/AQACAAAAAAAEAPn/AQACAAAAAAAEAPr/AQACAAAAAAA=")
-tile_set = SubResource("TileSet_5fs5m")
+[node name="decor_fern_10" parent="navigation_region_2d/stuff/decor" instance=ExtResource("12_a1xw0")]
+position = Vector2(444, 104)
 
-[node name="home_area" type="Area2D" parent="."]
+[node name="decor_fern_11" parent="navigation_region_2d/stuff/decor" instance=ExtResource("12_a1xw0")]
+position = Vector2(408, -560)
 
-[node name="home_circle" type="CollisionShape2D" parent="home_area"]
-position = Vector2(0, -25)
-shape = SubResource("CircleShape2D_ljcdc")
+[node name="decor_fern_12" parent="navigation_region_2d/stuff/decor" instance=ExtResource("12_a1xw0")]
+position = Vector2(710, -1626)
 
-[node name="collision_shape_2d" type="CollisionShape2D" parent="home_area"]
-position = Vector2(0, -75)
-shape = SubResource("RectangleShape2D_ljcdc")
+[node name="decor_fern_13" parent="navigation_region_2d/stuff/decor" instance=ExtResource("12_a1xw0")]
+position = Vector2(1813, -1953)
+
+[node name="decor_fern_14" parent="navigation_region_2d/stuff/decor" instance=ExtResource("12_a1xw0")]
+position = Vector2(1963, -1164)
+
+[node name="decor_fern_15" parent="navigation_region_2d/stuff/decor" instance=ExtResource("12_a1xw0")]
+position = Vector2(2124, -1630)
+
+[node name="decor_fern_16" parent="navigation_region_2d/stuff/decor" instance=ExtResource("12_a1xw0")]
+position = Vector2(1833, -1062)
+
+[node name="decor_fern_17" parent="navigation_region_2d/stuff/decor" instance=ExtResource("12_a1xw0")]
+position = Vector2(1390, -516)
+
+[node name="decor_fern_18" parent="navigation_region_2d/stuff/decor" instance=ExtResource("12_a1xw0")]
+position = Vector2(2838, -1603)
+
+[node name="decor_fern_19" parent="navigation_region_2d/stuff/decor" instance=ExtResource("12_a1xw0")]
+position = Vector2(998, -1094)
+
+[node name="decor_fern_20" parent="navigation_region_2d/stuff/decor" instance=ExtResource("12_a1xw0")]
+position = Vector2(1419, -1551)
+
+[node name="decor_fern_21" parent="navigation_region_2d/stuff/decor" instance=ExtResource("12_a1xw0")]
+position = Vector2(1421, -1551)
+
+[node name="marmot_lobotomized" parent="navigation_region_2d/stuff" instance=ExtResource("12_ud4mg")]
+position = Vector2(379, -173)
+
+[node name="marmot_lobotomized_2" parent="navigation_region_2d/stuff" instance=ExtResource("12_ud4mg")]
+position = Vector2(512, -186)
+
+[node name="marmot_lobotomized_3" parent="navigation_region_2d/stuff" instance=ExtResource("12_ud4mg")]
+position = Vector2(516, -64)
+
+[node name="marmot_lobotomized_4" parent="navigation_region_2d/stuff" instance=ExtResource("12_ud4mg")]
+position = Vector2(394, -31)
+
+[node name="marmot_lobotomized_5" parent="navigation_region_2d/stuff" instance=ExtResource("12_ud4mg")]
+position = Vector2(379, -173)
+
+[node name="marmot_lobotomized_6" parent="navigation_region_2d/stuff" instance=ExtResource("12_ud4mg")]
+position = Vector2(512, -186)
+
+[node name="marmot_lobotomized_7" parent="navigation_region_2d/stuff" instance=ExtResource("12_ud4mg")]
+position = Vector2(516, -64)
+
+[node name="marmot_lobotomized_8" parent="navigation_region_2d/stuff" instance=ExtResource("12_ud4mg")]
+position = Vector2(394, -31)
+
+[node name="marmot_lobotomized_9" parent="navigation_region_2d/stuff" instance=ExtResource("12_ud4mg")]
+position = Vector2(394, -31)
+
+[node name="game" type="Node" parent="."]
+script = SubResource("GDScript_ud4mg")
+cutscenes = null
+
+[node name="audio_stream_player" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("13_vc2w7")
+
+[connection signal="game_end" from="game" to="navigation_region_2d/stuff/pawn_player" method="set" binds= [&"is_phased", true]]

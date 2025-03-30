@@ -1,9 +1,13 @@
-[gd_scene load_steps=2 format=3 uid="uid://clbpih4u8gcmh"]
+[gd_scene load_steps=3 format=3 uid="uid://clbpih4u8gcmh"]
 
 [ext_resource type="PackedScene" uid="uid://3xe1fxwafno0" path="res://game/scenes/pawn.tscn" id="1_dinv7"]
+[ext_resource type="Script" uid="uid://b1uaiwunkcqxl" path="res://game/scenes/griptor/griptor_brain.gd" id="2_mrb8l"]
 
 [node name="griptor" instance=ExtResource("1_dinv7")]
 species_id = &"griptor"
 
 [node name="label" parent="sprite/placeholder" index="1"]
 text = "Griptor"
+
+[node name="brain" parent="." index="2"]
+script = ExtResource("2_mrb8l")

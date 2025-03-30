@@ -3,8 +3,9 @@
 [ext_resource type="PackedScene" uid="uid://dmqvmpfk33bka" path="res://game/scenes/decor/decor.tscn" id="1_kbl76"]
 [ext_resource type="Texture2D" uid="uid://cahp8shosvleh" path="res://game/sprites/props/rock.png" id="2_6tst5"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_vo6tq"]
-size = Vector2(183, 20)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kbl76"]
+radius = 14.0
+height = 187.0
 
 [node name="decor_rock" instance=ExtResource("1_kbl76")]
 texture = ExtResource("2_6tst5")
@@ -14,4 +15,5 @@ offset = Vector2(300, -217.3)
 
 [node name="collision_shape_2d" type="CollisionShape2D" parent="static_body_2d" index="0"]
 position = Vector2(5.5, 0)
-shape = SubResource("RectangleShape2D_vo6tq")
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_kbl76")

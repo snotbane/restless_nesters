@@ -1,0 +1,72 @@
+[gd_scene load_steps=8 format=3 uid="uid://c6teepuufqrnx"]
+
+[ext_resource type="PackedScene" uid="uid://bfsdnjspusept" path="res://game/scenes/ui/cutscene.tscn" id="1_hywc4"]
+[ext_resource type="AudioStream" uid="uid://bd8aqnvcvtirl" path="res://game/audio/music/music_perfect.ogg" id="2_b8ywm"]
+[ext_resource type="Texture2D" uid="uid://crocbyhirwgiv" path="res://game/sprites/ui/perfect ending screen frame1.png" id="2_earik"]
+[ext_resource type="Texture2D" uid="uid://bivqctdeu6kte" path="res://game/sprites/ui/perfect ending screen frame2.png" id="3_b8ywm"]
+
+[sub_resource type="Animation" id="Animation_8xqsr"]
+resource_name = "loop"
+length = 0.166675
+loop_mode = 1
+step = 0.0833333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0833333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_xoa10"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_mivm8"]
+_data = {
+&"RESET": SubResource("Animation_xoa10"),
+&"loop": SubResource("Animation_8xqsr")
+}
+
+[node name="cutscene_survival" instance=ExtResource("1_hywc4")]
+
+[node name="music" parent="." index="1"]
+stream = ExtResource("2_b8ywm")
+
+[node name="texture_rect" parent="." index="3"]
+texture = ExtResource("2_earik")
+
+[node name="texture_rect_2" type="TextureRect" parent="texture_rect" index="0"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_b8ywm")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="animation_player" type="AnimationPlayer" parent="texture_rect" index="1"]
+root_node = NodePath("../texture_rect_2")
+libraries = {
+&"": SubResource("AnimationLibrary_mivm8")
+}
+
+[connection signal="ready" from="texture_rect/animation_player" to="texture_rect/animation_player" method="play" binds= [&"loop"]]

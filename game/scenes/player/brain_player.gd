@@ -14,13 +14,6 @@ func _physics_process(delta: float) -> void:
 
 	pawn.walk_vector = Input.get_vector("move_left", "move_right", "move_up", "move_down")
 
-	# var input_vector := Input.get_vector("move_left", "move_right", "move_up", "move_down")
-	# var map := self.pawn.get_world_2d().navigation_map
-	# var closest := NavigationServer2D.map_get_closest_point(map, pawn.to_global(Input.get_vector("move_left", "move_right", "move_up", "move_down")))
-	# self.target_position = closest
-	# if input_vector:
-	# 	physics_process_walk_to_target(delta)
-
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed(&"peck"):
@@ -35,3 +28,8 @@ func peck() -> void:
 			pawn.grabbed_pawn = pawn.pawns_in_zone[0]
 
 		pecked.emit()
+
+
+func _on_home_reached() -> void:
+	print("Hi honey I'm home")
+

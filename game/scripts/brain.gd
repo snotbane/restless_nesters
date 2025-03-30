@@ -38,6 +38,7 @@ var _target_node : Node2D
 @onready var wander_timer : Timer = $wander_timer
 
 func _on_state_changed() -> void: pass
+func _on_home_reached() -> void: pass
 func _on_target_reached() -> void: pass
 func _on_other_entered_our_zone(other: Pawn) -> void: pass
 func _on_other_exited_our_zone(other: Pawn) -> void: pass

@@ -1,0 +1,144 @@
+[gd_scene load_steps=9 format=3 uid="uid://bfsdnjspusept"]
+
+[ext_resource type="AudioStream" uid="uid://btfbhcc6x3kj8" path="res://game/audio/music/music_survival.ogg" id="1_hspxl"]
+[ext_resource type="Texture2D" uid="uid://gk540vdv3y5c" path="res://game/sprites/ui/survival screen.png" id="1_p5110"]
+[ext_resource type="Texture2D" uid="uid://18y5gmi7r12q" path="res://game/sprites/x.png" id="3_lu0es"]
+[ext_resource type="PackedScene" uid="uid://bqf840sp4thjl" path="res://game/scenes/ui/invisible_button.tscn" id="4_kisdp"]
+
+[sub_resource type="GDScript" id="GDScript_hspxl"]
+resource_name = "input"
+script/source = "extends Node
+
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed(&\"exit_cutscene\"):
+		return_to_menu()
+
+
+func return_to_menu() -> void:
+	get_parent().queue_free()
+"
+
+[sub_resource type="Animation" id="Animation_lu0es"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("color_rect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("color_rect:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_hspxl"]
+resource_name = "fade_in"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("color_rect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(1, 5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("color_rect:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_kisdp"]
+_data = {
+&"RESET": SubResource("Animation_lu0es"),
+&"fade_in": SubResource("Animation_hspxl")
+}
+
+[node name="cutscene" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="input" type="Node" parent="."]
+script = SubResource("GDScript_hspxl")
+
+[node name="music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("1_hspxl")
+autoplay = true
+
+[node name="background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="texture_rect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_p5110")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="control" type="TextureRect" parent="."]
+layout_mode = 1
+offset_left = -88.0
+offset_top = -59.0
+offset_right = 168.0
+offset_bottom = 197.0
+texture = ExtResource("3_lu0es")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="invisible_button" parent="." instance=ExtResource("4_kisdp")]
+layout_mode = 0
+
+[node name="color_rect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="animation_player" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_kisdp")
+}
+
+[connection signal="ready" from="animation_player" to="animation_player" method="play" binds= [&"fade_in"]]

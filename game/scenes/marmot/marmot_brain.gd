@@ -10,6 +10,7 @@ enum {
 
 @export var walk_speed_fast : float = 1000.0
 @export var safe_distance : float = 10.0
+@export var flee_delay : float = 0.4
 
 @onready var walk_speed_normal : float = pawn.walk_speed
 
@@ -48,12 +49,11 @@ func _on_other_entered_our_zone(other: Pawn) -> void:
 	match other.species_id:
 		&"player":
 			state = STATE_FREEZE
-			await wait(1.0)
+			await wait(flee_delay)
 			state = STATE_FLEE
 
 
 func _on_target_reached() -> void:
-	print("Target reached")
 	match state:
 		STATE_FLEE:
 			state = STATE_HIDE
