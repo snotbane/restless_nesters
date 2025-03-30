@@ -1,0 +1,32 @@
+[gd_scene load_steps=3 format=3 uid="uid://dyeceh4jbxoql"]
+
+[ext_resource type="PackedScene" uid="uid://bfsdnjspusept" path="res://game/scenes/ui/cutscene.tscn" id="1_oaani"]
+[ext_resource type="Texture2D" uid="uid://biovh7flvao28" path="res://game/sprites/ui/tutorial.jpeg" id="2_jrsbk"]
+
+[node name="cutscene_tutorial" instance=ExtResource("1_oaani")]
+
+[node name="input" parent="." index="0"]
+advance_scene = "uid://ri5kmtd4f554"
+
+[node name="music" parent="." index="1"]
+stream = null
+autoplay = false
+
+[node name="texture_rect" parent="." index="3"]
+texture = ExtResource("2_jrsbk")
+
+[node name="control" parent="." index="4"]
+visible = false
+
+[node name="invisible_button" parent="." index="5"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.636285
+anchor_top = 0.631173
+anchor_right = 0.877604
+anchor_bottom = 0.822531
+offset_right = 0.0
+offset_bottom = 0.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true

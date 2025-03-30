@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=4 uid="uid://ri5kmtd4f554"]
+[gd_scene load_steps=24 format=4 uid="uid://ri5kmtd4f554"]
 
 [ext_resource type="PackedScene" uid="uid://dugum1qvra8cp" path="res://game/scenes/player/player.tscn" id="1_g6tk3"]
 [ext_resource type="Texture2D" uid="uid://d15at3tktigg6" path="res://game/sprites/tiles/tile_white.png" id="1_ljcdc"]
@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://bucc76nt8ahf2" path="res://game/scenes/decor/decor_flower.tscn" id="12_a1xw0"]
 [ext_resource type="PackedScene" uid="uid://b1yhpt0a7446m" path="res://game/scenes/marmot/marmot_lobotomized.tscn" id="12_ud4mg"]
 [ext_resource type="AudioStream" uid="uid://dj5mxur2mkptg" path="res://game/audio/music/music.ogg" id="13_vc2w7"]
+[ext_resource type="PackedScene" uid="uid://b8m7cg7x3g8an" path="res://game/scenes/ui/fadeout.tscn" id="15_kxbfw"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_i7555"]
 size = Vector2(4, 4)
@@ -58,8 +59,6 @@ script/source = "extends Node
 
 signal game_end
 
-@export_file(\"*.tscn\") var cutscenes : Array[String]
-
 @export var babies_to_be_fed : Array[Pawn]
 var baby_brains : Array[Brain]
 var babies_fed := 0
@@ -73,13 +72,14 @@ func _ready() -> void:
 		
 		
 func proceed_to_cutscene() -> void:
-	var scene : PackedScene
+	var scene : String
 	if babies_to_be_fed.size() == 0:
-		scene = preload(\"res://game/scenes/ui/cutscene_gameover.tscn\")
+		scene = \"res://game/scenes/ui/cutscene_gameover.tscn\"
 	elif babies_fed < babies_to_be_fed.size():
-		scene = preload(\"res://game/scenes/ui/cutscene_survival.tscn\")
+		scene = \"res://game/scenes/ui/cutscene_survival.tscn\"
 	else:
-		scene = preload(\"res://game/scenes/ui/cutscene_perfect.tscn\")
+		scene = \"res://game/scenes/ui/cutscene_perfect.tscn\"
+	self.get_tree().change_scene_to_file(scene)
 	
 		
 
@@ -97,6 +97,10 @@ func _on_baby_died(baby: Pawn) -> void:
 func _on_baby_filled() -> void:
 	babies_fed += 1
 	check_game()
+
+
+func _on_fadeout_finished() -> void:
+	proceed_to_cutscene()
 "
 
 [node name="world_2d" type="Node2D"]
@@ -474,11 +478,18 @@ position = Vector2(394, -31)
 [node name="marmot_lobotomized_9" parent="navigation_region_2d/stuff" instance=ExtResource("12_ud4mg")]
 position = Vector2(394, -31)
 
-[node name="game" type="Node" parent="."]
+[node name="game" type="Node" parent="." node_paths=PackedStringArray("babies_to_be_fed")]
 script = SubResource("GDScript_ud4mg")
-cutscenes = null
+babies_to_be_fed = [NodePath("../navigation_region_2d/stuff/baby"), NodePath("../navigation_region_2d/stuff/baby_2"), NodePath("../navigation_region_2d/stuff/baby_3")]
 
-[node name="audio_stream_player" type="AudioStreamPlayer" parent="."]
+[node name="music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("13_vc2w7")
 
+[node name="canvas_layer" type="CanvasLayer" parent="."]
+
+[node name="fadeout" parent="canvas_layer" instance=ExtResource("15_kxbfw")]
+
+[connection signal="game_end" from="game" to="music" method="stop"]
+[connection signal="game_end" from="game" to="canvas_layer/fadeout" method="play"]
 [connection signal="game_end" from="game" to="navigation_region_2d/stuff/pawn_player" method="set" binds= [&"is_phased", true]]
+[connection signal="finished" from="canvas_layer/fadeout" to="game" method="_on_fadeout_finished"]

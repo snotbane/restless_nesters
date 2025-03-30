@@ -1,13 +1,17 @@
-[gd_scene load_steps=9 format=3 uid="uid://bfsdnjspusept"]
+[gd_scene load_steps=10 format=3 uid="uid://bfsdnjspusept"]
 
 [ext_resource type="AudioStream" uid="uid://btfbhcc6x3kj8" path="res://game/audio/music/music_survival.ogg" id="1_hspxl"]
 [ext_resource type="Texture2D" uid="uid://gk540vdv3y5c" path="res://game/sprites/ui/survival screen.png" id="1_p5110"]
 [ext_resource type="Texture2D" uid="uid://18y5gmi7r12q" path="res://game/sprites/x.png" id="3_lu0es"]
 [ext_resource type="PackedScene" uid="uid://bqf840sp4thjl" path="res://game/scenes/ui/invisible_button.tscn" id="4_kisdp"]
+[ext_resource type="PackedScene" uid="uid://b8m7cg7x3g8an" path="res://game/scenes/ui/fadeout.tscn" id="5_1h3o7"]
 
 [sub_resource type="GDScript" id="GDScript_hspxl"]
 resource_name = "input"
 script/source = "extends Node
+
+@export_file(\"*.tscn\") var advance_scene : String = \"res://game/scenes/ui/main_menu.tscn\"
+
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed(&\"exit_cutscene\"):
@@ -15,7 +19,7 @@ func _input(event: InputEvent) -> void:
 
 
 func return_to_menu() -> void:
-	get_parent().queue_free()
+	self.get_tree().change_scene_to_file(advance_scene)
 "
 
 [sub_resource type="Animation" id="Animation_lu0es"]
@@ -136,9 +140,14 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
+[node name="fadeout" parent="." instance=ExtResource("5_1h3o7")]
+layout_mode = 1
+
 [node name="animation_player" type="AnimationPlayer" parent="."]
 libraries = {
 &"": SubResource("AnimationLibrary_kisdp")
 }
 
+[connection signal="pressed" from="invisible_button" to="fadeout" method="play"]
+[connection signal="finished" from="fadeout" to="input" method="return_to_menu"]
 [connection signal="ready" from="animation_player" to="animation_player" method="play" binds= [&"fade_in"]]

@@ -1,0 +1,102 @@
+[gd_scene load_steps=7 format=3 uid="uid://ciqb3vy1q1je"]
+
+[ext_resource type="Texture2D" uid="uid://2jg3fqm40tf4" path="res://game/sprites/ui/mainmenu.jpeg" id="1_2axjx"]
+[ext_resource type="PackedScene" uid="uid://bqf840sp4thjl" path="res://game/scenes/ui/invisible_button.tscn" id="2_fdqrn"]
+[ext_resource type="PackedScene" uid="uid://b8m7cg7x3g8an" path="res://game/scenes/ui/fadeout.tscn" id="3_laa82"]
+
+[sub_resource type="Theme" id="Theme_fdqrn"]
+
+[sub_resource type="GDScript" id="GDScript_fdqrn"]
+script/source = "extends Control
+
+
+func start() -> void:
+	self.get_tree().change_scene_to_file(\"res://game/scenes/ui/cutscene_tutorial.tscn\")
+
+
+func quit() -> void:
+	self.get_tree().quit()
+"
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fdqrn"]
+
+[node name="main_menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_fdqrn")
+script = SubResource("GDScript_fdqrn")
+
+[node name="color_rect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="texture_rect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_2axjx")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="start" parent="texture_rect" instance=ExtResource("2_fdqrn")]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.404514
+anchor_top = 0.533951
+anchor_right = 0.567708
+anchor_bottom = 0.652778
+offset_right = 0.0
+offset_bottom = 0.0
+grow_horizontal = 2
+grow_vertical = 2
+focus_mode = 1
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_fdqrn")
+metadata/_edit_use_anchors_ = true
+
+[node name="quit" parent="texture_rect" instance=ExtResource("2_fdqrn")]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.414062
+anchor_top = 0.736111
+anchor_right = 0.58633
+anchor_bottom = 0.863899
+offset_right = 5.54828
+offset_bottom = -14.8065
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 0.0735481
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_fdqrn")
+metadata/_edit_use_anchors_ = true
+
+[node name="credits" parent="texture_rect" instance=ExtResource("2_fdqrn")]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.37934
+anchor_top = 0.658951
+anchor_right = 0.596468
+anchor_bottom = 0.730742
+offset_right = -3.13159
+offset_bottom = 14.4792
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -0.0582347
+metadata/_edit_use_anchors_ = true
+
+[node name="fadeout" parent="." instance=ExtResource("3_laa82")]
+layout_mode = 1
+
+[connection signal="pressed" from="texture_rect/start" to="fadeout" method="play"]
+[connection signal="pressed" from="texture_rect/quit" to="." method="quit"]
+[connection signal="finished" from="fadeout" to="." method="start"]

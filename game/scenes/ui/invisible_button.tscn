@@ -1,10 +1,13 @@
-[gd_scene load_steps=2 format=3 uid="uid://bqf840sp4thjl"]
+[gd_scene load_steps=3 format=3 uid="uid://bqf840sp4thjl"]
 
 [ext_resource type="AudioStream" uid="uid://d30lbtv8wimo2" path="res://game/audio/foley/select.ogg" id="1_u2iob"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_u2iob"]
 
 [node name="invisible_button" type="Button"]
 offset_right = 100.0
 offset_bottom = 100.0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_u2iob")
 flat = true
 expand_icon = true
 
