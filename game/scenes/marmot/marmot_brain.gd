@@ -9,7 +9,6 @@ enum {
 }
 
 @export var walk_speed_fast : float = 1000.0
-@export var safe_distance : float = 10.0
 @export var flee_delay : float = 0.4
 
 @onready var walk_speed_normal : float = pawn.walk_speed
@@ -38,10 +37,7 @@ func _on_state_changed() -> void:
 
 func _physics_process_unblocked(delta: float) -> void:
 	match state:
-		STATE_WANDER:
-			physics_process_walk_to_target(delta)
-		STATE_FLEE:
-			# self.target_position = Pawn.PLAYER.global_position + (pawn.global_position - Pawn.PLAYER.global_position).normalized() * safe_distance
+		STATE_WANDER, STATE_FLEE:
 			physics_process_walk_to_target(delta)
 
 

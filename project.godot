@@ -30,6 +30,7 @@ gdscript/warnings/integer_division=0
 
 window/size/mode=2
 window/size/resizable=false
+window/stretch/mode="canvas_items"
 
 [editor]
 

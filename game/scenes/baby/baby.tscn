@@ -1,13 +1,33 @@
-[gd_scene load_steps=4 format=3 uid="uid://cjjpsd347xnf7"]
+[gd_scene load_steps=6 format=3 uid="uid://cjjpsd347xnf7"]
 
 [ext_resource type="PackedScene" uid="uid://3xe1fxwafno0" path="res://game/scenes/pawn.tscn" id="1_xdrdn"]
+[ext_resource type="Texture2D" uid="uid://bnroher2aerdh" path="res://game/sprites/baby/baby eating/baby eating final9.png" id="2_e22wp"]
 [ext_resource type="Script" uid="uid://b5wyuwl63cr33" path="res://game/scenes/baby/baby_brain.gd" id="2_wyexy"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3vul3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_e22wp")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_xdrdn"]
 radius = 100.0
 
-[node name="baby" instance=ExtResource("1_xdrdn")]
+[node name="baby" groups=["baby"] instance=ExtResource("1_xdrdn")]
 species_id = &"baby"
+
+[node name="sprite" parent="." index="0"]
+sprite_frames = SubResource("SpriteFrames_3vul3")
+offset = Vector2(-280, -400)
+flip_h = true
+
+[node name="placeholder" parent="sprite" index="0"]
+visible = false
 
 [node name="label" parent="sprite/placeholder" index="1"]
 text = "Baby"
@@ -19,4 +39,4 @@ shape = SubResource("CircleShape2D_xdrdn")
 [node name="brain" parent="." index="2"]
 script = ExtResource("2_wyexy")
 add_scale_per_food = 0.25
-food_needed = 1
+food_needed = 3

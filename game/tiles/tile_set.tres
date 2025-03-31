@@ -1,0 +1,36 @@
+[gd_resource type="TileSet" load_steps=5 format=3 uid="uid://dw6de48o421um"]
+
+[ext_resource type="Texture2D" uid="uid://d15at3tktigg6" path="res://game/sprites/tiles/tile_white.png" id="1_ffbtc"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_ud4mg"]
+vertices = PackedVector2Array(255, 0, 0, 127, -255, 0, 0, -127)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(0, -127, -255, 0, 0, 127, 255, 0)])
+agent_radius = 0.0
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_kxbfw"]
+vertices = PackedVector2Array(255, 0, 0, 127, -255, 0, 0, -127)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-255, 0, 0, -127, 255, 0, 0, 127)])
+agent_radius = 0.0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ljcdc"]
+texture = ExtResource("1_ffbtc")
+texture_region_size = Vector2i(512, 512)
+2:0/0 = 0
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(0, -128, -256, 0, 0, 128, 256, 0)
+1:0/0 = 0
+1:0/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_ud4mg")
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(0, -128, 256, 0, 0, 128, -256, 0)
+1:1/0 = 0
+1:1/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_kxbfw")
+2:1/0 = 0
+2:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(0, -127, 255, 0, 0, 127, -255, 0)
+
+[resource]
+tile_shape = 1
+tile_size = Vector2i(510, 254)
+physics_layer_0/collision_layer = 1
+navigation_layer_0/layers = 2
+sources/1 = SubResource("TileSetAtlasSource_ljcdc")

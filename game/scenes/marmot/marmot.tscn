@@ -1,7 +1,19 @@
-[gd_scene load_steps=4 format=3 uid="uid://bgpvs01xchn27"]
+[gd_scene load_steps=6 format=3 uid="uid://bgpvs01xchn27"]
 
 [ext_resource type="PackedScene" uid="uid://3xe1fxwafno0" path="res://game/scenes/pawn.tscn" id="1_3s6xy"]
+[ext_resource type="Texture2D" uid="uid://bfu5gk8rlwb02" path="res://game/sprites/marmot/squirming/idle/marmot idle final1.png" id="2_de2av"]
 [ext_resource type="Script" uid="uid://blpo0x34mc0gi" path="res://game/scenes/marmot/marmot_brain.gd" id="2_x3sse"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_s5bmr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_de2av")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_x3sse"]
 radius = 150.0
@@ -9,6 +21,14 @@ radius = 150.0
 [node name="marmot" instance=ExtResource("1_3s6xy")]
 species_id = &"marmot"
 walk_speed = 128.0
+
+[node name="sprite" parent="." index="0"]
+sprite_frames = SubResource("SpriteFrames_s5bmr")
+offset = Vector2(-325, -432.95)
+flip_h = true
+
+[node name="placeholder" parent="sprite" index="0"]
+visible = false
 
 [node name="label" parent="sprite/placeholder" index="1"]
 text = "Marmot"
@@ -25,6 +45,6 @@ visible = false
 [node name="brain" parent="." index="2"]
 script = ExtResource("2_x3sse")
 walk_speed_fast = 400.0
-safe_distance = 800.0
+flee_delay = 0.4
 wander_distance_min = 200.0
 wander_distance_max = 300.0

@@ -67,7 +67,6 @@ shape = SubResource("RectangleShape2D_niafa")
 shape = SubResource("RectangleShape2D_yde1k")
 
 [node name="brain" type="NavigationAgent2D" parent="."]
-debug_enabled = true
 script = ExtResource("1_niafa")
 
 [node name="nav_timer" type="Timer" parent="brain"]

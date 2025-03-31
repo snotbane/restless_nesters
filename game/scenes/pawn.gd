@@ -2,6 +2,8 @@ class_name Pawn extends CharacterBody2D
 
 static var PLAYER : Pawn
 
+signal died
+
 @export var species_id : StringName
 @export var home_area : Area2D
 @export var walk_speed : float = 256.0

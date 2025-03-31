@@ -1,13 +1,54 @@
-[gd_scene load_steps=3 format=3 uid="uid://clbpih4u8gcmh"]
+[gd_scene load_steps=6 format=3 uid="uid://clbpih4u8gcmh"]
 
 [ext_resource type="PackedScene" uid="uid://3xe1fxwafno0" path="res://game/scenes/pawn.tscn" id="1_dinv7"]
+[ext_resource type="Texture2D" uid="uid://bb52ibun87sn1" path="res://game/sprites/griptor/griptor normal final1.png" id="2_6jh2h"]
 [ext_resource type="Script" uid="uid://b1uaiwunkcqxl" path="res://game/scenes/griptor/griptor_brain.gd" id="2_mrb8l"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_k0ab3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_6jh2h")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_mrb8l"]
+radius = 90.802
 
 [node name="griptor" instance=ExtResource("1_dinv7")]
 species_id = &"griptor"
 
+[node name="sprite" parent="." index="0"]
+sprite_frames = SubResource("SpriteFrames_k0ab3")
+offset = Vector2(225, -377)
+
+[node name="placeholder" parent="sprite" index="0"]
+visible = false
+
 [node name="label" parent="sprite/placeholder" index="1"]
 text = "Griptor"
 
+[node name="shape" parent="sprite/zone" index="0"]
+shape = SubResource("CircleShape2D_mrb8l")
+
+[node name="grabber_offset" parent="sprite" index="2"]
+position = Vector2(128, -128)
+
 [node name="brain" parent="." index="2"]
+debug_enabled = true
 script = ExtResource("2_mrb8l")
+walk_speed_fast = 1000.0
+safe_distance = 400.0
+flee_delay = 1.0
+wander_distance_min = 1000.0
+wander_distance_max = 2000.0
+wander_duration_min = 12.0
+wander_duration_max = 18.0
+
+[node name="lurk_timer" type="Timer" parent="brain" index="2"]
+wait_time = 2.0
+
+[connection signal="timeout" from="brain/lurk_timer" to="brain" method="set" binds= [&"state", 2]]
