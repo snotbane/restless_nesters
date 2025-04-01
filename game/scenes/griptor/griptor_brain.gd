@@ -11,6 +11,11 @@ enum {
 	STATE_STUNNED,
 }
 
+@export var lurk_duration_min : float = 30.0
+@export var lurk_duration_max : float = 60.0
+var lurk_duration_random : float :
+	get: return randf_range(lurk_duration_min, lurk_duration_max)
+
 @export var walk_speed_fast : float = 1000.0
 @export var safe_distance : float = 400.0
 @export var flee_delay : float = 1.0
@@ -28,11 +33,18 @@ func _on_state_changed() -> void:
 	match state:
 		STATE_WANDER:
 			start_wandering()
-			lurk_timer.start()
+			if lurk_timer.is_stopped():
+				lurk_timer.wait_time = lurk_duration_random
+				lurk_timer.start()
+			else:
+				lurk_timer.paused = false
 		STATE_AVOID:
 			self.target_node = null
+			lurk_timer.paused = true
 		STATE_LURK:
-			self.target_node = select_random_target()
+			var target := select_random_target()
+			if target: self.target_node = target
+			else: state = STATE_WANDER
 			wander_timer.stop()
 		STATE_FLEE:
 			self.target_node = pawn.home_area
@@ -51,7 +63,12 @@ func _on_state_changed() -> void:
 
 func _physics_process_unblocked(delta: float) -> void:
 	match state:
-		STATE_WANDER, STATE_LURK, STATE_FLEE:
+		STATE_LURK:
+			if self.target_node is Pawn and self.target_node.is_phased:
+				state = STATE_WANDER
+				return
+			physics_process_walk_to_target(delta)
+		STATE_WANDER, STATE_FLEE:
 			physics_process_walk_to_target(delta)
 		STATE_AVOID:
 			self.target_position = Pawn.PLAYER.global_position + (pawn.global_position - Pawn.PLAYER.global_position).normalized() * safe_distance
@@ -90,6 +107,9 @@ func _on_target_reached() -> void:
 
 func select_random_target() -> Node2D:
 	var potential_targets := self.get_tree().get_nodes_in_group(&"baby")
-	if potential_targets.size() == 0: return
-	return potential_targets[randi_range(0, potential_targets.size() - 1)]
+	potential_targets.shuffle()
+	for i in potential_targets:
+		if i.is_phased: continue
+		return i
+	return null
 

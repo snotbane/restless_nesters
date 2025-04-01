@@ -38,12 +38,14 @@ signal game_end
 
 @export var babies_to_be_fed : Array[Pawn]
 var baby_brains : Array[Brain]
+var babies_all : int
 var babies_fed := 0
 
 func _ready() -> void:
+	babies_all = babies_to_be_fed.size()
 	for baby in babies_to_be_fed:
 		baby_brains.push_back(baby.find_child(\"brain\"))
-		baby.tree_exited.connect(_on_baby_died.bind(baby))
+		baby.died.connect(_on_baby_died.bind(baby))
 	for brain in baby_brains:
 		brain.filled.connect(self._on_baby_filled)
 		
@@ -52,13 +54,11 @@ func proceed_to_cutscene() -> void:
 	var scene : String
 	if babies_to_be_fed.size() == 0:
 		scene = \"res://game/scenes/ui/cutscene_gameover.tscn\"
-	elif babies_fed < babies_to_be_fed.size():
+	elif babies_fed < babies_all:
 		scene = \"res://game/scenes/ui/cutscene_survival.tscn\"
 	else:
 		scene = \"res://game/scenes/ui/cutscene_perfect.tscn\"
 	self.get_tree().change_scene_to_file(scene)
-	
-		
 
 
 func check_game() -> void:
@@ -195,7 +195,7 @@ position = Vector2(14, -2957)
 home_area = NodePath("../hole_griptor_2")
 
 [node name="griptor_3" parent="navigation_region_2d/stuff" node_paths=PackedStringArray("home_area") instance=ExtResource("6_o53nx")]
-position = Vector2(3068, -1414)
+position = Vector2(3198, -1353)
 home_area = NodePath("../hole_griptor_3")
 
 [node name="hole_griptor" parent="navigation_region_2d/stuff" instance=ExtResource("5_r4a53")]

@@ -40,6 +40,8 @@ position = Vector2(128, -128)
 [node name="brain" parent="." index="2"]
 debug_enabled = true
 script = ExtResource("2_mrb8l")
+lurk_duration_min = 30.0
+lurk_duration_max = 60.0
 walk_speed_fast = 1000.0
 safe_distance = 400.0
 flee_delay = 1.0
@@ -50,5 +52,6 @@ wander_duration_max = 18.0
 
 [node name="lurk_timer" type="Timer" parent="brain" index="2"]
 wait_time = 2.0
+one_shot = true
 
 [connection signal="timeout" from="brain/lurk_timer" to="brain" method="set" binds= [&"state", 2]]

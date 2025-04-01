@@ -29,6 +29,7 @@ func consume(other: Node2D) -> void:
 
 
 func _on_other_entered_our_zone(other: Pawn) -> void:
+	if pawn.is_phased: return
 	match other.species_id:
 		&"marmot":
 			consume(other)
