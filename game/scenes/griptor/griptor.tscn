@@ -20,6 +20,7 @@ radius = 90.802
 
 [node name="griptor" instance=ExtResource("1_dinv7")]
 species_id = &"griptor"
+walk_speed = 200.0
 
 [node name="sprite" parent="." index="0"]
 sprite_frames = SubResource("SpriteFrames_k0ab3")
@@ -42,7 +43,7 @@ debug_enabled = true
 script = ExtResource("2_mrb8l")
 lurk_duration_min = 30.0
 lurk_duration_max = 60.0
-walk_speed_fast = 1000.0
+walk_speed_fast = 300.0
 safe_distance = 400.0
 flee_delay = 1.0
 wander_distance_min = 1000.0

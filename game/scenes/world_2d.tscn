@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=4 uid="uid://ri5kmtd4f554"]
+[gd_scene load_steps=20 format=4 uid="uid://ri5kmtd4f554"]
 
 [ext_resource type="PackedScene" uid="uid://dugum1qvra8cp" path="res://game/scenes/player/player.tscn" id="1_g6tk3"]
 [ext_resource type="TileSet" uid="uid://dw6de48o421um" path="res://game/tiles/tile_set.tres" id="1_kxbfw"]
@@ -12,7 +12,6 @@
 [ext_resource type="PackedScene" uid="uid://ccbova6rkagb2" path="res://game/scenes/decor/decor_grass_1.tscn" id="10_vc2w7"]
 [ext_resource type="PackedScene" uid="uid://c0s4mci13w5q0" path="res://game/scenes/decor/decor_grass_2.tscn" id="11_a1xw0"]
 [ext_resource type="PackedScene" uid="uid://bucc76nt8ahf2" path="res://game/scenes/decor/decor_flower.tscn" id="12_a1xw0"]
-[ext_resource type="PackedScene" uid="uid://b1yhpt0a7446m" path="res://game/scenes/marmot/marmot_lobotomized.tscn" id="12_ud4mg"]
 [ext_resource type="AudioStream" uid="uid://dj5mxur2mkptg" path="res://game/audio/music/music.ogg" id="13_vc2w7"]
 [ext_resource type="PackedScene" uid="uid://b8m7cg7x3g8an" path="res://game/scenes/ui/fadeout.tscn" id="15_kxbfw"]
 
@@ -117,7 +116,7 @@ position = Vector2(-1, 0)
 home_area = NodePath("../../../home_area")
 
 [node name="camera_2d" type="Camera2D" parent="navigation_region_2d/stuff/pawn_player"]
-position = Vector2(0, -36)
+position = Vector2(0, -220)
 zoom = Vector2(0.5, 0.5)
 
 [node name="baby" parent="navigation_region_2d/stuff" instance=ExtResource("7_iunfk")]
@@ -428,33 +427,6 @@ position = Vector2(1419, -1551)
 
 [node name="decor_fern_21" parent="navigation_region_2d/stuff/decor" instance=ExtResource("12_a1xw0")]
 position = Vector2(1421, -1551)
-
-[node name="marmot_lobotomized" parent="navigation_region_2d/stuff" instance=ExtResource("12_ud4mg")]
-position = Vector2(379, -173)
-
-[node name="marmot_lobotomized_2" parent="navigation_region_2d/stuff" instance=ExtResource("12_ud4mg")]
-position = Vector2(512, -186)
-
-[node name="marmot_lobotomized_3" parent="navigation_region_2d/stuff" instance=ExtResource("12_ud4mg")]
-position = Vector2(516, -64)
-
-[node name="marmot_lobotomized_4" parent="navigation_region_2d/stuff" instance=ExtResource("12_ud4mg")]
-position = Vector2(394, -31)
-
-[node name="marmot_lobotomized_5" parent="navigation_region_2d/stuff" instance=ExtResource("12_ud4mg")]
-position = Vector2(379, -173)
-
-[node name="marmot_lobotomized_6" parent="navigation_region_2d/stuff" instance=ExtResource("12_ud4mg")]
-position = Vector2(512, -186)
-
-[node name="marmot_lobotomized_7" parent="navigation_region_2d/stuff" instance=ExtResource("12_ud4mg")]
-position = Vector2(516, -64)
-
-[node name="marmot_lobotomized_8" parent="navigation_region_2d/stuff" instance=ExtResource("12_ud4mg")]
-position = Vector2(394, -31)
-
-[node name="marmot_lobotomized_9" parent="navigation_region_2d/stuff" instance=ExtResource("12_ud4mg")]
-position = Vector2(394, -31)
 
 [node name="game" type="Node" parent="." node_paths=PackedStringArray("babies_to_be_fed")]
 script = SubResource("GDScript_ud4mg")

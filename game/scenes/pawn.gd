@@ -22,7 +22,7 @@ var grabbed_pawn : Pawn :
 		if _grabbed_pawn == value: return
 
 		if _grabbed_pawn:
-			var p : Vector2 = _grabbed_pawn.global_position
+			var p : Vector2 = Vector2(_grabbed_pawn.global_position.x, self.global_position.y)
 			grabber.remove_child(_grabbed_pawn)
 			self.get_tree().get_first_node_in_group(&"stuff").add_child(_grabbed_pawn)
 			_grabbed_pawn.global_position = p
@@ -44,6 +44,7 @@ var grabbed_pawn : Pawn :
 
 var walk_vector : Vector2
 
+var velocity_last_frame : Vector2
 var temp_collision_layer : int
 var temp_collision_mask : int
 var _is_phased : bool
@@ -86,6 +87,7 @@ func _physics_process(delta: float) -> void:
 
 	# velocity *= Vector2(1.0, 0.5)
 	self.move_and_slide()
+	velocity_last_frame = velocity
 	velocity = Vector2.ZERO
 
 

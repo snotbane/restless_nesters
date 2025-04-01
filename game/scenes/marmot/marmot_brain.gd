@@ -43,7 +43,7 @@ func _physics_process_unblocked(delta: float) -> void:
 
 func _on_other_entered_our_zone(other: Pawn) -> void:
 	match other.species_id:
-		&"player":
+		&"player", &"baby":
 			state = STATE_FREEZE
 			await wait(flee_delay)
 			state = STATE_FLEE

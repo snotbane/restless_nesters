@@ -11,6 +11,7 @@ func _physics_process(delta: float) -> void:
 	super._physics_process(delta)
 
 	if self.get_tree().get_node_count_in_group(&"debug_ghost") > 0: return
+	if self.pawn.sprite.animation == &"peck": return
 
 	pawn.walk_vector = Input.get_vector("move_left", "move_right", "move_up", "move_down")
 
@@ -22,11 +23,15 @@ func _input(event: InputEvent) -> void:
 
 func peck() -> void:
 	if pawn.grabbed_pawn:
-		pawn.grabbed_pawn = null
+		match pawn.grabbed_pawn.species_id:
+			&"marmot": pawn.grabbed_pawn = null
+			&"baby": pawn.grabbed_pawn = null
 	else:
-		if pawn.pawns_in_zone:
-			pawn.grabbed_pawn = pawn.pawns_in_zone[0]
-
+		for i in pawn.pawns_in_zone:
+			match i.species_id:
+				&"marmot": pawn.grabbed_pawn = i; break
+				&"baby": pawn.grabbed_pawn = i; break # IF outside home
+				&"griptor": i.is_phased = true; break # grab the baby if holding one
 		pecked.emit()
 
 
