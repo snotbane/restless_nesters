@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://cjjpsd347xnf7"]
+[gd_scene load_steps=35 format=3 uid="uid://cjjpsd347xnf7"]
 
 [ext_resource type="PackedScene" uid="uid://3xe1fxwafno0" path="res://game/scenes/pawn.tscn" id="1_xdrdn"]
 [ext_resource type="Material" uid="uid://bggrqfp8yx15h" path="res://game/shaders_materials/baby_red.tres" id="2_0sn24"]
@@ -29,6 +29,9 @@
 [ext_resource type="Script" uid="uid://bg2yu1l6adrrs" path="res://game/scenes/baby/baby_sprite.gd" id="26_ytmaf"]
 [ext_resource type="AudioStream" path="res://game/audio/foley/baby_happy.tres" id="27_n7kpp"]
 [ext_resource type="AudioStream" uid="uid://c4jru4ggtueid" path="res://game/audio/foley/GULUPLUP.ogg" id="28_idl6c"]
+[ext_resource type="AudioStream" uid="uid://oycy4xo8kfyo" path="res://game/audio/foley/baby_scream.tres" id="29_idl6c"]
+[ext_resource type="AudioStream" path="res://game/audio/foley/baby_hungry.tres" id="30_kksuj"]
+[ext_resource type="AudioStream" uid="uid://dxdmhfcxxnc56" path="res://game/audio/foley/baby_starving.tres" id="31_htno6"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_3vul3"]
 animations = [{
@@ -357,6 +360,7 @@ radius = 100.0
 
 [node name="baby" groups=["baby"] instance=ExtResource("1_xdrdn")]
 species_id = &"baby"
+walk_speed = 1.0
 
 [node name="sprite" parent="." index="0"]
 material = ExtResource("2_0sn24")
@@ -389,10 +393,23 @@ shape = SubResource("CircleShape2D_xdrdn")
 max_distance = 200000.0
 animation_sounds = {
 &"chirp": ExtResource("27_n7kpp"),
-&"consume_gulp": ExtResource("28_idl6c")
+&"consume_gulp": ExtResource("28_idl6c"),
+&"scream": ExtResource("29_idl6c"),
+&"scream_grown": ExtResource("29_idl6c"),
+&"starving": ExtResource("31_htno6"),
+&"whine": ExtResource("30_kksuj")
 }
 
 [node name="brain" parent="." index="2"]
 script = ExtResource("2_wyexy")
 add_scale_per_food = 0.25
 food_needed = 3
+wander_duration_min = 1.0
+wander_duration_max = 1.0
+
+[node name="wander_timer" parent="brain" index="1"]
+one_shot = false
+
+[node name="hunger_timer" type="Timer" parent="brain" index="2"]
+wait_time = 60.0
+one_shot = true

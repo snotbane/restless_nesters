@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://b82cmvfn6re84"]
+[gd_scene load_steps=12 format=3 uid="uid://b82cmvfn6re84"]
 
 [ext_resource type="Script" uid="uid://dcwlk07xlf4dc" path="res://game/scenes/ui/baby_status.gd" id="1_rtnam"]
 [ext_resource type="Texture2D" uid="uid://ck8eghvqy8oa2" path="res://game/sprites/ui/baby_icon_dead.tres" id="2_qyplb"]
@@ -6,9 +6,164 @@
 [ext_resource type="Texture2D" uid="uid://da52nitrokfrk" path="res://game/sprites/ui/baby_icon_hungry.tres" id="4_m8r0g"]
 [ext_resource type="Texture2D" uid="uid://lso3vyyknhiy" path="res://game/sprites/ui/baby_icon_kidnapped.tres" id="5_5x1wr"]
 [ext_resource type="Texture2D" uid="uid://c8y46mrd7hidb" path="res://game/sprites/ui/baby_icon_starving.tres" id="6_85fii"]
-[ext_resource type="AudioStream" path="res://game/audio/foley/baby_starving.tres" id="7_qyplb"]
+[ext_resource type="AudioStream" uid="uid://dxdmhfcxxnc56" path="res://game/audio/foley/baby_starving.tres" id="7_qyplb"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rtnam"]
+
+[sub_resource type="Animation" id="Animation_qllhw"]
+length = 0.001
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("happy/sprite_2d:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("hungry/sprite_2d:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("starving/sprite_2d:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("kidnapped/sprite_2d:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("happy/sprite_2d:position:x")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(20, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/5/type = "bezier"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("happy/sprite_2d:position:y")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_qyplb"]
+resource_name = "loop"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("happy/sprite_2d:rotation")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.349066, -0.349066, 0.349066]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("hungry/sprite_2d:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.666667, 1, 1.2, 1.66667, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -40), Vector2(0, 0), Vector2(0, 0), Vector2(0, -40), Vector2(0, 0), Vector2(0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("starving/sprite_2d:position")
+tracks/2/interp = 0
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.0666667, 0.1, 0.133333, 0.166667, 0.2, 0.233333, 0.266667, 0.3, 0.333333, 0.366667, 0.4, 0.433333, 0.466667, 0.5, 0.533333, 0.566667, 0.6, 0.633333, 0.666667, 0.7, 0.733333, 0.766667, 0.8, 0.833333, 0.866667, 0.9, 0.933333, 0.966667, 1, 1.03333, 1.06667, 1.1, 1.13333, 1.16667, 1.2, 1.23333, 1.26667, 1.3, 1.33333, 1.36667, 1.4, 1.43333, 1.46667, 1.5, 1.53333, 1.56667, 1.6, 1.63333, 1.66667, 1.7, 1.73333, 1.76667, 1.8, 1.83333, 1.86667, 1.9, 1.93333, 1.96667, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(7, -6), Vector2(6, -9.53674e-07), Vector2(0.999999, -2), Vector2(7, 5), Vector2(0.999999, 9), Vector2(4, -9.53674e-07), Vector2(1.19209e-06, 10), Vector2(-4, 2), Vector2(0, 0), Vector2(7, -6), Vector2(6, -9.53674e-07), Vector2(0.999999, -2), Vector2(7, 5), Vector2(0.999999, 9), Vector2(4, -9.53674e-07), Vector2(1.19209e-06, 10), Vector2(-4, 2), Vector2(0, 0), Vector2(7, -6), Vector2(6, -9.53674e-07), Vector2(0.999999, -2), Vector2(7, 5), Vector2(0.999999, 9), Vector2(4, -9.53674e-07), Vector2(1.19209e-06, 10), Vector2(-4, 2), Vector2(0, 0), Vector2(7, -6), Vector2(6, -9.53674e-07), Vector2(0.999999, -2), Vector2(7, 5), Vector2(0.999999, 9), Vector2(4, -9.53674e-07), Vector2(1.19209e-06, 10), Vector2(-4, 2), Vector2(0, 0), Vector2(7, -6), Vector2(6, -9.53674e-07), Vector2(0.999999, -2), Vector2(7, 5), Vector2(0.999999, 9), Vector2(4, -9.53674e-07), Vector2(1.19209e-06, 10), Vector2(-4, 2), Vector2(0, 0), Vector2(7, -6), Vector2(6, -9.53674e-07), Vector2(0.999999, -2), Vector2(7, 5), Vector2(0.999999, 9), Vector2(4, -9.53674e-07), Vector2(1.19209e-06, 10), Vector2(-4, 2), Vector2(0, 0), Vector2(7, -6), Vector2(6, -9.53674e-07), Vector2(0.999999, -2), Vector2(7, 5), Vector2(0.999999, 9), Vector2(4, -9.53674e-07)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("kidnapped/sprite_2d:scale")
+tracks/3/interp = 2
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.266667, 0.5, 0.766667, 1, 1.26667, 1.5, 1.76667, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0.7, 0.7), Vector2(1.5, 1.5), Vector2(0.7, 0.7), Vector2(1.5, 1.5), Vector2(0.7, 0.7), Vector2(1.5, 1.5), Vector2(0.7, 0.7), Vector2(1.5, 1.5), Vector2(0.7, 0.7)]
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = false
+tracks/4/path = NodePath("happy/sprite_2d:position:x")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(20, -0.25, 0, 0.25, 0, -20, -0.25, 0, 0.25, 0, 20, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1, 2)
+}
+tracks/5/type = "bezier"
+tracks/5/imported = false
+tracks/5/enabled = false
+tracks/5/path = NodePath("happy/sprite_2d:position:y")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, -20, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, -20, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5, 1, 1.5, 2)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_m8r0g"]
+_data = {
+&"RESET": SubResource("Animation_qllhw"),
+&"loop": SubResource("Animation_qyplb")
+}
 
 [node name="baby_status" type="Control"]
 custom_minimum_size = Vector2(80, 80)
@@ -19,58 +174,72 @@ script = ExtResource("1_rtnam")
 [node name="tab_container" type="TabContainer" parent="."]
 use_parent_material = true
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(0.67, 0.67)
 theme_override_styles/panel = SubResource("StyleBoxEmpty_rtnam")
 current_tab = 4
 tabs_visible = false
 
-[node name="dead" type="TextureRect" parent="tab_container"]
+[node name="dead" type="Control" parent="tab_container"]
 visible = false
-use_parent_material = true
 layout_mode = 2
-texture = ExtResource("2_qyplb")
-expand_mode = 5
-stretch_mode = 5
 metadata/_tab_index = 0
 
-[node name="kidnapped" type="TextureRect" parent="tab_container"]
+[node name="sprite_2d" type="Sprite2D" parent="tab_container/dead"]
+texture = ExtResource("2_qyplb")
+
+[node name="kidnapped" type="Control" parent="tab_container"]
 visible = false
 use_parent_material = true
 layout_mode = 2
-texture = ExtResource("5_5x1wr")
-expand_mode = 3
-stretch_mode = 5
 metadata/_tab_index = 1
 
-[node name="starving" type="TextureRect" parent="tab_container"]
+[node name="sprite_2d" type="Sprite2D" parent="tab_container/kidnapped"]
+use_parent_material = true
+texture = ExtResource("5_5x1wr")
+
+[node name="starving" type="Control" parent="tab_container"]
 visible = false
 use_parent_material = true
 layout_mode = 2
-texture = ExtResource("6_85fii")
-expand_mode = 5
-stretch_mode = 5
 metadata/_tab_index = 2
 
-[node name="hungry" type="TextureRect" parent="tab_container"]
+[node name="sprite_2d" type="Sprite2D" parent="tab_container/starving"]
+use_parent_material = true
+texture = ExtResource("6_85fii")
+
+[node name="hungry" type="Control" parent="tab_container"]
 visible = false
 use_parent_material = true
 layout_mode = 2
-texture = ExtResource("4_m8r0g")
-expand_mode = 5
-stretch_mode = 5
 metadata/_tab_index = 3
 
-[node name="happy" type="TextureRect" parent="tab_container"]
+[node name="sprite_2d" type="Sprite2D" parent="tab_container/hungry"]
+use_parent_material = true
+texture = ExtResource("4_m8r0g")
+
+[node name="happy" type="Control" parent="tab_container"]
 use_parent_material = true
 layout_mode = 2
-texture = ExtResource("3_qllhw")
-expand_mode = 5
-stretch_mode = 5
 metadata/_tab_index = 4
+
+[node name="sprite_2d" type="Sprite2D" parent="tab_container/happy"]
+use_parent_material = true
+position = Vector2(20, 0)
+texture = ExtResource("3_qllhw")
+
+[node name="animation_player" type="AnimationPlayer" parent="tab_container"]
+libraries = {
+&"": SubResource("AnimationLibrary_m8r0g")
+}
 
 [node name="death_audio" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_qyplb")
+
+[connection signal="ready" from="tab_container/animation_player" to="tab_container/animation_player" method="play" binds= [&"loop"]]

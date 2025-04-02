@@ -1,11 +1,11 @@
 [gd_resource type="AudioStreamRandomizer" load_steps=4 format=3 uid="uid://oycy4xo8kfyo"]
 
-[ext_resource type="AudioStream" uid="uid://cbdm58wtx8aks" path="res://game/audio/foley/baby_starving_01.ogg" id="2_343wq"]
-[ext_resource type="AudioStream" uid="uid://ctbycowqr5y4h" path="res://game/audio/foley/baby_starving_02.ogg" id="3_c8828"]
-[ext_resource type="AudioStream" uid="uid://c1yqvkl65ti3k" path="res://game/audio/foley/baby_starving_03.ogg" id="4_8skqf"]
+[ext_resource type="AudioStream" uid="uid://ctyqftuns5afh" path="res://game/audio/foley/baby_scream_00.ogg" id="1_mopr5"]
+[ext_resource type="AudioStream" uid="uid://boervvjcqmfrl" path="res://game/audio/foley/baby_scream_01.ogg" id="2_3go6s"]
+[ext_resource type="AudioStream" uid="uid://ftbcfr7pfoow" path="res://game/audio/foley/baby_scream_02.ogg" id="3_7kjl7"]
 
 [resource]
 streams_count = 3
-stream_0/stream = ExtResource("2_343wq")
-stream_1/stream = ExtResource("3_c8828")
-stream_2/stream = ExtResource("4_8skqf")
+stream_0/stream = ExtResource("1_mopr5")
+stream_1/stream = ExtResource("2_3go6s")
+stream_2/stream = ExtResource("3_7kjl7")

@@ -14,6 +14,8 @@ signal died
 
 var pawns_in_zone : Array[Pawn]
 
+var is_inside_home : bool
+
 var grabbed_by : Pawn
 var _grabbed_pawn : Pawn
 var grabbed_pawn : Pawn :
@@ -92,4 +94,12 @@ func _physics_process(delta: float) -> void:
 
 
 func _on_home_body_entered(other: Node2D) -> void:
-	if other == self: brain._on_home_reached()
+	if other == self:
+		is_inside_home = true
+		brain._on_home_reached()
+
+
+func _on_home_body_exited(other: Node2D) -> void:
+	if other == self:
+		is_inside_home = false
+		brain.on_home_exited()

@@ -24,6 +24,7 @@ var lurk_duration_random : float :
 @onready var lurk_timer : Timer = $lurk_timer
 
 func _ready() -> void:
+	super._ready()
 	await wait(0.1)
 	_on_state_changed()
 
@@ -46,11 +47,16 @@ func _on_state_changed() -> void:
 			if target: self.target_node = target
 			else: state = STATE_WANDER
 			wander_timer.stop()
+		STATE_FREEZE:
+			await wait(flee_delay)
+			state = STATE_FLEE
 		STATE_FLEE:
 			self.target_node = pawn.home_area
 		STATE_HIDE:
 			pawn.is_phased = true
 			pawn.visible = false
+			await wait(20)
+			state = STATE_RESURFACE
 		STATE_RESURFACE:
 			pawn.is_phased = false
 			pawn.visible = true
@@ -85,8 +91,6 @@ func _on_other_entered_our_zone(other: Pawn) -> void:
 			if state > STATE_LURK: return
 			pawn.grabbed_pawn = other
 			state = STATE_FREEZE
-			await wait(flee_delay)
-			state = STATE_FLEE
 
 
 func _on_target_reached() -> void:
@@ -101,8 +105,6 @@ func _on_target_reached() -> void:
 				pawn.grabbed_pawn.queue_free()
 				pawn.grabbed_pawn = null
 			state = STATE_HIDE
-			await wait(20)
-			state = STATE_RESURFACE
 
 
 func select_random_target() -> Node2D:

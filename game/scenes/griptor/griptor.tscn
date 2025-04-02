@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://clbpih4u8gcmh"]
+[gd_scene load_steps=17 format=3 uid="uid://clbpih4u8gcmh"]
 
 [ext_resource type="PackedScene" uid="uid://3xe1fxwafno0" path="res://game/scenes/pawn.tscn" id="1_dinv7"]
 [ext_resource type="Texture2D" uid="uid://bb52ibun87sn1" path="res://game/sprites/griptor/griptor normal final1.png" id="2_6jh2h"]
@@ -10,8 +10,10 @@
 [ext_resource type="Texture2D" uid="uid://brr0n5x5ykmx2" path="res://game/sprites/griptor/griptor fleeing/full body griptor fleeing/griptor fleeing full2.png" id="7_xct81"]
 [ext_resource type="Texture2D" uid="uid://ba24eej40k7sg" path="res://game/sprites/griptor/griptor fleeing/full body griptor fleeing/griptor fleeing full3.png" id="8_oin01"]
 [ext_resource type="Texture2D" uid="uid://dq27p1pppqb6p" path="res://game/sprites/griptor/griptor fleeing/full body griptor fleeing/griptor fleeing full4.png" id="9_7o5p0"]
+[ext_resource type="Script" uid="uid://bgxemgx8w6x6x" path="res://game/scenes/griptor/griptor_sprite.gd" id="10_3lrje"]
 [ext_resource type="AudioStream" uid="uid://cfnad0w5s5ku3" path="res://game/audio/foley/griptor_grunt_00.ogg" id="10_cmfy8"]
 [ext_resource type="AudioStream" uid="uid://xoi0w8m00qv" path="res://game/audio/foley/griptor_grunt_01.ogg" id="11_3lrje"]
+[ext_resource type="AudioStream" uid="uid://crhqkya3ofk3o" path="res://game/audio/foley/griptor_stunned.tres" id="13_xct81"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_k0ab3"]
 animations = [{
@@ -22,6 +24,23 @@ animations = [{
 "loop": true,
 "name": &"idle",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_3lrje")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_xct81")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_oin01")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_7o5p0")
+}],
+"loop": true,
+"name": &"stun",
+"speed": 12.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -59,7 +78,7 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_mrb8l"]
-radius = 90.802
+radius = 256.632
 
 [node name="griptor" instance=ExtResource("1_dinv7")]
 species_id = &"griptor"
@@ -67,8 +86,10 @@ walk_speed = 200.0
 
 [node name="sprite" parent="." index="0"]
 sprite_frames = SubResource("SpriteFrames_k0ab3")
-animation = &"idle"
+animation = &"stun"
+frame_progress = 0.738922
 offset = Vector2(225, -377)
+script = ExtResource("10_3lrje")
 initial_animation = &"idle"
 
 [node name="placeholder" parent="sprite" index="0"]
@@ -81,10 +102,11 @@ text = "Griptor"
 shape = SubResource("CircleShape2D_mrb8l")
 
 [node name="grabber_offset" parent="sprite" index="2"]
-position = Vector2(128, -128)
+position = Vector2(189, -122)
 
 [node name="audio" parent="sprite" index="3"]
 animation_sounds = {
+&"stun": ExtResource("13_xct81"),
 &"walk": ExtResource("10_cmfy8"),
 &"walk_flee": ExtResource("11_3lrje")
 }
@@ -104,6 +126,11 @@ wander_duration_max = 18.0
 
 [node name="lurk_timer" type="Timer" parent="brain" index="2"]
 wait_time = 2.0
+one_shot = true
+
+[node name="stun_timer" type="Timer" parent="brain" index="3"]
+process_callback = 0
+wait_time = 20.0
 one_shot = true
 
 [connection signal="timeout" from="brain/lurk_timer" to="brain" method="set" binds= [&"state", 2]]

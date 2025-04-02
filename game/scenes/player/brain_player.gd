@@ -30,9 +30,11 @@ func peck() -> void:
 		for i in pawn.pawns_in_zone:
 			match i.species_id:
 				&"marmot": pawn.grabbed_pawn = i; break
-				&"baby": pawn.grabbed_pawn = i; break # IF outside home
+				&"baby":
+					if pawn.is_inside_home: continue
+					pawn.grabbed_pawn = i; break
 				&"griptor":
-					# i.brain.state = STUNNED
+					i.brain.state = 3
 					if i.grabbed_pawn:
 						var baby := i.grabbed_pawn
 						i.grabbed_pawn = null

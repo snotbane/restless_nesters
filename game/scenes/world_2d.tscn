@@ -1,8 +1,9 @@
-[gd_scene load_steps=25 format=4 uid="uid://ri5kmtd4f554"]
+[gd_scene load_steps=27 format=4 uid="uid://ri5kmtd4f554"]
 
 [ext_resource type="PackedScene" uid="uid://dugum1qvra8cp" path="res://game/scenes/player/player.tscn" id="1_g6tk3"]
 [ext_resource type="TileSet" uid="uid://dw6de48o421um" path="res://game/tiles/tile_set.tres" id="1_kxbfw"]
 [ext_resource type="PackedScene" uid="uid://bgpvs01xchn27" path="res://game/scenes/marmot/marmot.tscn" id="2_5fs5m"]
+[ext_resource type="Texture2D" uid="uid://nx0a7qtq4dlt" path="res://game/sprites/props/nest.png" id="2_gtc67"]
 [ext_resource type="PackedScene" uid="uid://bmqsp6x1ss53f" path="res://game/scenes/hole.tscn" id="4_ggort"]
 [ext_resource type="PackedScene" uid="uid://c4iyk3ku5sw67" path="res://game/scenes/baby/baby_blue.tscn" id="4_itw1b"]
 [ext_resource type="PackedScene" uid="uid://dxl7ei7v0e872" path="res://game/scenes/baby/baby_orange.tscn" id="5_bspgk"]
@@ -19,6 +20,7 @@
 [ext_resource type="PackedScene" uid="uid://b82cmvfn6re84" path="res://game/scenes/ui/baby_status.tscn" id="16_bspgk"]
 [ext_resource type="Material" uid="uid://cklscil5oiuw1" path="res://game/shaders_materials/baby_blue.tres" id="17_xed5j"]
 [ext_resource type="Material" uid="uid://bex7672ptppby" path="res://game/shaders_materials/baby_orange.tres" id="18_ugsmj"]
+[ext_resource type="Material" uid="uid://bggrqfp8yx15h" path="res://game/shaders_materials/baby_red.tres" id="18_xhe51"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_i7555"]
 size = Vector2(4, 4)
@@ -43,7 +45,12 @@ signal game_end
 @export var babies_to_be_fed : Array[Pawn]
 var baby_brains : Array[Brain]
 var babies_all : int
-var babies_fed := 0
+var babies_fed : int :
+	get:
+		var result := 0
+		for i in babies_to_be_fed:
+			result += 1 if i.brain.is_grown else 0
+		return result
 
 func _ready() -> void:
 	babies_all = babies_to_be_fed.size()
@@ -52,8 +59,8 @@ func _ready() -> void:
 		baby.died.connect(_on_baby_died.bind(baby))
 	for brain in baby_brains:
 		brain.filled.connect(self._on_baby_filled)
-		
-		
+
+
 func proceed_to_cutscene() -> void:
 	var scene : String
 	if babies_to_be_fed.size() == 0:
@@ -76,7 +83,6 @@ func _on_baby_died(baby: Pawn) -> void:
 	
 
 func _on_baby_filled() -> void:
-	babies_fed += 1
 	check_game()
 
 
@@ -112,6 +118,11 @@ navigation_polygon = SubResource("NavigationPolygon_ggort")
 y_sort_enabled = true
 tile_map_data = PackedByteArray("AAD///3/AQABAAEAAAD///7/AQABAAAAAAAAAP7/AQABAAAAAAD/////AQABAAEAAAAAAP//AQABAAEAAAAAAAAAAQABAAAAAAD//wEAAQABAAEAAAD+////AQABAAEAAAD//wAAAQABAAAAAAD///z/AQABAAAAAAAAAPr/AQABAAAAAAD///r/AQABAAAAAAAAAPz/AQABAAAAAAAAAPv/AQABAAEAAAAAAP3/AQABAAEAAAABAPv/AQABAAEAAAABAPz/AQABAAAAAAABAP3/AQABAAEAAAABAP7/AQABAAAAAAD+//v/AQABAAEAAAD+//z/AQABAAAAAAD9//3/AQABAAEAAAD+//7/AQABAAAAAAD+//3/AQABAAEAAAD9//z/AQABAAAAAAD9//v/AQABAAEAAAD+//r/AQABAAAAAAD+//n/AQABAAEAAAD///j/AQABAAAAAAD///n/AQABAAEAAAAAAPj/AQABAAAAAAAAAPn/AQABAAEAAAABAPr/AQABAAAAAAACAPz/AQABAAAAAAD///f/AQABAAEAAAD///v/AQABAAEAAAD8//v/AQABAAEAAAD9//r/AQABAAAAAAD9//n/AQABAAEAAAD+//j/AQABAAAAAAD+//f/AQABAAEAAAD///b/AQABAAAAAAD///X/AQABAAEAAAAAAPb/AQABAAAAAAAAAPf/AQABAAEAAAABAPj/AQABAAAAAAABAPn/AQABAAEAAAACAPr/AQABAAAAAAACAPv/AQABAAEAAAADAPr/AQABAAAAAAACAPn/AQABAAEAAAACAPj/AQABAAAAAAABAPf/AQABAAEAAAABAPb/AQABAAAAAAAAAPX/AQABAAEAAAAAAPT/AQABAAAAAAD///P/AQABAAEAAAD///T/AQABAAAAAAD+//X/AQABAAEAAAD+//b/AQABAAAAAAD9//f/AQABAAEAAAD9//j/AQABAAAAAAD8//n/AQABAAEAAAD8//r/AQABAAAAAAD8//T/AQABAAAAAAD8//X/AQABAAEAAAD8//b/AQABAAAAAAD8//f/AQABAAEAAAD8//j/AQABAAAAAAD9//T/AQABAAAAAAD9//X/AQABAAEAAAD9//b/AQABAAAAAAD8/+3/AQABAAEAAAD8/+7/AQABAAAAAAD8/+//AQABAAEAAAD8//D/AQABAAAAAAD8//H/AQABAAEAAAD8//L/AQABAAAAAAD8//P/AQABAAEAAAD9/+3/AQABAAEAAAD9/+7/AQABAAAAAAD9/+//AQABAAEAAAD9//D/AQABAAAAAAD9//H/AQABAAEAAAD9//L/AQABAAAAAAD9//P/AQABAAEAAAD+/+3/AQABAAEAAAD+/+7/AQABAAAAAAD+/+//AQABAAEAAAD+//D/AQABAAAAAAD+//H/AQABAAEAAAD+//L/AQABAAAAAAD+//P/AQABAAEAAAD//+3/AQABAAEAAAD//+7/AQABAAAAAAD//+//AQABAAEAAAD///D/AQABAAAAAAD///H/AQABAAEAAAD///L/AQABAAAAAAAAAO3/AQABAAEAAAAAAO7/AQABAAAAAAAAAO//AQABAAEAAAAAAPD/AQABAAAAAAAAAPH/AQABAAEAAAAAAPL/AQABAAAAAAAAAPP/AQABAAEAAAABAO3/AQABAAEAAAABAO7/AQABAAAAAAABAO//AQABAAEAAAABAPD/AQABAAAAAAABAPH/AQABAAEAAAABAPL/AQABAAAAAAABAPP/AQABAAEAAAABAPT/AQABAAAAAAABAPX/AQABAAEAAAACAO3/AQABAAEAAAACAO7/AQABAAAAAAACAO//AQABAAEAAAACAPD/AQABAAAAAAACAPH/AQABAAEAAAACAPL/AQABAAAAAAACAPP/AQABAAEAAAACAPT/AQABAAAAAAACAPX/AQABAAEAAAACAPb/AQABAAAAAAACAPf/AQABAAEAAAADAPj/AQABAAAAAAD+//T/AQABAAAAAAADAO7/AQABAAAAAAADAPD/AQABAAAAAAADAPL/AQABAAAAAAADAPT/AQABAAAAAAADAPb/AQABAAAAAAD9/+z/AQABAAAAAAD9/+v/AQABAAEAAAD+/+r/AQABAAAAAAD+/+n/AQABAAEAAAD//+j/AQABAAAAAAD//+f/AQABAAEAAAAAAOj/AQABAAAAAAAAAOn/AQABAAEAAAABAOr/AQABAAAAAAABAOv/AQABAAEAAAACAOz/AQABAAAAAAD//+v/AQABAAEAAAAAAOr/AQABAAAAAAD//+n/AQABAAEAAAD//+r/AQABAAAAAAD+/+v/AQABAAEAAAD+/+z/AQABAAAAAAD//+z/AQABAAAAAAAAAOv/AQABAAEAAAAAAOz/AQABAAAAAAABAOz/AQABAAAAAAD7/+//AQABAAEAAAD7//D/AQABAAAAAAD6//H/AQABAAEAAAD6//L/AQABAAAAAAD5//P/AQABAAEAAAD5//T/AQABAAAAAAD5//X/AQABAAEAAAD6//b/AQABAAAAAAD6//f/AQABAAEAAAD7//j/AQABAAAAAAD7//n/AQABAAEAAAADAPn/AQABAAEAAAAEAPj/AQABAAAAAAAEAPf/AQABAAEAAAAFAPb/AQABAAAAAAAFAPX/AQABAAEAAAADAO//AQABAAEAAAAEAPD/AQABAAAAAAAEAPH/AQABAAEAAAAFAPL/AQABAAAAAAAFAPP/AQABAAEAAAAGAPT/AQABAAAAAAAEAPb/AQABAAAAAAAEAPX/AQABAAEAAAAFAPT/AQABAAAAAAAEAPP/AQABAAEAAAAEAPL/AQABAAAAAAADAPH/AQABAAEAAAADAPP/AQABAAEAAAAEAPT/AQABAAAAAAADAPX/AQABAAEAAAADAPf/AQABAAEAAAD7//T/AQABAAAAAAD7//P/AQABAAEAAAD7//L/AQABAAAAAAD7//H/AQABAAEAAAD6//P/AQABAAEAAAD6//T/AQABAAAAAAD6//X/AQABAAEAAAD7//b/AQABAAAAAAD7//X/AQABAAEAAAD7//f/AQABAAEAAAD4//P/AQACAAEAAAD5//L/AQACAAAAAAD5//H/AQACAAEAAAD6//D/AQACAAAAAAD6/+//AQACAAEAAAD7/+7/AQACAAAAAAD7/+3/AQACAAEAAAD8/+z/AQACAAAAAAD8/+v/AQACAAEAAAD9/+r/AQACAAAAAAD9/+n/AQACAAEAAAD+/+j/AQACAAAAAAD+/+f/AQACAAEAAAD//+b/AQACAAAAAAD//+X/AQACAAEAAAAAAOb/AQACAAAAAAAAAOf/AQACAAEAAAABAOj/AQACAAAAAAABAOn/AQACAAEAAAACAOr/AQACAAAAAAACAOv/AQACAAEAAAADAOz/AQACAAAAAAADAO3/AQACAAEAAAAEAO7/AQACAAAAAAAEAO//AQACAAEAAAAFAPD/AQACAAAAAAAFAPH/AQACAAEAAAAGAPL/AQACAAAAAAAGAPP/AQACAAEAAAD4//T/AQAAAAAAAAD4//X/AQAAAAAAAAD5//b/AQAAAAAAAAD5//f/AQAAAAAAAAD6//j/AQAAAAAAAAD6//n/AQAAAAAAAAD7//r/AQAAAAAAAAD7//v/AQAAAAAAAAD8//z/AQAAAAAAAAD8//3/AQAAAAAAAAD9//7/AQAAAAAAAAD9////AQAAAAAAAAD+/wAAAQAAAAAAAAD+/wEAAQAAAAAAAAD//wIAAQAAAAAAAAD//wMAAQAAAAAAAAAAAAIAAQAAAAAAAAAAAAEAAQAAAAAAAAABAAAAAQAAAAAAAAABAP//AQAAAAAAAAACAP7/AQAAAAAAAAACAP3/AQAAAAAAAAADAPz/AQAAAAAAAAADAPv/AQAAAAAAAAAEAPr/AQAAAAAAAAAEAPn/AQAAAAAAAAAFAPj/AQAAAAAAAAAFAPf/AQAAAAAAAAAGAPb/AQAAAAAAAAAGAPX/AQAAAAAAAAAHAPT/AQAAAAAAAAA=")
 tile_set = ExtResource("1_kxbfw")
+
+[node name="nest_sprite" type="Sprite2D" parent="navigation_region_2d"]
+position = Vector2(43, -59)
+scale = Vector2(1, 0.5)
+texture = ExtResource("2_gtc67")
 
 [node name="stuff" type="Node2D" parent="navigation_region_2d" groups=["stuff"]]
 y_sort_enabled = true
@@ -457,18 +468,19 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_left = 12
-theme_override_constants/margin_top = 12
-theme_override_constants/margin_right = 12
-theme_override_constants/margin_bottom = 12
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 30
 
 [node name="h_box_container" type="HBoxContainer" parent="canvas_layer/control/margin_container"]
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 8
-theme_override_constants/separation = 12
+theme_override_constants/separation = 40
 
 [node name="baby_status" parent="canvas_layer/control/margin_container/h_box_container" node_paths=PackedStringArray("baby") instance=ExtResource("16_bspgk")]
+material = ExtResource("18_xhe51")
 layout_mode = 2
 baby = NodePath("../../../../../navigation_region_2d/stuff/baby")
 
