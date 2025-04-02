@@ -1,6 +1,7 @@
-[gd_scene load_steps=28 format=3 uid="uid://cjjpsd347xnf7"]
+[gd_scene load_steps=32 format=3 uid="uid://cjjpsd347xnf7"]
 
 [ext_resource type="PackedScene" uid="uid://3xe1fxwafno0" path="res://game/scenes/pawn.tscn" id="1_xdrdn"]
+[ext_resource type="Material" uid="uid://bggrqfp8yx15h" path="res://game/shaders_materials/baby_red.tres" id="2_0sn24"]
 [ext_resource type="Texture2D" uid="uid://bnroher2aerdh" path="res://game/sprites/baby/baby eating/baby eating final9.png" id="2_e22wp"]
 [ext_resource type="Script" uid="uid://b5wyuwl63cr33" path="res://game/scenes/baby/baby_brain.gd" id="2_wyexy"]
 [ext_resource type="Texture2D" uid="uid://qnqpdbcl25vy" path="res://game/sprites/baby/baby eating/baby eating final1.png" id="3_s62vi"]
@@ -25,6 +26,9 @@
 [ext_resource type="Texture2D" uid="uid://vxgitjb6gsne" path="res://game/sprites/baby/baby whining/baby whining final1.png" id="21_v6cmu"]
 [ext_resource type="Texture2D" uid="uid://cotb2imqep18" path="res://game/sprites/baby/baby whining/baby whining final2.png" id="22_0sn24"]
 [ext_resource type="Texture2D" uid="uid://dedfv5wk2tm" path="res://game/sprites/baby/baby whining/baby whining final3.png" id="23_ytmaf"]
+[ext_resource type="Script" uid="uid://bg2yu1l6adrrs" path="res://game/scenes/baby/baby_sprite.gd" id="26_ytmaf"]
+[ext_resource type="AudioStream" path="res://game/audio/foley/baby_happy.tres" id="27_n7kpp"]
+[ext_resource type="AudioStream" uid="uid://c4jru4ggtueid" path="res://game/audio/foley/GULUPLUP.ogg" id="28_idl6c"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_3vul3"]
 animations = [{
@@ -135,26 +139,29 @@ animations = [{
 }],
 "loop": false,
 "name": &"consume_end",
-"speed": 12.0
+"speed": 24.0
 }, {
 "frames": [{
-"duration": 1.0,
+"duration": 1.3,
 "texture": ExtResource("4_4gc4w")
 }, {
-"duration": 1.0,
+"duration": 1.3,
 "texture": ExtResource("5_6b6mp")
 }, {
-"duration": 1.0,
+"duration": 1.3,
 "texture": ExtResource("6_0hqpr")
 }, {
-"duration": 1.0,
+"duration": 1.3,
 "texture": ExtResource("7_xtstd")
 }, {
-"duration": 1.0,
+"duration": 1.3,
 "texture": ExtResource("8_woo2a")
 }, {
-"duration": 1.0,
+"duration": 1.3,
 "texture": ExtResource("9_jdvna")
+}, {
+"duration": 1.3,
+"texture": ExtResource("5_emqx0")
 }],
 "loop": false,
 "name": &"consume_gulp",
@@ -259,15 +266,15 @@ animations = [{
 }],
 "loop": false,
 "name": &"consume_start",
-"speed": 12.0
+"speed": 24.0
 }, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("12_vh4ay")
 }],
-"loop": false,
+"loop": true,
 "name": &"dead",
-"speed": 0.0
+"speed": 1.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -317,9 +324,9 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("19_n0g02")
 }],
-"loop": false,
+"loop": true,
 "name": &"starving",
-"speed": 0.0
+"speed": 1.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -352,10 +359,14 @@ radius = 100.0
 species_id = &"baby"
 
 [node name="sprite" parent="." index="0"]
+material = ExtResource("2_0sn24")
 sprite_frames = SubResource("SpriteFrames_3vul3")
-animation = &"idle_grown"
+animation = &"consume_start"
+frame = 31
+frame_progress = 1.0
 offset = Vector2(-280, -400)
 flip_h = true
+script = ExtResource("26_ytmaf")
 initial_animation = &"idle"
 animation_transitions = {
 &"chirp": &"idle",
@@ -373,6 +384,13 @@ text = "Baby"
 [node name="shape" parent="sprite/zone" index="0"]
 position = Vector2(0, -40)
 shape = SubResource("CircleShape2D_xdrdn")
+
+[node name="audio" parent="sprite" index="3"]
+max_distance = 200000.0
+animation_sounds = {
+&"chirp": ExtResource("27_n7kpp"),
+&"consume_gulp": ExtResource("28_idl6c")
+}
 
 [node name="brain" parent="." index="2"]
 script = ExtResource("2_wyexy")

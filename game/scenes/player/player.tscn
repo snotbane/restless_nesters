@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://dugum1qvra8cp"]
+[gd_scene load_steps=14 format=3 uid="uid://dugum1qvra8cp"]
 
 [ext_resource type="PackedScene" uid="uid://3xe1fxwafno0" path="res://game/scenes/pawn.tscn" id="1_ce2g5"]
 [ext_resource type="Texture2D" uid="uid://doixdmwu3tota" path="res://game/sprites/player/idle/player idle final1.png" id="2_7cuwy"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://bd16tr7kl8r23" path="res://game/sprites/player/walking/player walking final2.png" id="7_uqqqv"]
 [ext_resource type="Texture2D" uid="uid://du3syognnsmju" path="res://game/sprites/player/walking/player walking final3.png" id="8_8vwob"]
 [ext_resource type="Script" uid="uid://sny4rswyxgck" path="res://game/scenes/player/player_sprite.gd" id="9_uqqqv"]
+[ext_resource type="AudioStream" uid="uid://cq0x2t65kc8t5" path="res://game/audio/foley/peck.ogg" id="10_8vwob"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_gapcj"]
 animations = [{
@@ -51,7 +52,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7cuwy"]
-size = Vector2(261, 100)
+size = Vector2(384, 302)
 
 [node name="player" instance=ExtResource("1_ce2g5")]
 species_id = &"player"
@@ -76,11 +77,16 @@ text = "Player"
 position = Vector2(100, 0)
 
 [node name="shape" parent="sprite/zone" index="0"]
-position = Vector2(80.5, 0)
+position = Vector2(63, 0)
 shape = SubResource("RectangleShape2D_7cuwy")
 
 [node name="grabber_offset" parent="sprite" index="2"]
-position = Vector2(217, -230)
+position = Vector2(217, -158)
+
+[node name="audio" parent="sprite" index="3"]
+animation_sounds = {
+&"peck": ExtResource("10_8vwob")
+}
 
 [node name="brain" parent="." index="2"]
 script = ExtResource("2_hn0xb")

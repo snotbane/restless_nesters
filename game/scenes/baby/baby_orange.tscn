@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://dxl7ei7v0e872"]
+
+[ext_resource type="PackedScene" uid="uid://cjjpsd347xnf7" path="res://game/scenes/baby/baby.tscn" id="1_qnbdc"]
+[ext_resource type="Material" uid="uid://bex7672ptppby" path="res://game/shaders_materials/baby_orange.tres" id="2_qnbdc"]
+
+[node name="baby_orange" instance=ExtResource("1_qnbdc")]
+
+[node name="sprite" parent="." index="0"]
+material = ExtResource("2_qnbdc")

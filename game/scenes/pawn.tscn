@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://3xe1fxwafno0"]
+[gd_scene load_steps=10 format=3 uid="uid://3xe1fxwafno0"]
 
 [ext_resource type="Script" uid="uid://bxb8h1xo4i2j2" path="res://game/scenes/pawn.gd" id="1_35ipx"]
 [ext_resource type="Script" uid="uid://cltipo65ku1ta" path="res://game/scripts/brain.gd" id="1_niafa"]
 [ext_resource type="Script" uid="uid://du16rk2qb60h1" path="res://game/scripts/sprite.gd" id="2_8xysa"]
 [ext_resource type="Script" uid="uid://cyit17wf62qt7" path="res://game/scenes/zone.gd" id="2_h3avw"]
+[ext_resource type="Script" uid="uid://cmsxbh1uhmnn2" path="res://game/scripts/pawn_audio.gd" id="4_qxkdh"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_h3avw"]
 size = Vector2(4, 4)
@@ -63,7 +64,9 @@ shape = SubResource("RectangleShape2D_niafa")
 
 [node name="grabber" type="Node2D" parent="sprite/grabber_offset"]
 
-[node name="audio" type="AudioStreamPlayer2D" parent="sprite"]
+[node name="audio" type="AudioStreamPlayer2D" parent="sprite" node_paths=PackedStringArray("sprite")]
+script = ExtResource("4_qxkdh")
+sprite = NodePath("..")
 
 [node name="shape" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_yde1k")
@@ -80,6 +83,7 @@ autostart = true
 process_callback = 0
 one_shot = true
 
+[connection signal="animation_changed" from="sprite" to="sprite/audio" method="_on_sprite_animation_changed"]
 [connection signal="animation_finished" from="sprite" to="sprite" method="_on_animation_finished"]
 [connection signal="body_entered" from="sprite/zone" to="sprite/zone" method="_on_body_entered"]
 [connection signal="body_exited" from="sprite/zone" to="sprite/zone" method="_on_body_exited"]

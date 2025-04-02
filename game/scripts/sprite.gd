@@ -12,10 +12,10 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	if self.sprite_frames.get_animation_loop(self.animation):
-		self._process_anim_loop(delta)
+		self._process_looping(delta)
 
 
-func _process_anim_loop(delta: float) -> void:
+func _process_looping(delta: float) -> void:
 	pass
 
 

@@ -31,7 +31,12 @@ func peck() -> void:
 			match i.species_id:
 				&"marmot": pawn.grabbed_pawn = i; break
 				&"baby": pawn.grabbed_pawn = i; break # IF outside home
-				&"griptor": i.is_phased = true; break # grab the baby if holding one
+				&"griptor":
+					# i.brain.state = STUNNED
+					if i.grabbed_pawn:
+						var baby := i.grabbed_pawn
+						i.grabbed_pawn = null
+						pawn.grabbed_pawn = baby
 		pecked.emit()
 
 

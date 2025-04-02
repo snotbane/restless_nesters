@@ -1,22 +1,153 @@
-[gd_scene load_steps=6 format=3 uid="uid://bgpvs01xchn27"]
+[gd_scene load_steps=22 format=3 uid="uid://bgpvs01xchn27"]
 
 [ext_resource type="PackedScene" uid="uid://3xe1fxwafno0" path="res://game/scenes/pawn.tscn" id="1_3s6xy"]
+[ext_resource type="Texture2D" uid="uid://c01fidr86m1qw" path="res://game/sprites/marmot/squirming/sees you/marmot sees you final1.png" id="2_7pdq4"]
 [ext_resource type="Texture2D" uid="uid://bfu5gk8rlwb02" path="res://game/sprites/marmot/squirming/idle/marmot idle final1.png" id="2_de2av"]
 [ext_resource type="Script" uid="uid://blpo0x34mc0gi" path="res://game/scenes/marmot/marmot_brain.gd" id="2_x3sse"]
+[ext_resource type="Texture2D" uid="uid://bj38g4weapvb4" path="res://game/sprites/marmot/squirming/sees you/marmot sees you final2.png" id="3_7vl8l"]
+[ext_resource type="Texture2D" uid="uid://bu3jyc4ahfa3a" path="res://game/sprites/marmot/squirming/idle/marmot idle final2.png" id="3_temb8"]
+[ext_resource type="Texture2D" uid="uid://dv7ujhlx3gnmx" path="res://game/sprites/marmot/squirming/idle/marmot idle final3.png" id="4_4fd72"]
+[ext_resource type="Texture2D" uid="uid://555drokc335p" path="res://game/sprites/marmot/squirming/idle/marmot idle final4.png" id="5_7pdq4"]
+[ext_resource type="Texture2D" uid="uid://c0udj5a50412u" path="res://game/sprites/marmot/squirming/idle/marmot idle final5.png" id="6_7vl8l"]
+[ext_resource type="Texture2D" uid="uid://fykcku00vh4h" path="res://game/sprites/marmot/squirming/squirming/marmot squirming final1.png" id="9_7fvdv"]
+[ext_resource type="Texture2D" uid="uid://ptya4q21xtuv" path="res://game/sprites/marmot/squirming/fleeing/marmot fleeing final1.png" id="9_ncesi"]
+[ext_resource type="Texture2D" uid="uid://cbas3jyhwmb03" path="res://game/sprites/marmot/squirming/fleeing/marmot fleeing final2.png" id="10_7mt3k"]
+[ext_resource type="Texture2D" uid="uid://c14qh5fqvmvip" path="res://game/sprites/marmot/squirming/squirming/marmot squirming final2.png" id="10_pqkh2"]
+[ext_resource type="Texture2D" uid="uid://dvog3wlyvm6yv" path="res://game/sprites/marmot/squirming/squirming/marmot squirming final3.png" id="11_n6vr5"]
+[ext_resource type="Texture2D" uid="uid://dv20n4yoqbdgh" path="res://game/sprites/marmot/squirming/squirming/marmot squirming final4.png" id="12_gojex"]
+[ext_resource type="Script" uid="uid://cfosn1853hi78" path="res://game/scenes/marmot/marmot_sprite.gd" id="15_pqkh2"]
+[ext_resource type="AudioStream" uid="uid://ccs6wm2nlfh4q" path="res://game/audio/foley/marmot_scamper_01.ogg" id="17_wrasy"]
+[ext_resource type="AudioStream" uid="uid://r4t5tblehvlu" path="res://game/audio/foley/marmot_freakout_full.ogg" id="18_rnpdr"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_s5bmr"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_de2av")
+"texture": ExtResource("2_7pdq4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_7vl8l")
 }],
 "loop": true,
-"name": &"default",
+"name": &"alert",
+"speed": 24.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_de2av")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_temb8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_de2av")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_temb8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_de2av")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_temb8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_de2av")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_temb8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_de2av")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_temb8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_de2av")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_temb8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_de2av")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_temb8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_de2av")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_temb8")
+}, {
+"duration": 1.5,
+"texture": ExtResource("4_4fd72")
+}, {
+"duration": 1.5,
+"texture": ExtResource("5_7pdq4")
+}, {
+"duration": 1.5,
+"texture": ExtResource("6_7vl8l")
+}, {
+"duration": 1.5,
+"texture": ExtResource("4_4fd72")
+}, {
+"duration": 1.5,
+"texture": ExtResource("5_7pdq4")
+}, {
+"duration": 1.5,
+"texture": ExtResource("6_7vl8l")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 24.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_7fvdv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_pqkh2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_n6vr5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_gojex")
+}],
+"loop": true,
+"name": &"squirm",
+"speed": 24.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_ncesi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_7mt3k")
+}],
+"loop": true,
+"name": &"walk",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_ncesi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_7mt3k")
+}],
+"loop": true,
+"name": &"walk_flee",
+"speed": 12.0
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_x3sse"]
-radius = 150.0
+radius = 307.007
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ncesi"]
+size = Vector2(218, 20)
 
 [node name="marmot" instance=ExtResource("1_3s6xy")]
 species_id = &"marmot"
@@ -24,8 +155,12 @@ walk_speed = 128.0
 
 [node name="sprite" parent="." index="0"]
 sprite_frames = SubResource("SpriteFrames_s5bmr")
+animation = &"squirm"
+frame_progress = 0.494249
 offset = Vector2(-325, -432.95)
 flip_h = true
+script = ExtResource("15_pqkh2")
+initial_animation = &"idle"
 
 [node name="placeholder" parent="sprite" index="0"]
 visible = false
@@ -33,7 +168,11 @@ visible = false
 [node name="label" parent="sprite/placeholder" index="1"]
 text = "Marmot"
 
+[node name="zone" parent="sprite" index="1"]
+visible = false
+
 [node name="shape" parent="sprite/zone" index="0"]
+position = Vector2(0, -42)
 shape = SubResource("CircleShape2D_x3sse")
 
 [node name="grabber_offset" parent="sprite" index="2"]
@@ -41,6 +180,17 @@ visible = false
 
 [node name="grabber" parent="sprite/grabber_offset" index="0"]
 visible = false
+
+[node name="audio" parent="sprite" index="3"]
+animation_sounds = {
+&"squirm": ExtResource("18_rnpdr"),
+&"walk_flee": ExtResource("17_wrasy")
+}
+
+[node name="shape" parent="." index="1"]
+visible = false
+position = Vector2(11, 0)
+shape = SubResource("RectangleShape2D_ncesi")
 
 [node name="brain" parent="." index="2"]
 script = ExtResource("2_x3sse")

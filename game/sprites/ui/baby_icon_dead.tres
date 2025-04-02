@@ -1,0 +1,7 @@
+[gd_resource type="AtlasTexture" load_steps=2 format=3 uid="uid://ck8eghvqy8oa2"]
+
+[ext_resource type="Texture2D" uid="uid://xhg1i720yda6" path="res://game/sprites/ui/baby icon dead.png" id="1_b30n6"]
+
+[resource]
+atlas = ExtResource("1_b30n6")
+region = Rect2(125, 832, 112, 113)

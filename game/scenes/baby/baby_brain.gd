@@ -22,10 +22,15 @@ var is_able_to_eat : bool :
 	get: return food_fed < food_needed
 
 
+var is_grown : bool :
+	get: return not is_able_to_eat
+
+
 func consume(other: Node2D) -> void:
 	if not is_able_to_eat: return
 	food_fed += 1
 	other.queue_free()
+	pawn.sprite.play(&"consume_start")
 
 
 func _on_other_entered_our_zone(other: Pawn) -> void:

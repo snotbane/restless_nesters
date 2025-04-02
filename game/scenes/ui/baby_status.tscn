@@ -1,0 +1,76 @@
+[gd_scene load_steps=9 format=3 uid="uid://b82cmvfn6re84"]
+
+[ext_resource type="Script" uid="uid://dcwlk07xlf4dc" path="res://game/scenes/ui/baby_status.gd" id="1_rtnam"]
+[ext_resource type="Texture2D" uid="uid://ck8eghvqy8oa2" path="res://game/sprites/ui/baby_icon_dead.tres" id="2_qyplb"]
+[ext_resource type="Texture2D" uid="uid://cys1fx2pge4c6" path="res://game/sprites/ui/baby_icon_happy.tres" id="3_qllhw"]
+[ext_resource type="Texture2D" uid="uid://da52nitrokfrk" path="res://game/sprites/ui/baby_icon_hungry.tres" id="4_m8r0g"]
+[ext_resource type="Texture2D" uid="uid://lso3vyyknhiy" path="res://game/sprites/ui/baby_icon_kidnapped.tres" id="5_5x1wr"]
+[ext_resource type="Texture2D" uid="uid://c8y46mrd7hidb" path="res://game/sprites/ui/baby_icon_starving.tres" id="6_85fii"]
+[ext_resource type="AudioStream" path="res://game/audio/foley/baby_starving.tres" id="7_qyplb"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rtnam"]
+
+[node name="baby_status" type="Control"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_rtnam")
+
+[node name="tab_container" type="TabContainer" parent="."]
+use_parent_material = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_rtnam")
+current_tab = 4
+tabs_visible = false
+
+[node name="dead" type="TextureRect" parent="tab_container"]
+visible = false
+use_parent_material = true
+layout_mode = 2
+texture = ExtResource("2_qyplb")
+expand_mode = 5
+stretch_mode = 5
+metadata/_tab_index = 0
+
+[node name="kidnapped" type="TextureRect" parent="tab_container"]
+visible = false
+use_parent_material = true
+layout_mode = 2
+texture = ExtResource("5_5x1wr")
+expand_mode = 3
+stretch_mode = 5
+metadata/_tab_index = 1
+
+[node name="starving" type="TextureRect" parent="tab_container"]
+visible = false
+use_parent_material = true
+layout_mode = 2
+texture = ExtResource("6_85fii")
+expand_mode = 5
+stretch_mode = 5
+metadata/_tab_index = 2
+
+[node name="hungry" type="TextureRect" parent="tab_container"]
+visible = false
+use_parent_material = true
+layout_mode = 2
+texture = ExtResource("4_m8r0g")
+expand_mode = 5
+stretch_mode = 5
+metadata/_tab_index = 3
+
+[node name="happy" type="TextureRect" parent="tab_container"]
+use_parent_material = true
+layout_mode = 2
+texture = ExtResource("3_qllhw")
+expand_mode = 5
+stretch_mode = 5
+metadata/_tab_index = 4
+
+[node name="death_audio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_qyplb")

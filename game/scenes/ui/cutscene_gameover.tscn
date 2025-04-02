@@ -1,9 +1,9 @@
 [gd_scene load_steps=5 format=3 uid="uid://d1b3an0b6ytyh"]
 
 [ext_resource type="PackedScene" uid="uid://bfsdnjspusept" path="res://game/scenes/ui/cutscene.tscn" id="1_gu1h5"]
-[ext_resource type="AudioStream" uid="uid://b0yf0i631j3r2" path="res://game/audio/foley/game_over_1.ogg" id="2_oqlse"]
+[ext_resource type="AudioStream" uid="uid://b0yf0i631j3r2" path="res://game/audio/music/music_extinction.ogg" id="2_oqlse"]
 [ext_resource type="Texture2D" uid="uid://dad2kpi8mhhil" path="res://game/sprites/ui/game over screen.png" id="2_r3fmg"]
-[ext_resource type="AudioStream" uid="uid://dccdt4df70g2y" path="res://game/audio/foley/game_over_0.ogg" id="3_np1om"]
+[ext_resource type="AudioStream" uid="uid://dccdt4df70g2y" path="res://game/audio/foley/donk.ogg" id="3_np1om"]
 
 [node name="cutscene_survival" instance=ExtResource("1_gu1h5")]
 

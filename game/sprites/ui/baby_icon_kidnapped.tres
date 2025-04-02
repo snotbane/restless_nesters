@@ -1,0 +1,7 @@
+[gd_resource type="AtlasTexture" load_steps=2 format=3 uid="uid://lso3vyyknhiy"]
+
+[ext_resource type="Texture2D" uid="uid://b36mqljl1qc7v" path="res://game/sprites/ui/baby icon kidnapped.png" id="1_kg1ka"]
+
+[resource]
+atlas = ExtResource("1_kg1ka")
+region = Rect2(122, 832, 144, 125)

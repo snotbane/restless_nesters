@@ -1,9 +1,11 @@
-[gd_scene load_steps=20 format=4 uid="uid://ri5kmtd4f554"]
+[gd_scene load_steps=25 format=4 uid="uid://ri5kmtd4f554"]
 
 [ext_resource type="PackedScene" uid="uid://dugum1qvra8cp" path="res://game/scenes/player/player.tscn" id="1_g6tk3"]
 [ext_resource type="TileSet" uid="uid://dw6de48o421um" path="res://game/tiles/tile_set.tres" id="1_kxbfw"]
 [ext_resource type="PackedScene" uid="uid://bgpvs01xchn27" path="res://game/scenes/marmot/marmot.tscn" id="2_5fs5m"]
 [ext_resource type="PackedScene" uid="uid://bmqsp6x1ss53f" path="res://game/scenes/hole.tscn" id="4_ggort"]
+[ext_resource type="PackedScene" uid="uid://c4iyk3ku5sw67" path="res://game/scenes/baby/baby_blue.tscn" id="4_itw1b"]
+[ext_resource type="PackedScene" uid="uid://dxl7ei7v0e872" path="res://game/scenes/baby/baby_orange.tscn" id="5_bspgk"]
 [ext_resource type="PackedScene" uid="uid://btacon0cgft2g" path="res://game/scenes/hole_griptor.tscn" id="5_r4a53"]
 [ext_resource type="PackedScene" uid="uid://clbpih4u8gcmh" path="res://game/scenes/griptor/griptor.tscn" id="6_o53nx"]
 [ext_resource type="PackedScene" uid="uid://cjjpsd347xnf7" path="res://game/scenes/baby/baby.tscn" id="7_iunfk"]
@@ -14,6 +16,9 @@
 [ext_resource type="PackedScene" uid="uid://bucc76nt8ahf2" path="res://game/scenes/decor/decor_flower.tscn" id="12_a1xw0"]
 [ext_resource type="AudioStream" uid="uid://dj5mxur2mkptg" path="res://game/audio/music/music.ogg" id="13_vc2w7"]
 [ext_resource type="PackedScene" uid="uid://b8m7cg7x3g8an" path="res://game/scenes/ui/fadeout.tscn" id="15_kxbfw"]
+[ext_resource type="PackedScene" uid="uid://b82cmvfn6re84" path="res://game/scenes/ui/baby_status.tscn" id="16_bspgk"]
+[ext_resource type="Material" uid="uid://cklscil5oiuw1" path="res://game/shaders_materials/baby_blue.tres" id="17_xed5j"]
+[ext_resource type="Material" uid="uid://bex7672ptppby" path="res://game/shaders_materials/baby_orange.tres" id="18_ugsmj"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_i7555"]
 size = Vector2(4, 4)
@@ -122,11 +127,11 @@ zoom = Vector2(0.5, 0.5)
 [node name="baby" parent="navigation_region_2d/stuff" instance=ExtResource("7_iunfk")]
 position = Vector2(-151, 105)
 
-[node name="baby_2" parent="navigation_region_2d/stuff" instance=ExtResource("7_iunfk")]
-position = Vector2(163, 107)
+[node name="baby_blue" parent="navigation_region_2d/stuff" instance=ExtResource("4_itw1b")]
+position = Vector2(78, -131)
 
-[node name="baby_3" parent="navigation_region_2d/stuff" instance=ExtResource("7_iunfk")]
-position = Vector2(7, -180)
+[node name="baby_orange" parent="navigation_region_2d/stuff" instance=ExtResource("5_bspgk")]
+position = Vector2(303, 109)
 
 [node name="pawn_marmot" parent="navigation_region_2d/stuff" node_paths=PackedStringArray("home_area") instance=ExtResource("2_5fs5m")]
 position = Vector2(-597, -963)
@@ -430,12 +435,52 @@ position = Vector2(1421, -1551)
 
 [node name="game" type="Node" parent="." node_paths=PackedStringArray("babies_to_be_fed")]
 script = SubResource("GDScript_ud4mg")
-babies_to_be_fed = [NodePath("../navigation_region_2d/stuff/baby"), NodePath("../navigation_region_2d/stuff/baby_2"), NodePath("../navigation_region_2d/stuff/baby_3")]
+babies_to_be_fed = [NodePath("../navigation_region_2d/stuff/baby"), NodePath("../navigation_region_2d/stuff/baby_blue"), NodePath("../navigation_region_2d/stuff/baby_orange")]
 
 [node name="music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("13_vc2w7")
 
 [node name="canvas_layer" type="CanvasLayer" parent="."]
+
+[node name="control" type="Control" parent="canvas_layer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="margin_container" type="MarginContainer" parent="canvas_layer/control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="h_box_container" type="HBoxContainer" parent="canvas_layer/control/margin_container"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+theme_override_constants/separation = 12
+
+[node name="baby_status" parent="canvas_layer/control/margin_container/h_box_container" node_paths=PackedStringArray("baby") instance=ExtResource("16_bspgk")]
+layout_mode = 2
+baby = NodePath("../../../../../navigation_region_2d/stuff/baby")
+
+[node name="baby_status_2" parent="canvas_layer/control/margin_container/h_box_container" node_paths=PackedStringArray("baby") instance=ExtResource("16_bspgk")]
+material = ExtResource("17_xed5j")
+layout_mode = 2
+baby = NodePath("../../../../../navigation_region_2d/stuff/baby_blue")
+
+[node name="baby_status_3" parent="canvas_layer/control/margin_container/h_box_container" node_paths=PackedStringArray("baby") instance=ExtResource("16_bspgk")]
+material = ExtResource("18_ugsmj")
+layout_mode = 2
+baby = NodePath("../../../../../navigation_region_2d/stuff/baby_orange")
 
 [node name="fadeout" parent="canvas_layer" instance=ExtResource("15_kxbfw")]
 

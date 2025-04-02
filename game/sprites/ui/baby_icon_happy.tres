@@ -1,0 +1,7 @@
+[gd_resource type="AtlasTexture" load_steps=2 format=3 uid="uid://cys1fx2pge4c6"]
+
+[ext_resource type="Texture2D" uid="uid://g2mwuc2w3ir8" path="res://game/sprites/ui/baby icon happy.png" id="1_bjsej"]
+
+[resource]
+atlas = ExtResource("1_bjsej")
+region = Rect2(120, 839, 123, 107)
