@@ -1,0 +1,142 @@
+[gd_scene load_steps=9 format=3 uid="uid://deiv8n2bx61v6"]
+
+[ext_resource type="Texture2D" uid="uid://csjnm4frxgd8h" path="res://game/sprites/ui/eggcellent1.png" id="1_3mr44"]
+[ext_resource type="Texture2D" uid="uid://cg7sajc2evvhm" path="res://game/sprites/ui/eggcellent3.png" id="2_mk8x0"]
+[ext_resource type="Texture2D" uid="uid://03dqe444owip" path="res://game/sprites/ui/eggcellent2.png" id="3_ddyy0"]
+[ext_resource type="AudioStream" uid="uid://tkqfmoux3l3c" path="res://game/audio/foley/upgrade.ogg" id="4_ddyy0"]
+[ext_resource type="AudioStream" uid="uid://bre1yy2tykr54" path="res://game/audio/foley/eggcelent.ogg" id="5_i67wu"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_i67wu"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_3mr44")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_mk8x0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_ddyy0")
+}],
+"loop": true,
+"name": &"default",
+"speed": 12.0
+}]
+
+[sub_resource type="Animation" id="Animation_fvqqr"]
+resource_name = "default"
+length = 7.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("control/animated_sprite_2d:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-31.4159, 0.141372]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("control/animated_sprite_2d:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0.1, 0.1), Vector2(1.5, 1.5)]
+}
+tracks/2/type = "audio"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("audio_stream_player")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("4_ddyy0")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("5_i67wu")
+}],
+"times": PackedFloat32Array(0.0333333, 0.933333)
+}
+tracks/2/use_blend = true
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(6.96667),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3ilq6"]
+_data = {
+&"default": SubResource("Animation_fvqqr")
+}
+
+[node name="eggcelent" type="Control"]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="control" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="animated_sprite_2d" type="AnimatedSprite2D" parent="control"]
+rotation = 0.141372
+scale = Vector2(1.5, 1.5)
+sprite_frames = SubResource("SpriteFrames_i67wu")
+frame_progress = 0.689231
+offset = Vector2(22.06, -51.74)
+
+[node name="animation_player" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_3ilq6")
+}
+
+[node name="audio_stream_player" type="AudioStreamPlayer" parent="."]
+
+[connection signal="visibility_changed" from="." to="animation_player" method="play" binds= [&"default"]]
+[connection signal="ready" from="control/animated_sprite_2d" to="control/animated_sprite_2d" method="play" binds= [&"default"]]
