@@ -5,6 +5,21 @@
 [ext_resource type="Texture2D" uid="uid://crocbyhirwgiv" path="res://game/sprites/ui/perfect ending screen frame1.png" id="2_earik"]
 [ext_resource type="Texture2D" uid="uid://bivqctdeu6kte" path="res://game/sprites/ui/perfect ending screen frame2.png" id="3_b8ywm"]
 
+[sub_resource type="Animation" id="Animation_xoa10"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
 [sub_resource type="Animation" id="Animation_8xqsr"]
 resource_name = "loop"
 length = 0.166675
@@ -21,21 +36,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
-}
-
-[sub_resource type="Animation" id="Animation_xoa10"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:visible")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_mivm8"]

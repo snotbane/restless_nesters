@@ -1,8 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://bfsdnjspusept"]
+[gd_scene load_steps=9 format=3 uid="uid://bfsdnjspusept"]
 
 [ext_resource type="AudioStream" uid="uid://btfbhcc6x3kj8" path="res://game/audio/music/music_survival.ogg" id="1_hspxl"]
 [ext_resource type="Texture2D" uid="uid://gk540vdv3y5c" path="res://game/sprites/ui/survival screen.png" id="1_p5110"]
-[ext_resource type="Texture2D" uid="uid://18y5gmi7r12q" path="res://game/sprites/x.png" id="3_lu0es"]
 [ext_resource type="PackedScene" uid="uid://bqf840sp4thjl" path="res://game/scenes/ui/invisible_button.tscn" id="4_kisdp"]
 [ext_resource type="PackedScene" uid="uid://b8m7cg7x3g8an" path="res://game/scenes/ui/fadeout.tscn" id="5_1h3o7"]
 
@@ -118,18 +117,15 @@ texture = ExtResource("1_p5110")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="control" type="TextureRect" parent="."]
-layout_mode = 1
-offset_left = -88.0
-offset_top = -59.0
-offset_right = 168.0
-offset_bottom = 197.0
-texture = ExtResource("3_lu0es")
-expand_mode = 1
-stretch_mode = 4
-
 [node name="invisible_button" parent="." instance=ExtResource("4_kisdp")]
-layout_mode = 0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 0.0
+offset_bottom = 0.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="color_rect" type="ColorRect" parent="."]
 layout_mode = 1
