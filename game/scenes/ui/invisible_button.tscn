@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://bqf840sp4thjl"]
 
-[ext_resource type="AudioStream" uid="uid://d30lbtv8wimo2" path="res://game/audio/foley/select.ogg" id="1_u2iob"]
+[ext_resource type="AudioStream" uid="uid://d30lbtv8wimo2" path="res://game/audio/foley/menu_select.ogg" id="1_u2iob"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_u2iob"]
 
