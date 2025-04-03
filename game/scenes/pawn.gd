@@ -90,7 +90,7 @@ func _physics_process(delta: float) -> void:
 	velocity += walk_vector * walk_speed
 	walk_vector = Vector2.ZERO
 
-	if absf(velocity.x) > 1.0:
+	if absf(velocity.x) > 5.0:
 		sprite.scale.x = signf(velocity.x)
 
 	# velocity *= Vector2(1.0, 0.5)

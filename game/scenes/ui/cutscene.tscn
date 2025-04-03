@@ -117,16 +117,6 @@ texture = ExtResource("1_p5110")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="invisible_button" parent="." instance=ExtResource("4_kisdp")]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_right = 0.0
-offset_bottom = 0.0
-grow_horizontal = 2
-grow_vertical = 2
-
 [node name="color_rect" type="ColorRect" parent="."]
 layout_mode = 1
 anchors_preset = 15
@@ -139,11 +129,21 @@ color = Color(0, 0, 0, 1)
 [node name="fadeout" parent="." instance=ExtResource("5_1h3o7")]
 layout_mode = 1
 
+[node name="invisible_button" parent="." instance=ExtResource("4_kisdp")]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 0.0
+offset_bottom = 0.0
+grow_horizontal = 2
+grow_vertical = 2
+
 [node name="animation_player" type="AnimationPlayer" parent="."]
 libraries = {
 &"": SubResource("AnimationLibrary_kisdp")
 }
 
-[connection signal="pressed" from="invisible_button" to="fadeout" method="play"]
 [connection signal="finished" from="fadeout" to="input" method="return_to_menu"]
+[connection signal="pressed" from="invisible_button" to="fadeout" method="play"]
 [connection signal="ready" from="animation_player" to="animation_player" method="play" binds= [&"fade_in"]]

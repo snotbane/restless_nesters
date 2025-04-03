@@ -147,7 +147,7 @@ animations = [{
 radius = 307.007
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ncesi"]
-size = Vector2(218, 20)
+size = Vector2(26, 20)
 
 [node name="marmot" instance=ExtResource("1_3s6xy")]
 species_id = &"marmot"
