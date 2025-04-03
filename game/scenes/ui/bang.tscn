@@ -38,13 +38,13 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if baby:
 		self.position = (baby.global_position - get_parent().global_position).normalized() * 500.0
-		self.visible = baby.grabbed_by and baby.grabbed_by.species_id == &\"griptor\" and (baby.global_position - get_parent().global_position).length() > 500.0
+		self.visible = baby.grabbed_by and baby.grabbed_by.species_id == &\"griptor\" and (baby.global_position - get_parent().global_position)	.length() > 500.0
 	else:
 		self.queue_free()
 "
 
 [node name="bang" type="AnimatedSprite2D"]
 sprite_frames = SubResource("SpriteFrames_1wsmo")
-frame_progress = 0.691929
+frame_progress = 0.307557
 offset = Vector2(319.69, -110.49)
 script = SubResource("GDScript_ixe4g")

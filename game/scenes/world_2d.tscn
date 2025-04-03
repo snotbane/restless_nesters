@@ -78,7 +78,6 @@ func proceed_to_cutscene() -> void:
 
 
 func check_game() -> void:
-	prints(babies_to_be_fed)
 	if babies_fed >= babies_to_be_fed.size():
 		game_end.emit()
 

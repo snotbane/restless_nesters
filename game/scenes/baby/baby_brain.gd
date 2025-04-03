@@ -30,12 +30,12 @@ var food_fed : int :
 			filled.emit()
 
 
-var _hunger : int = HAPPY
-var hunger : int = HAPPY :
+@export var _hunger : int = HAPPY
+var hunger : int :
 	get: return _hunger
 	set(value):
 		value = clampi(value, 0, HAPPY)
-		if _hunger == value or not pawn.visible	: return
+		if _hunger == value or not pawn or not pawn.visible	: return
 		_hunger = value
 
 		match _hunger:

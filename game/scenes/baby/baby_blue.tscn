@@ -1,9 +1,22 @@
-[gd_scene load_steps=3 format=3 uid="uid://c4iyk3ku5sw67"]
+[gd_scene load_steps=4 format=3 uid="uid://c4iyk3ku5sw67"]
 
 [ext_resource type="PackedScene" uid="uid://cjjpsd347xnf7" path="res://game/scenes/baby/baby.tscn" id="1_4v0gj"]
 [ext_resource type="Material" uid="uid://cklscil5oiuw1" path="res://game/shaders_materials/baby_blue.tres" id="2_vbnwy"]
+
+[sub_resource type="GDScript" id="GDScript_4v0gj"]
+script/source = "extends \"res://game/scenes/baby/baby_brain.gd\"
+
+func _ready() -> void:
+	super._ready()
+	await wait(5.0)
+	hunger -= 1
+"
 
 [node name="baby_blue" instance=ExtResource("1_4v0gj")]
 
 [node name="sprite" parent="." index="0"]
 material = ExtResource("2_vbnwy")
+
+[node name="brain" parent="." index="2"]
+script = SubResource("GDScript_4v0gj")
+_hunger = 3
