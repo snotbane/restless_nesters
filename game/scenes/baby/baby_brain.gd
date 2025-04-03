@@ -39,7 +39,7 @@ func _ready() -> void:
 	super._ready()
 	state = HAPPY
 	await wait(1)
-	start_wandering()
+	# start_wandering() ## Doesn't work on all babies for some reason
 	$chirp_timer.wait_time = randf_range(8.0, 25.0)
 	$chirp_timer.start()
 

@@ -83,9 +83,9 @@ func _physics_process_unblocked(delta: float) -> void:
 
 func _on_other_entered_our_zone(other: Pawn) -> void:
 	match other.species_id:
-		&"player":
-			if state > STATE_WANDER: return
-			state = STATE_AVOID
+		# &"player":
+		# 	if state > STATE_WANDER: return
+		# 	state = STATE_AVOID
 
 		&"baby":
 			if state > STATE_LURK: return

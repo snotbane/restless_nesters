@@ -10,6 +10,9 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	super._physics_process(delta)
 
+	if pawn.grabbed_pawn and pawn.grabbed_pawn.species_id == &"baby" and pawn.is_near_origin:
+		pawn.grabbed_pawn = null
+
 	if self.get_tree().get_node_count_in_group(&"debug_ghost") > 0: return
 	if self.pawn.sprite.animation == &"peck": return
 
@@ -25,13 +28,13 @@ func peck() -> void:
 	if pawn.grabbed_pawn:
 		match pawn.grabbed_pawn.species_id:
 			&"marmot", &"egg": pawn.grabbed_pawn = null
-			&"baby": pawn.grabbed_pawn = null
+			# &"baby": pawn.grabbed_pawn = null
 	else:
 		for i in pawn.pawns_in_zone:
 			match i.species_id:
 				&"marmot", &"egg": pawn.grabbed_pawn = i; break
 				&"baby":
-					if pawn.is_inside_home: continue
+					if i.is_near_origin: continue
 					pawn.grabbed_pawn = i; break
 				&"griptor":
 					i.brain.state = 3
