@@ -17,7 +17,7 @@ var pawns_in_zone : Array[Pawn]
 
 var is_inside_home : bool
 var is_near_origin : bool :
-	get: return self.global_position.length() < 300.0
+	get: return self.global_position.length() < 350.0
 
 
 var grabbed_by : Pawn

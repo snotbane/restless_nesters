@@ -7,6 +7,8 @@ enum {
 	HAPPY,
 }
 
+static var already_eaten : Array
+
 signal filled
 
 @export var audio : AudioStreamPlayer2D
@@ -22,24 +24,46 @@ var food_fed : int :
 
 		pawn.scale = Vector2.ONE + Vector2.ONE * add_scale_per_food * _food_fed
 		audio.pitch_scale = 1.0 - (_food_fed * 0.05)
+		hunger = HAPPY
 
 		if _food_fed == food_needed:
 			filled.emit()
 
 
+var _hunger : int = HAPPY
+var hunger : int = HAPPY :
+	get: return _hunger
+	set(value):
+		value = clampi(value, 0, HAPPY)
+		if _hunger == value or not pawn.visible	: return
+		_hunger = value
+
+		$hunger_timer.stop()
+		if not is_grown: $hunger_timer.start()
+
+		match _hunger:
+			DEAD:
+				pawn.is_phased = true
+				pawn.is_dead = true
+				pawn.died.emit()
+
+
+
+
 var is_able_to_eat : bool :
-	get: return food_fed < food_needed
+	get: return food_fed < food_needed and hunger != DEAD
 
 
 var is_grown : bool :
-	get: return not is_able_to_eat
+	get: return food_fed == food_needed
 
 
 func _ready() -> void:
 	super._ready()
 	state = HAPPY
 	await wait(1)
-	# start_wandering() ## Doesn't work on all babies for some reason
+	# pawn.sprite.play(&"idle")
+	start_wandering() ## Doesn't work on all babies for some reason
 	$chirp_timer.wait_time = randf_range(8.0, 25.0)
 	$chirp_timer.start()
 
@@ -56,7 +80,8 @@ func _get_wander_position() -> Vector2:
 
 
 func consume(other: Node2D) -> void:
-	if not is_able_to_eat: return
+	if not is_able_to_eat or already_eaten.has(other): return
+	already_eaten.push_back(other)
 	food_fed += 1
 	other.queue_free()
 	pawn.sprite.play(&"consume_start")
@@ -75,3 +100,7 @@ func _on_chirp_timer_timeout() -> void:
 			pawn.sprite.play(&"chirp")
 			$chirp_timer.wait_time = randf_range(8.0, 25.0)
 			$chirp_timer.start()
+
+
+func _on_hunger_timer_timeout() -> void:
+	hunger -= 1

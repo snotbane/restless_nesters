@@ -374,7 +374,7 @@ walk_speed = 10.0
 [node name="sprite" parent="." index="0"]
 material = ExtResource("2_0sn24")
 sprite_frames = SubResource("SpriteFrames_3vul3")
-animation = &"chirp"
+animation = &"dead"
 offset = Vector2(-280, -400)
 flip_h = true
 script = ExtResource("26_ytmaf")
@@ -418,7 +418,9 @@ one_shot = true
 autostart = true
 
 [node name="hunger_timer" type="Timer" parent="brain" index="3"]
-wait_time = 60.0
-one_shot = true
+process_callback = 0
+wait_time = 30.0
+autostart = true
 
 [connection signal="timeout" from="brain/chirp_timer" to="brain" method="_on_chirp_timer_timeout"]
+[connection signal="timeout" from="brain/hunger_timer" to="brain" method="_on_hunger_timer_timeout"]

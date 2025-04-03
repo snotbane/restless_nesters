@@ -112,7 +112,7 @@ func select_random_target() -> Node2D:
 	var potential_targets := self.get_tree().get_nodes_in_group(&"baby")
 	potential_targets.shuffle()
 	for i in potential_targets:
-		if i.is_phased or not i.visible: continue
+		if i.is_phased or not i.visible or i.brain.hunger <= 1: continue
 		return i
 	return null
 
