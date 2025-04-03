@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://c3i4n71ic2xrt"
 path.s3tc="res://.godot/imported/tall grass.png-5f486cfd95885ef662b3b22a0bbe18f5.s3tc.ctex"
+path.etc2="res://.godot/imported/tall grass.png-5f486cfd95885ef662b3b22a0bbe18f5.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://game/sprites/props/tall grass.png"
-dest_files=["res://.godot/imported/tall grass.png-5f486cfd95885ef662b3b22a0bbe18f5.s3tc.ctex"]
+dest_files=["res://.godot/imported/tall grass.png-5f486cfd95885ef662b3b22a0bbe18f5.s3tc.ctex", "res://.godot/imported/tall grass.png-5f486cfd95885ef662b3b22a0bbe18f5.etc2.ctex"]
 
 [params]
 

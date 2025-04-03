@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://bi1xpuaucrwgl"
 path.s3tc="res://.godot/imported/baby eating final2.png-1d41926bbec601158eb1e6f9b8310b8a.s3tc.ctex"
+path.etc2="res://.godot/imported/baby eating final2.png-1d41926bbec601158eb1e6f9b8310b8a.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://game/sprites/baby/baby eating/baby eating final2.png"
-dest_files=["res://.godot/imported/baby eating final2.png-1d41926bbec601158eb1e6f9b8310b8a.s3tc.ctex"]
+dest_files=["res://.godot/imported/baby eating final2.png-1d41926bbec601158eb1e6f9b8310b8a.s3tc.ctex", "res://.godot/imported/baby eating final2.png-1d41926bbec601158eb1e6f9b8310b8a.etc2.ctex"]
 
 [params]
 

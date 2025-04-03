@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://bd16tr7kl8r23"
 path.s3tc="res://.godot/imported/player walking final2.png-94654f3506e2d687d05bebaf02d20481.s3tc.ctex"
+path.etc2="res://.godot/imported/player walking final2.png-94654f3506e2d687d05bebaf02d20481.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://game/sprites/player/walking/player walking final2.png"
-dest_files=["res://.godot/imported/player walking final2.png-94654f3506e2d687d05bebaf02d20481.s3tc.ctex"]
+dest_files=["res://.godot/imported/player walking final2.png-94654f3506e2d687d05bebaf02d20481.s3tc.ctex", "res://.godot/imported/player walking final2.png-94654f3506e2d687d05bebaf02d20481.etc2.ctex"]
 
 [params]
 

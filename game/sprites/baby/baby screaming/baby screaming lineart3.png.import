@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://ddonuc5hrmo4b"
 path.s3tc="res://.godot/imported/baby screaming lineart3.png-ed65a8a3cb9b2db8c313f021c96e36f5.s3tc.ctex"
+path.etc2="res://.godot/imported/baby screaming lineart3.png-ed65a8a3cb9b2db8c313f021c96e36f5.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://game/sprites/baby/baby screaming/baby screaming lineart3.png"
-dest_files=["res://.godot/imported/baby screaming lineart3.png-ed65a8a3cb9b2db8c313f021c96e36f5.s3tc.ctex"]
+dest_files=["res://.godot/imported/baby screaming lineart3.png-ed65a8a3cb9b2db8c313f021c96e36f5.s3tc.ctex", "res://.godot/imported/baby screaming lineart3.png-ed65a8a3cb9b2db8c313f021c96e36f5.etc2.ctex"]
 
 [params]
 

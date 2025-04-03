@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://bu3jyc4ahfa3a"
 path.s3tc="res://.godot/imported/marmot idle final2.png-85ea14ca14153854400bcc51c872ef3d.s3tc.ctex"
+path.etc2="res://.godot/imported/marmot idle final2.png-85ea14ca14153854400bcc51c872ef3d.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://game/sprites/marmot/squirming/idle/marmot idle final2.png"
-dest_files=["res://.godot/imported/marmot idle final2.png-85ea14ca14153854400bcc51c872ef3d.s3tc.ctex"]
+dest_files=["res://.godot/imported/marmot idle final2.png-85ea14ca14153854400bcc51c872ef3d.s3tc.ctex", "res://.godot/imported/marmot idle final2.png-85ea14ca14153854400bcc51c872ef3d.etc2.ctex"]
 
 [params]
 

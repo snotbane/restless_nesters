@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://bjddeoblphaid"
 path.s3tc="res://.godot/imported/marmot squirming lineart2.png-fb150607b695d0017d111b7ff4b45e06.s3tc.ctex"
+path.etc2="res://.godot/imported/marmot squirming lineart2.png-fb150607b695d0017d111b7ff4b45e06.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://game/sprites/marmot/squirming/marmot squirming lineart2.png"
-dest_files=["res://.godot/imported/marmot squirming lineart2.png-fb150607b695d0017d111b7ff4b45e06.s3tc.ctex"]
+dest_files=["res://.godot/imported/marmot squirming lineart2.png-fb150607b695d0017d111b7ff4b45e06.s3tc.ctex", "res://.godot/imported/marmot squirming lineart2.png-fb150607b695d0017d111b7ff4b45e06.etc2.ctex"]
 
 [params]
 

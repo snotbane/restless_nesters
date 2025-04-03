@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://cahp8shosvleh"
 path.s3tc="res://.godot/imported/rock.png-e1439a6696e9043c1b234f9e78827ce0.s3tc.ctex"
+path.etc2="res://.godot/imported/rock.png-e1439a6696e9043c1b234f9e78827ce0.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://game/sprites/props/rock.png"
-dest_files=["res://.godot/imported/rock.png-e1439a6696e9043c1b234f9e78827ce0.s3tc.ctex"]
+dest_files=["res://.godot/imported/rock.png-e1439a6696e9043c1b234f9e78827ce0.s3tc.ctex", "res://.godot/imported/rock.png-e1439a6696e9043c1b234f9e78827ce0.etc2.ctex"]
 
 [params]
 

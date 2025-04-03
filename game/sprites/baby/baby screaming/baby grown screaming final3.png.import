@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://daa6ho64e5stw"
 path.s3tc="res://.godot/imported/baby grown screaming final3.png-9734e88178cc19534391481d7e121a87.s3tc.ctex"
+path.etc2="res://.godot/imported/baby grown screaming final3.png-9734e88178cc19534391481d7e121a87.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://game/sprites/baby/baby screaming/baby grown screaming final3.png"
-dest_files=["res://.godot/imported/baby grown screaming final3.png-9734e88178cc19534391481d7e121a87.s3tc.ctex"]
+dest_files=["res://.godot/imported/baby grown screaming final3.png-9734e88178cc19534391481d7e121a87.s3tc.ctex", "res://.godot/imported/baby grown screaming final3.png-9734e88178cc19534391481d7e121a87.etc2.ctex"]
 
 [params]
 

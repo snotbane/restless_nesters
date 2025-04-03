@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://dsbs6lc0mtpfe"
 path.s3tc="res://.godot/imported/player walking rough1 and 2.png-868b838169a63c50fb73ea2a3cd3561a.s3tc.ctex"
+path.etc2="res://.godot/imported/player walking rough1 and 2.png-868b838169a63c50fb73ea2a3cd3561a.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://game/sprites/player walking rough1 and 2.png"
-dest_files=["res://.godot/imported/player walking rough1 and 2.png-868b838169a63c50fb73ea2a3cd3561a.s3tc.ctex"]
+dest_files=["res://.godot/imported/player walking rough1 and 2.png-868b838169a63c50fb73ea2a3cd3561a.s3tc.ctex", "res://.godot/imported/player walking rough1 and 2.png-868b838169a63c50fb73ea2a3cd3561a.etc2.ctex"]
 
 [params]
 

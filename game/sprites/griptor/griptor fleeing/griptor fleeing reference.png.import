@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://bmgmammbo2uke"
 path.s3tc="res://.godot/imported/griptor fleeing reference.png-fb9706a832b6d5d8e9747d5c220fcbfb.s3tc.ctex"
+path.etc2="res://.godot/imported/griptor fleeing reference.png-fb9706a832b6d5d8e9747d5c220fcbfb.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://game/sprites/griptor/griptor fleeing/griptor fleeing reference.png"
-dest_files=["res://.godot/imported/griptor fleeing reference.png-fb9706a832b6d5d8e9747d5c220fcbfb.s3tc.ctex"]
+dest_files=["res://.godot/imported/griptor fleeing reference.png-fb9706a832b6d5d8e9747d5c220fcbfb.s3tc.ctex", "res://.godot/imported/griptor fleeing reference.png-fb9706a832b6d5d8e9747d5c220fcbfb.etc2.ctex"]
 
 [params]
 

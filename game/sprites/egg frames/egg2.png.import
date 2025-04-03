@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://cdwjm5s0dkujv"
 path.s3tc="res://.godot/imported/egg2.png-50994a386d980e399645ad2c15cd821d.s3tc.ctex"
+path.etc2="res://.godot/imported/egg2.png-50994a386d980e399645ad2c15cd821d.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://game/sprites/egg frames/egg2.png"
-dest_files=["res://.godot/imported/egg2.png-50994a386d980e399645ad2c15cd821d.s3tc.ctex"]
+dest_files=["res://.godot/imported/egg2.png-50994a386d980e399645ad2c15cd821d.s3tc.ctex", "res://.godot/imported/egg2.png-50994a386d980e399645ad2c15cd821d.etc2.ctex"]
 
 [params]
 

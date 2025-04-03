@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://bfp321ajf8qps"
 path.s3tc="res://.godot/imported/baby gulp lineart6.png-1f48a41505a7546058ae2a6121c745a4.s3tc.ctex"
+path.etc2="res://.godot/imported/baby gulp lineart6.png-1f48a41505a7546058ae2a6121c745a4.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://game/sprites/baby/baby gulping/baby gulp lineart6.png"
-dest_files=["res://.godot/imported/baby gulp lineart6.png-1f48a41505a7546058ae2a6121c745a4.s3tc.ctex"]
+dest_files=["res://.godot/imported/baby gulp lineart6.png-1f48a41505a7546058ae2a6121c745a4.s3tc.ctex", "res://.godot/imported/baby gulp lineart6.png-1f48a41505a7546058ae2a6121c745a4.etc2.ctex"]
 
 [params]
 

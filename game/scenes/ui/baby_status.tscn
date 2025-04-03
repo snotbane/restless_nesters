@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://da52nitrokfrk" path="res://game/sprites/ui/baby_icon_hungry.tres" id="4_m8r0g"]
 [ext_resource type="Texture2D" uid="uid://lso3vyyknhiy" path="res://game/sprites/ui/baby_icon_kidnapped.tres" id="5_5x1wr"]
 [ext_resource type="Texture2D" uid="uid://c8y46mrd7hidb" path="res://game/sprites/ui/baby_icon_starving.tres" id="6_85fii"]
-[ext_resource type="AudioStream" uid="uid://dxdmhfcxxnc56" path="res://game/audio/foley/baby_starving.tres" id="7_qyplb"]
+[ext_resource type="AudioStream" uid="uid://c6mlh8yixqd3r" path="res://game/audio/foley/church_bell.ogg" id="7_qyplb"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rtnam"]
 
@@ -241,5 +241,6 @@ libraries = {
 
 [node name="death_audio" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_qyplb")
+volume_db = -4.0
 
 [connection signal="ready" from="tab_container/animation_player" to="tab_container/animation_player" method="play" binds= [&"loop"]]

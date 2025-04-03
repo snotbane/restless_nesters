@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://6lcg0grq2wm2"
 path.s3tc="res://.godot/imported/baby starved.png-2dd23ea4103d37fc5c6848ec3e3dade0.s3tc.ctex"
+path.etc2="res://.godot/imported/baby starved.png-2dd23ea4103d37fc5c6848ec3e3dade0.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://game/sprites/baby/baby starved/baby starved.png"
-dest_files=["res://.godot/imported/baby starved.png-2dd23ea4103d37fc5c6848ec3e3dade0.s3tc.ctex"]
+dest_files=["res://.godot/imported/baby starved.png-2dd23ea4103d37fc5c6848ec3e3dade0.s3tc.ctex", "res://.godot/imported/baby starved.png-2dd23ea4103d37fc5c6848ec3e3dade0.etc2.ctex"]
 
 [params]
 

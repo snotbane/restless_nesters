@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://c41sl4ed77pj5"
 path.s3tc="res://.godot/imported/baby whining lineart1.png-71434a86c972f7149ddff27854ada990.s3tc.ctex"
+path.etc2="res://.godot/imported/baby whining lineart1.png-71434a86c972f7149ddff27854ada990.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://game/sprites/baby/baby whining/baby whining lineart1.png"
-dest_files=["res://.godot/imported/baby whining lineart1.png-71434a86c972f7149ddff27854ada990.s3tc.ctex"]
+dest_files=["res://.godot/imported/baby whining lineart1.png-71434a86c972f7149ddff27854ada990.s3tc.ctex", "res://.godot/imported/baby whining lineart1.png-71434a86c972f7149ddff27854ada990.etc2.ctex"]
 
 [params]
 

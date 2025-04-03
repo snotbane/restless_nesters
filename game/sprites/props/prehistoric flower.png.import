@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://buqwpt1neu4gr"
 path.s3tc="res://.godot/imported/prehistoric flower.png-3e5020046ea0a45b332ebb3a5a293f64.s3tc.ctex"
+path.etc2="res://.godot/imported/prehistoric flower.png-3e5020046ea0a45b332ebb3a5a293f64.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://game/sprites/props/prehistoric flower.png"
-dest_files=["res://.godot/imported/prehistoric flower.png-3e5020046ea0a45b332ebb3a5a293f64.s3tc.ctex"]
+dest_files=["res://.godot/imported/prehistoric flower.png-3e5020046ea0a45b332ebb3a5a293f64.s3tc.ctex", "res://.godot/imported/prehistoric flower.png-3e5020046ea0a45b332ebb3a5a293f64.etc2.ctex"]
 
 [params]
 

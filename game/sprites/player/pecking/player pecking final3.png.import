@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://rr6h1v7axrax"
 path.s3tc="res://.godot/imported/player pecking final3.png-ea6d3ae7d9d14474d18c91c6353196f1.s3tc.ctex"
+path.etc2="res://.godot/imported/player pecking final3.png-ea6d3ae7d9d14474d18c91c6353196f1.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://game/sprites/player/pecking/player pecking final3.png"
-dest_files=["res://.godot/imported/player pecking final3.png-ea6d3ae7d9d14474d18c91c6353196f1.s3tc.ctex"]
+dest_files=["res://.godot/imported/player pecking final3.png-ea6d3ae7d9d14474d18c91c6353196f1.s3tc.ctex", "res://.godot/imported/player pecking final3.png-ea6d3ae7d9d14474d18c91c6353196f1.etc2.ctex"]
 
 [params]
 

@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="template"
-run/main_scene="uid://ri5kmtd4f554"
+run/main_scene="uid://ciqb3vy1q1je"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://icon.svg"
 
@@ -191,3 +191,4 @@ avoidance/layer_1="default"
 
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
+textures/vram_compression/import_etc2_astc=true

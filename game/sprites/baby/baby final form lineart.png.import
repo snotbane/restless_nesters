@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://s5iac0whhaqk"
 path.s3tc="res://.godot/imported/baby final form lineart.png-1e86938314b3b0da076a2f715b43a6af.s3tc.ctex"
+path.etc2="res://.godot/imported/baby final form lineart.png-1e86938314b3b0da076a2f715b43a6af.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://game/sprites/baby/baby final form lineart.png"
-dest_files=["res://.godot/imported/baby final form lineart.png-1e86938314b3b0da076a2f715b43a6af.s3tc.ctex"]
+dest_files=["res://.godot/imported/baby final form lineart.png-1e86938314b3b0da076a2f715b43a6af.s3tc.ctex", "res://.godot/imported/baby final form lineart.png-1e86938314b3b0da076a2f715b43a6af.etc2.ctex"]
 
 [params]
 
