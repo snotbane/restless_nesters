@@ -183,10 +183,11 @@ grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.67, 0.67)
 theme_override_styles/panel = SubResource("StyleBoxEmpty_rtnam")
-current_tab = 0
+current_tab = 4
 tabs_visible = false
 
 [node name="dead" type="Control" parent="tab_container"]
+visible = false
 layout_mode = 2
 metadata/_tab_index = 0
 
@@ -224,7 +225,6 @@ use_parent_material = true
 texture = ExtResource("4_m8r0g")
 
 [node name="happy" type="Control" parent="tab_container"]
-visible = false
 use_parent_material = true
 layout_mode = 2
 metadata/_tab_index = 4

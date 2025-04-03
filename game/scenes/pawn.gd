@@ -2,6 +2,7 @@ class_name Pawn extends CharacterBody2D
 
 static var PLAYER : Pawn
 
+signal grabbed
 signal died
 
 @export var species_id : StringName
@@ -42,6 +43,7 @@ var grabbed_pawn : Pawn :
 			_grabbed_pawn.position = Vector2.ZERO
 			_grabbed_pawn.grabbed_by = self
 			_grabbed_pawn.is_phased = true
+			_grabbed_pawn.grabbed.emit()
 
 
 var walk_vector : Vector2
@@ -66,6 +68,7 @@ var is_phased : bool :
 		else:
 			self.collision_layer = temp_collision_layer
 			self.collision_mask = temp_collision_mask
+var is_dead : bool
 
 
 func _ready() -> void:
@@ -94,6 +97,7 @@ func _physics_process(delta: float) -> void:
 
 
 func _on_home_body_entered(other: Node2D) -> void:
+	print("HELLO???")
 	if other == self:
 		is_inside_home = true
 		brain._on_home_reached()

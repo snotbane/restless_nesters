@@ -7,6 +7,7 @@ class_name PawnAudio extends AudioStreamPlayer2D
 func _on_sprite_animation_changed() -> void:
 	if animation_sounds.has(sprite.animation):
 		self.stream = animation_sounds[sprite.animation]
+		if not self.visible: return
 		self.play()
 	else:
 		self.stop()

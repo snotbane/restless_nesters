@@ -9,6 +9,7 @@ enum {
 
 signal filled
 
+@export var audio : AudioStreamPlayer2D
 @export var add_scale_per_food : float = 0.25
 @export var food_needed : int = 3
 var _food_fed : int
@@ -20,6 +21,7 @@ var food_fed : int :
 		_food_fed = value
 
 		pawn.scale = Vector2.ONE + Vector2.ONE * add_scale_per_food * _food_fed
+		audio.pitch_scale = 1.0 - (_food_fed * 0.05)
 
 		if _food_fed == food_needed:
 			filled.emit()
@@ -38,17 +40,19 @@ func _ready() -> void:
 	state = HAPPY
 	await wait(1)
 	start_wandering()
+	$chirp_timer.wait_time = randf_range(8.0, 25.0)
+	$chirp_timer.start()
 
 
 func _physics_process_unblocked(delta: float) -> void:
-	match state:
-		HAPPY:
+	match pawn.sprite.animation:
+		&"idle", &"idle_grown":
 			physics_process_walk_to_target(delta)
 		pass
 
 
 func _get_wander_position() -> Vector2:
-	return pawn.global_position + Vector2.LEFT.rotated(pawn.sprite.global_rotation)
+	return pawn.global_position + Vector2.LEFT.rotated(pawn.sprite.global_rotation) * (self.target_desired_distance + 1.0)
 
 
 func consume(other: Node2D) -> void:
@@ -63,3 +67,11 @@ func _on_other_entered_our_zone(other: Pawn) -> void:
 	match other.species_id:
 		&"marmot":
 			consume(other)
+
+
+func _on_chirp_timer_timeout() -> void:
+	match pawn.sprite.animation:
+		&"idle":
+			pawn.sprite.play(&"chirp")
+			$chirp_timer.wait_time = randf_range(8.0, 25.0)
+			$chirp_timer.start()

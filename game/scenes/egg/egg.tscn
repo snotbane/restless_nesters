@@ -1,0 +1,171 @@
+[gd_scene load_steps=35 format=3 uid="uid://dvdl235u7yp48"]
+
+[ext_resource type="PackedScene" uid="uid://3xe1fxwafno0" path="res://game/scenes/pawn.tscn" id="1_x83fp"]
+[ext_resource type="Texture2D" uid="uid://bdlnhu47eun60" path="res://game/sprites/egg frames/egg1.png" id="2_n2l7o"]
+[ext_resource type="Texture2D" uid="uid://cdwjm5s0dkujv" path="res://game/sprites/egg frames/egg2.png" id="3_xdec6"]
+[ext_resource type="Texture2D" uid="uid://7j3p2yu2vruj" path="res://game/sprites/egg frames/egg3.png" id="4_avhsc"]
+[ext_resource type="Texture2D" uid="uid://csx8yv5vb5iiv" path="res://game/sprites/egg frames/egg4.png" id="5_a1d6o"]
+[ext_resource type="Texture2D" uid="uid://gxqxj3dnbhvq" path="res://game/sprites/egg frames/egg5.png" id="6_jkce6"]
+[ext_resource type="Texture2D" uid="uid://dhslg1o505ama" path="res://game/sprites/egg frames/egg6.png" id="7_ersx7"]
+[ext_resource type="Texture2D" uid="uid://djuw12xf06lg6" path="res://game/sprites/egg frames/egg7.png" id="8_pv84m"]
+[ext_resource type="Texture2D" uid="uid://bs1y5ptns4qyb" path="res://game/sprites/egg frames/egg8.png" id="9_ewr7n"]
+[ext_resource type="Texture2D" uid="uid://bsody3knnvqf1" path="res://game/sprites/egg frames/egg9.png" id="10_dlyif"]
+[ext_resource type="Texture2D" uid="uid://dmuwjfw8kcdak" path="res://game/sprites/egg frames/egg10.png" id="11_khrl6"]
+[ext_resource type="Texture2D" uid="uid://ctxyvarit6xbf" path="res://game/sprites/egg frames/egg11.png" id="12_gmht5"]
+[ext_resource type="Texture2D" uid="uid://bxxyc2vqwrd27" path="res://game/sprites/egg frames/egg12.png" id="13_e7dbv"]
+[ext_resource type="Texture2D" uid="uid://bngbsumig1qae" path="res://game/sprites/egg frames/egg13.png" id="14_vqcxf"]
+[ext_resource type="Texture2D" uid="uid://djpnpfuc2igq5" path="res://game/sprites/egg frames/egg14.png" id="15_emqli"]
+[ext_resource type="Texture2D" uid="uid://dec1mc245sdlt" path="res://game/sprites/egg frames/egg15.png" id="16_6rbbw"]
+[ext_resource type="Texture2D" uid="uid://das4q15ctfkop" path="res://game/sprites/egg frames/egg16.png" id="17_x6bim"]
+[ext_resource type="Texture2D" uid="uid://cqvkbbg3weyf3" path="res://game/sprites/egg frames/egg17.png" id="18_wv5f6"]
+[ext_resource type="Texture2D" uid="uid://cynvpac2bm5h5" path="res://game/sprites/egg frames/egg18.png" id="19_quivx"]
+[ext_resource type="Texture2D" uid="uid://cc11pd37wvxc3" path="res://game/sprites/egg frames/egg19.png" id="20_0pxbk"]
+[ext_resource type="Texture2D" uid="uid://dn16awxibdkvf" path="res://game/sprites/egg frames/egg20.png" id="21_c3pil"]
+[ext_resource type="Texture2D" uid="uid://cxteonujamv26" path="res://game/sprites/egg frames/egg21.png" id="22_7tbyk"]
+[ext_resource type="Texture2D" uid="uid://bgyx8b16hqujx" path="res://game/sprites/egg frames/egg22.png" id="23_1h8d7"]
+[ext_resource type="Texture2D" uid="uid://br2601gf2kf6w" path="res://game/sprites/egg frames/egg23.png" id="24_xn616"]
+[ext_resource type="Texture2D" uid="uid://bii3jap4hir74" path="res://game/sprites/egg frames/egg24.png" id="25_grr3k"]
+[ext_resource type="Texture2D" uid="uid://kxeq8vc4qwui" path="res://game/sprites/egg frames/egg25.png" id="26_76ojl"]
+[ext_resource type="Texture2D" uid="uid://3g0ereo8kjlc" path="res://game/sprites/egg frames/egg26.png" id="27_fltff"]
+[ext_resource type="Texture2D" uid="uid://dv0sf361u7cw" path="res://game/sprites/egg frames/egg27.png" id="28_2moe1"]
+[ext_resource type="Texture2D" uid="uid://cxg4bde4nuh2t" path="res://game/sprites/egg frames/egg28.png" id="29_lhw2g"]
+[ext_resource type="Texture2D" uid="uid://dwafvwxwdfe3g" path="res://game/sprites/egg frames/egg29.png" id="30_3nxl5"]
+
+[sub_resource type="GDScript" id="GDScript_n2l7o"]
+script/source = "extends Pawn
+
+@export var baby : Pawn
+"
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bugy8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_n2l7o")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_xdec6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_avhsc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_a1d6o")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_jkce6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_ersx7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_pv84m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_ewr7n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_dlyif")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_khrl6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_gmht5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_e7dbv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_vqcxf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_emqli")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_6rbbw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_x6bim")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_wv5f6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_quivx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_0pxbk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_c3pil")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_7tbyk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_1h8d7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_xn616")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_grr3k")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_76ojl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("27_fltff")
+}, {
+"duration": 1.0,
+"texture": ExtResource("28_2moe1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("29_lhw2g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("30_3nxl5")
+}],
+"loop": true,
+"name": &"default",
+"speed": 24.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_n2l7o"]
+radius = 250.0
+
+[sub_resource type="GDScript" id="GDScript_xdec6"]
+resource_name = "egg_brain"
+script/source = "extends Brain
+
+func _physics_process(delta: float) -> void:
+	super._physics_process(delta)
+	if pawn.global_position.length() < 300.0:
+		_on_home_reached()
+
+func _on_home_reached() -> void:
+	pawn.baby.visible = true
+	pawn.baby.global_position = Vector2.ZERO
+	pawn.died.emit()
+	pawn.queue_free()
+"
+
+[node name="egg" instance=ExtResource("1_x83fp")]
+script = SubResource("GDScript_n2l7o")
+species_id = &"egg"
+
+[node name="sprite" parent="." index="0"]
+sprite_frames = SubResource("SpriteFrames_bugy8")
+frame_progress = 0.0172811
+offset = Vector2(280, -400)
+
+[node name="placeholder" parent="sprite" index="0"]
+visible = false
+
+[node name="shape" parent="sprite/zone" index="0"]
+position = Vector2(0, -70)
+shape = SubResource("CircleShape2D_n2l7o")
+
+[node name="brain" parent="." index="2"]
+script = SubResource("GDScript_xdec6")

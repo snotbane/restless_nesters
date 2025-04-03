@@ -24,12 +24,12 @@ func _input(event: InputEvent) -> void:
 func peck() -> void:
 	if pawn.grabbed_pawn:
 		match pawn.grabbed_pawn.species_id:
-			&"marmot": pawn.grabbed_pawn = null
+			&"marmot", &"egg": pawn.grabbed_pawn = null
 			&"baby": pawn.grabbed_pawn = null
 	else:
 		for i in pawn.pawns_in_zone:
 			match i.species_id:
-				&"marmot": pawn.grabbed_pawn = i; break
+				&"marmot", &"egg": pawn.grabbed_pawn = i; break
 				&"baby":
 					if pawn.is_inside_home: continue
 					pawn.grabbed_pawn = i; break

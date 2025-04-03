@@ -101,8 +101,9 @@ func _on_target_reached() -> void:
 			pass # See _on_other_entered_our_zone
 		STATE_FLEE:
 			if pawn.grabbed_pawn:
-				pawn.grabbed_pawn.died.emit()
 				pawn.grabbed_pawn.queue_free()
+				pawn.grabbed_pawn.is_dead = true
+				pawn.grabbed_pawn.died.emit()
 				pawn.grabbed_pawn = null
 			state = STATE_HIDE
 
@@ -111,7 +112,7 @@ func select_random_target() -> Node2D:
 	var potential_targets := self.get_tree().get_nodes_in_group(&"baby")
 	potential_targets.shuffle()
 	for i in potential_targets:
-		if i.is_phased: continue
+		if i.is_phased or not i.visible: continue
 		return i
 	return null
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=4 uid="uid://ri5kmtd4f554"]
+[gd_scene load_steps=35 format=4 uid="uid://ri5kmtd4f554"]
 
 [ext_resource type="PackedScene" uid="uid://dugum1qvra8cp" path="res://game/scenes/player/player.tscn" id="1_g6tk3"]
 [ext_resource type="AudioStream" uid="uid://dccdt4df70g2y" path="res://game/audio/foley/donk.ogg" id="1_imqfy"]
@@ -17,6 +17,8 @@
 [ext_resource type="PackedScene" uid="uid://l3ogrdwv3ljr" path="res://game/scenes/decor/decor_rock.tscn" id="9_ud4mg"]
 [ext_resource type="PackedScene" uid="uid://ccbova6rkagb2" path="res://game/scenes/decor/decor_grass_1.tscn" id="10_vc2w7"]
 [ext_resource type="PackedScene" uid="uid://c0s4mci13w5q0" path="res://game/scenes/decor/decor_grass_2.tscn" id="11_a1xw0"]
+[ext_resource type="PackedScene" uid="uid://2pbgefauwb31" path="res://game/scenes/baby/baby_purple.tscn" id="11_ohiml"]
+[ext_resource type="PackedScene" uid="uid://dvdl235u7yp48" path="res://game/scenes/egg/egg.tscn" id="12_8bhje"]
 [ext_resource type="PackedScene" uid="uid://bucc76nt8ahf2" path="res://game/scenes/decor/decor_flower.tscn" id="12_a1xw0"]
 [ext_resource type="AudioStream" uid="uid://dj5mxur2mkptg" path="res://game/audio/music/music.ogg" id="13_vc2w7"]
 [ext_resource type="PackedScene" uid="uid://b8m7cg7x3g8an" path="res://game/scenes/ui/fadeout.tscn" id="15_kxbfw"]
@@ -25,6 +27,8 @@
 [ext_resource type="Material" uid="uid://bex7672ptppby" path="res://game/shaders_materials/baby_orange.tres" id="18_ugsmj"]
 [ext_resource type="Material" uid="uid://bggrqfp8yx15h" path="res://game/shaders_materials/baby_red.tres" id="18_xhe51"]
 [ext_resource type="PackedScene" uid="uid://deiv8n2bx61v6" path="res://game/scenes/ui/eggcelent.tscn" id="24_s466y"]
+[ext_resource type="PackedScene" uid="uid://br13djvo7sy5e" path="res://game/scenes/ui/go.tscn" id="25_pb5e4"]
+[ext_resource type="Material" uid="uid://bqap5jtymd87n" path="res://game/shaders_materials/baby_purple.tres" id="25_vwkmd"]
 
 [sub_resource type="GDScript" id="GDScript_ud4mg"]
 resource_name = "game"
@@ -33,8 +37,13 @@ script/source = "extends Node
 signal game_end
 signal paused(value: bool)
 
-@export var babies_to_be_fed : Array[Pawn]
-var baby_brains : Array[Brain]
+var babies_to_be_fed : Array[Pawn] : 
+	get:
+		var result : Array[Pawn] = []
+		for i in self.get_tree().get_nodes_in_group(&\"baby\"):
+			if i.is_dead or not i.visible: continue
+			result.push_back(i)
+		return result
 var babies_all : int
 var babies_fed : int :
 	get:
@@ -44,12 +53,10 @@ var babies_fed : int :
 		return result
 
 func _ready() -> void:
-	babies_all = babies_to_be_fed.size()
-	for baby in babies_to_be_fed:
-		baby_brains.push_back(baby.find_child(\"brain\"))
+	babies_all = self.get_tree().get_node_count_in_group(&\"baby\")
+	for baby in self.get_tree().get_nodes_in_group(&\"baby\"):
 		baby.died.connect(_on_baby_died.bind(baby))
-	for brain in baby_brains:
-		brain.filled.connect(self._on_baby_filled)
+		baby.find_child(\"brain\").filled.connect(self._on_baby_filled)
 
 
 func _input(event: InputEvent) -> void:
@@ -70,13 +77,13 @@ func proceed_to_cutscene() -> void:
 
 
 func check_game() -> void:
+	prints(babies_to_be_fed)
 	if babies_fed >= babies_to_be_fed.size():
 		game_end.emit()
 
 
 func _on_baby_died(baby: Pawn) -> void:
-	babies_to_be_fed.erase(baby)
-	check_game()
+	check_game.call_deferred()
 	
 
 func _on_baby_filled() -> void:
@@ -90,16 +97,14 @@ func _on_fadeout_finished() -> void:
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_i7555"]
 size = Vector2(4, 4)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_ljcdc"]
-radius = 312.0
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ljcdc"]
-size = Vector2(920, 350)
-
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_ggort"]
 vertices = PackedVector2Array(563.867, -2779.06, 765, -2737.1, 968.867, -2636.16, 1275, -2483.1, 1248.56, -2246, 1076.44, -2246, 301.75, -2251, 292.969, -2283.87, 537.602, -2772, 1050.11, -2238.97, -737.438, -2707, -827.508, -2707, -766.031, -2737.61, -765, -2737.1, 256.031, -2991.61, 439.992, -2900, 365.438, -2900, 1026.06, -2214.87, 3316.03, -1467.61, 3457.01, -1397.4, 3315.5, -1326.64, 3315, -1326.9, 3315, -1467.1, -3315, -1326.9, -3315.5, -1326.64, -3457.01, -1397.4, -3316.03, -1467.61, -3315, -1467.1, 339.109, -2892.97, -458.867, -2890.16, -711.109, -2699.97, 1017.23, -2182, 292.969, -2218.11, 587.969, -2803.11, 593.258, -2822.96, -968.867, -2636.59, -967.25, -2637.39, -959.969, -2610.11, -968.867, -2636.16, -687.062, -2675.87, -1275, -2483.1, -345.227, -1548, 3008.87, -1620.59, 3008.87, -1620.16, -354.062, -1515.11, 1988.87, -2128.59, 1988.87, -2128.16, 1307.75, -2182, 1298.97, -2214.87, 1785, -2229.1, 315.062, -2868.87, 255, -2991.1, 1298.97, -2149.11, 1530, -437.898, 187.75, -372, 178.969, -404.867, -354.062, -1580.87, 2805, -1721.1, 178.969, -339.109, 1275, -310.898, 1026.06, -2149.11, 268.867, -2194.06, -935.867, -2586.06, -1275, -310.898, 766.031, -2737.61, 968.867, -2636.59, 1276.03, -2483.61, 1478.87, -2382.59, 1478.87, -2382.16, 1274.87, -2238.97, 2296.03, -1975.61, 2498.87, -1874.59, 2498.87, -1874.16, 2295, -1975.1, -3008.87, -1620.16, -3008.87, -1620.59, -2806.03, -1721.61, -2805, -1721.1, -2805, -1072.9, -2805.5, -1072.65, -2498.87, -1874.16, -2498.87, -1874.59, -2296.03, -1975.61, -2295, -1975.1, -2295, -818.898, -2295.5, -818.648, -1988.87, -2128.16, -1988.87, -2128.59, -1786.03, -2229.61, -1785, -2229.1, -1785, -564.898, -1785.5, -564.648, -1478.87, -2382.16, -1478.87, -2382.59, -1276.03, -2483.61, -1275.5, -310.648, 44.1094, -2307.97, -458.867, -2890.59, -256.031, -2991.61, -255, -2991.1, 70.4375, -2315, 3060.5, -1199.65, 3060, -1199.9, 2805, -1072.9, -3060.5, -1199.65, -3060, -1199.9, -2550.5, -945.648, -2550, -945.898, -2040.5, -691.648, -2040, -691.898, -1530.5, -437.648, -1530, -437.898, -909.602, -2579, -1020.5, -183.648, -737.398, -2579, -1020, -183.898, -765, -56.8984, -765.5, -56.6484, -711.109, -2586.06, -635.75, -1548, -678.227, -2643, 20.0625, -2283.87, 0, -3118.6, 306.227, -2836, 315.062, -2803.11, 2805.5, -1072.65, 2550.5, -945.648, 2550, -945.898, -378.109, -1491.06, 2295.5, -818.648, 2295, -818.898, 2040.5, -691.648, 2040, -691.898, 1785.5, -564.648, 1785, -564.898, 1530.5, -437.648, 154.867, -428.969, 128.562, -436, -43.5625, -436, -69.8672, -428.969, -404.398, -1484, -576.602, -1484, -93.9688, -404.867, 1275.5, -310.648, 1020.5, -183.648, 1020, -183.898, 154.867, -315.062, 765.5, -56.6484, 765, -56.8984, 510.5, 70.3516, 510, 70.1016, 255.5, 197.352, 255, 197.102, 128.602, -308, 0.5, 324.352, 0, 324.102, -43.6016, -308, -69.8672, -315.062, -0.5, 324.352, -255, 197.102, -510, 70.1016, -93.9688, -339.109, -255.5, 197.352, -102.75, -372, -510.5, 70.3516, 1786.03, -2229.61, 365.398, -2772, 268.867, -2307.97, 242.562, -2315, 339.109, -2779.06, -687.062, -2610.11, 11.2266, -2251, 20.0625, -2218.11, -378.109, -1604.97, -404.438, -1612, 2806.03, -1721.61, 1274.87, -2125.06, 1248.6, -2118, -602.867, -1491.06, -626.969, -1515.11, 1076.4, -2118, 1050.11, -2125.06, 242.602, -2187, 70.3984, -2187, 44.1094, -2194.06, -576.562, -1612, -602.867, -1604.97, -626.969, -1580.87)
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4, 5, 6, 7, 8), PackedInt32Array(6, 5, 9), PackedInt32Array(10, 11, 12, 13), PackedInt32Array(14, 15, 16), PackedInt32Array(6, 9, 17), PackedInt32Array(18, 19, 20, 21, 22), PackedInt32Array(23, 24, 25, 26, 27), PackedInt32Array(14, 16, 28), PackedInt32Array(10, 13, 29, 30), PackedInt32Array(6, 17, 31, 32), PackedInt32Array(33, 34, 1), PackedInt32Array(35, 36, 37, 38), PackedInt32Array(39, 30, 29), PackedInt32Array(40, 38, 37), PackedInt32Array(41, 42, 43, 44), PackedInt32Array(45, 46, 47, 48, 49), PackedInt32Array(14, 28, 50, 51), PackedInt32Array(52, 47, 46), PackedInt32Array(53, 54, 55), PackedInt32Array(42, 41, 56, 57), PackedInt32Array(58, 54, 53, 59), PackedInt32Array(32, 31, 60, 61), PackedInt32Array(40, 37, 62, 63), PackedInt32Array(0, 33, 1), PackedInt32Array(64, 65, 2, 1), PackedInt32Array(3, 66, 67, 68, 48, 69), PackedInt32Array(70, 71, 72, 73), PackedInt32Array(74, 75, 76, 77, 78, 79), PackedInt32Array(80, 81, 82, 83, 84, 85), PackedInt32Array(86, 87, 88, 89, 90, 91), PackedInt32Array(92, 93, 94, 40, 63, 95), PackedInt32Array(96, 29, 97, 98, 99, 100), PackedInt32Array(43, 22, 21, 101, 102), PackedInt32Array(44, 43, 102, 103), PackedInt32Array(104, 23, 27, 74, 105), PackedInt32Array(79, 105, 74), PackedInt32Array(106, 78, 77, 80, 107), PackedInt32Array(85, 107, 80), PackedInt32Array(108, 84, 83, 86, 109), PackedInt32Array(91, 109, 86), PackedInt32Array(110, 90, 89, 92, 111), PackedInt32Array(95, 111, 92), PackedInt32Array(63, 62, 112), PackedInt32Array(113, 63, 112, 114, 115), PackedInt32Array(116, 117, 115, 114, 118, 119), PackedInt32Array(120, 39, 29, 96, 121), PackedInt32Array(99, 122, 51, 50, 123), PackedInt32Array(99, 123, 124, 100), PackedInt32Array(102, 125, 103), PackedInt32Array(103, 126, 127), PackedInt32Array(44, 103, 127, 128), PackedInt32Array(127, 129, 130), PackedInt32Array(128, 127, 130), PackedInt32Array(130, 131, 132), PackedInt32Array(128, 130, 132), PackedInt32Array(132, 133, 134), PackedInt32Array(128, 132, 134), PackedInt32Array(128, 134, 135, 53), PackedInt32Array(128, 53, 55, 136), PackedInt32Array(128, 136, 137), PackedInt32Array(128, 137, 138), PackedInt32Array(128, 138, 139, 140), PackedInt32Array(141, 140, 139, 142), PackedInt32Array(53, 143, 59), PackedInt32Array(59, 144, 145), PackedInt32Array(58, 59, 145, 146), PackedInt32Array(145, 147, 148), PackedInt32Array(146, 145, 148), PackedInt32Array(146, 148, 149, 150), PackedInt32Array(146, 150, 151, 152, 153), PackedInt32Array(153, 152, 154, 155, 156), PackedInt32Array(157, 156, 155, 158, 159), PackedInt32Array(160, 161, 157, 159, 162), PackedInt32Array(116, 163, 161, 160, 164), PackedInt32Array(49, 165, 45), PackedInt32Array(68, 49, 48), PackedInt32Array(3, 69, 4), PackedInt32Array(166, 8, 7, 167), PackedInt32Array(166, 167, 168, 169), PackedInt32Array(169, 168, 100, 124), PackedInt32Array(170, 120, 121, 171), PackedInt32Array(118, 170, 171, 172, 173, 174), PackedInt32Array(57, 175, 42), PackedInt32Array(72, 57, 56, 73), PackedInt32Array(176, 46, 73, 56, 173, 177), PackedInt32Array(116, 178, 141, 142, 163), PackedInt32Array(179, 178, 116), PackedInt32Array(176, 52, 46), PackedInt32Array(180, 177, 173), PackedInt32Array(181, 180, 173), PackedInt32Array(61, 60, 181, 173, 182), PackedInt32Array(183, 182, 173), PackedInt32Array(184, 183, 173), PackedInt32Array(172, 184, 173), PackedInt32Array(118, 174, 185), PackedInt32Array(118, 185, 186), PackedInt32Array(118, 186, 187), PackedInt32Array(119, 179, 116), PackedInt32Array(118, 187, 119)])
 agent_radius = 50.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ohiml"]
+radius = 252.32
+height = 852.03
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_5jids"]
 shader = ExtResource("4_lrn83")
@@ -108,17 +113,20 @@ shader_parameter/pan_speed = Vector2(0.1, -0.1)
 
 [node name="world_2d" type="Node2D"]
 
-[node name="game" type="Node" parent="." node_paths=PackedStringArray("babies_to_be_fed")]
+[node name="game" type="Node" parent="."]
 process_mode = 3
 script = SubResource("GDScript_ud4mg")
-babies_to_be_fed = [NodePath("../navigation_region_2d/stuff/baby"), NodePath("../navigation_region_2d/stuff/baby_blue"), NodePath("../navigation_region_2d/stuff/baby_orange")]
 
 [node name="pause_audio" type="AudioStreamPlayer" parent="game"]
 stream = ExtResource("1_imqfy")
 
 [node name="music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("13_vc2w7")
-autoplay = true
+
+[node name="timer" type="Timer" parent="music"]
+wait_time = 4.5
+one_shot = true
+autostart = true
 
 [node name="background" type="Node2D" parent="."]
 
@@ -126,17 +134,6 @@ autoplay = true
 texture_filter = 1
 scale = Vector2(32, 32)
 texture = SubResource("PlaceholderTexture2D_i7555")
-
-[node name="home_area" type="Area2D" parent="."]
-
-[node name="home_circle" type="CollisionShape2D" parent="home_area"]
-position = Vector2(0, -25)
-shape = SubResource("CircleShape2D_ljcdc")
-
-[node name="collision_shape_2d" type="CollisionShape2D" parent="home_area"]
-visible = false
-position = Vector2(0, -75)
-shape = SubResource("RectangleShape2D_ljcdc")
 
 [node name="navigation_region_2d" type="NavigationRegion2D" parent="."]
 position = Vector2(1, 0)
@@ -146,6 +143,14 @@ navigation_polygon = SubResource("NavigationPolygon_ggort")
 y_sort_enabled = true
 tile_map_data = PackedByteArray("AAD///3/AQABAAEAAAD///7/AQABAAAAAAAAAP7/AQABAAAAAAD/////AQABAAEAAAAAAP//AQABAAEAAAAAAAAAAQABAAAAAAD//wEAAQABAAEAAAD+////AQABAAEAAAD//wAAAQABAAAAAAD///z/AQABAAAAAAAAAPr/AQABAAAAAAD///r/AQABAAAAAAAAAPz/AQABAAAAAAAAAPv/AQABAAEAAAAAAP3/AQABAAEAAAABAPv/AQABAAEAAAABAPz/AQABAAAAAAABAP3/AQABAAEAAAABAP7/AQABAAAAAAD+//v/AQABAAEAAAD+//z/AQABAAAAAAD9//3/AQABAAEAAAD+//7/AQABAAAAAAD+//3/AQABAAEAAAD9//z/AQABAAAAAAD9//v/AQABAAEAAAD+//r/AQABAAAAAAD+//n/AQABAAEAAAD///j/AQABAAAAAAD///n/AQABAAEAAAAAAPj/AQABAAAAAAAAAPn/AQABAAEAAAABAPr/AQABAAAAAAACAPz/AQABAAAAAAD///f/AQABAAEAAAD///v/AQABAAEAAAD8//v/AQABAAEAAAD9//r/AQABAAAAAAD9//n/AQABAAEAAAD+//j/AQABAAAAAAD+//f/AQABAAEAAAD///b/AQABAAAAAAD///X/AQABAAEAAAAAAPb/AQABAAAAAAAAAPf/AQABAAEAAAABAPj/AQABAAAAAAABAPn/AQABAAEAAAACAPr/AQABAAAAAAACAPv/AQABAAEAAAADAPr/AQABAAAAAAACAPn/AQABAAEAAAACAPj/AQABAAAAAAABAPf/AQABAAEAAAABAPb/AQABAAAAAAAAAPX/AQABAAEAAAAAAPT/AQABAAAAAAD///P/AQABAAEAAAD///T/AQABAAAAAAD+//X/AQABAAEAAAD+//b/AQABAAAAAAD9//f/AQABAAEAAAD9//j/AQABAAAAAAD8//n/AQABAAEAAAD8//r/AQABAAAAAAD8//T/AQABAAAAAAD8//X/AQABAAEAAAD8//b/AQABAAAAAAD8//f/AQABAAEAAAD8//j/AQABAAAAAAD9//T/AQABAAAAAAD9//X/AQABAAEAAAD9//b/AQABAAAAAAD8/+3/AQABAAEAAAD8/+7/AQABAAAAAAD8/+//AQABAAEAAAD8//D/AQABAAAAAAD8//H/AQABAAEAAAD8//L/AQABAAAAAAD8//P/AQABAAEAAAD9/+3/AQABAAEAAAD9/+7/AQABAAAAAAD9/+//AQABAAEAAAD9//D/AQABAAAAAAD9//H/AQABAAEAAAD9//L/AQABAAAAAAD9//P/AQABAAEAAAD+/+3/AQABAAEAAAD+/+7/AQABAAAAAAD+/+//AQABAAEAAAD+//D/AQABAAAAAAD+//H/AQABAAEAAAD+//L/AQABAAAAAAD+//P/AQABAAEAAAD//+3/AQABAAEAAAD//+7/AQABAAAAAAD//+//AQABAAEAAAD///D/AQABAAAAAAD///H/AQABAAEAAAD///L/AQABAAAAAAAAAO3/AQABAAEAAAAAAO7/AQABAAAAAAAAAO//AQABAAEAAAAAAPD/AQABAAAAAAAAAPH/AQABAAEAAAAAAPL/AQABAAAAAAAAAPP/AQABAAEAAAABAO3/AQABAAEAAAABAO7/AQABAAAAAAABAO//AQABAAEAAAABAPD/AQABAAAAAAABAPH/AQABAAEAAAABAPL/AQABAAAAAAABAPP/AQABAAEAAAABAPT/AQABAAAAAAABAPX/AQABAAEAAAACAO3/AQABAAEAAAACAO7/AQABAAAAAAACAO//AQABAAEAAAACAPD/AQABAAAAAAACAPH/AQABAAEAAAACAPL/AQABAAAAAAACAPP/AQABAAEAAAACAPT/AQABAAAAAAACAPX/AQABAAEAAAACAPb/AQABAAAAAAACAPf/AQABAAEAAAADAPj/AQABAAAAAAD+//T/AQABAAAAAAADAO7/AQABAAAAAAADAPD/AQABAAAAAAADAPL/AQABAAAAAAADAPT/AQABAAAAAAADAPb/AQABAAAAAAD9/+z/AQABAAAAAAD9/+v/AQABAAEAAAD+/+r/AQABAAAAAAD+/+n/AQABAAEAAAD//+j/AQABAAAAAAD//+f/AQABAAEAAAAAAOj/AQABAAAAAAAAAOn/AQABAAEAAAABAOr/AQABAAAAAAABAOv/AQABAAEAAAACAOz/AQABAAAAAAD//+v/AQABAAEAAAAAAOr/AQABAAAAAAD//+n/AQABAAEAAAD//+r/AQABAAAAAAD+/+v/AQABAAEAAAD+/+z/AQABAAAAAAD//+z/AQABAAAAAAAAAOv/AQABAAEAAAAAAOz/AQABAAAAAAABAOz/AQABAAAAAAD7/+//AQABAAEAAAD7//D/AQABAAAAAAD6//H/AQABAAEAAAD6//L/AQABAAAAAAD5//P/AQABAAEAAAD5//T/AQABAAAAAAD5//X/AQABAAEAAAD6//b/AQABAAAAAAD6//f/AQABAAEAAAD7//j/AQABAAAAAAD7//n/AQABAAEAAAADAPn/AQABAAEAAAAEAPj/AQABAAAAAAAEAPf/AQABAAEAAAAFAPb/AQABAAAAAAAFAPX/AQABAAEAAAADAO//AQABAAEAAAAEAPD/AQABAAAAAAAEAPH/AQABAAEAAAAFAPL/AQABAAAAAAAFAPP/AQABAAEAAAAGAPT/AQABAAAAAAAEAPb/AQABAAAAAAAEAPX/AQABAAEAAAAFAPT/AQABAAAAAAAEAPP/AQABAAEAAAAEAPL/AQABAAAAAAADAPH/AQABAAEAAAADAPP/AQABAAEAAAAEAPT/AQABAAAAAAADAPX/AQABAAEAAAADAPf/AQABAAEAAAD7//T/AQABAAAAAAD7//P/AQABAAEAAAD7//L/AQABAAAAAAD7//H/AQABAAEAAAD6//P/AQABAAEAAAD6//T/AQABAAAAAAD6//X/AQABAAEAAAD7//b/AQABAAAAAAD7//X/AQABAAEAAAD7//f/AQABAAEAAAD4//P/AQACAAEAAAD5//L/AQACAAAAAAD5//H/AQACAAEAAAD6//D/AQACAAAAAAD6/+//AQACAAEAAAD7/+7/AQACAAAAAAD7/+3/AQACAAEAAAD8/+z/AQACAAAAAAD8/+v/AQACAAEAAAD9/+r/AQACAAAAAAD9/+n/AQACAAEAAAD+/+j/AQACAAAAAAD+/+f/AQACAAEAAAD//+b/AQACAAAAAAD//+X/AQACAAEAAAAAAOb/AQACAAAAAAAAAOf/AQACAAEAAAABAOj/AQACAAAAAAABAOn/AQACAAEAAAACAOr/AQACAAAAAAACAOv/AQACAAEAAAADAOz/AQACAAAAAAADAO3/AQACAAEAAAAEAO7/AQACAAAAAAAEAO//AQACAAEAAAAFAPD/AQACAAAAAAAFAPH/AQACAAEAAAAGAPL/AQACAAAAAAAGAPP/AQACAAEAAAD4//T/AQAAAAAAAAD4//X/AQAAAAAAAAD5//b/AQAAAAAAAAD5//f/AQAAAAAAAAD6//j/AQAAAAAAAAD6//n/AQAAAAAAAAD7//r/AQAAAAAAAAD7//v/AQAAAAAAAAD8//z/AQAAAAAAAAD8//3/AQAAAAAAAAD9//7/AQAAAAAAAAD9////AQAAAAAAAAD+/wAAAQAAAAAAAAD+/wEAAQAAAAAAAAD//wIAAQAAAAAAAAD//wMAAQAAAAAAAAAAAAIAAQAAAAAAAAAAAAEAAQAAAAAAAAABAAAAAQAAAAAAAAABAP//AQAAAAAAAAACAP7/AQAAAAAAAAACAP3/AQAAAAAAAAADAPz/AQAAAAAAAAADAPv/AQAAAAAAAAAEAPr/AQAAAAAAAAAEAPn/AQAAAAAAAAAFAPj/AQAAAAAAAAAFAPf/AQAAAAAAAAAGAPb/AQAAAAAAAAAGAPX/AQAAAAAAAAAHAPT/AQAAAAAAAAA=")
 tile_set = ExtResource("1_kxbfw")
+
+[node name="home_area" type="Area2D" parent="navigation_region_2d"]
+position = Vector2(-1, 0)
+
+[node name="home_circle" type="CollisionShape2D" parent="navigation_region_2d/home_area"]
+position = Vector2(4, -53)
+rotation = 1.57079
+shape = SubResource("CapsuleShape2D_ohiml")
 
 [node name="nest_sprite" type="Sprite2D" parent="navigation_region_2d"]
 position = Vector2(43, -59)
@@ -157,7 +162,7 @@ y_sort_enabled = true
 position = Vector2(-1, 0)
 
 [node name="pawn_player" parent="navigation_region_2d/stuff" node_paths=PackedStringArray("home_area") instance=ExtResource("1_g6tk3")]
-home_area = NodePath("../../../home_area")
+home_area = NodePath("../../home_area")
 
 [node name="camera_2d" type="Camera2D" parent="navigation_region_2d/stuff/pawn_player"]
 position = Vector2(0, -220)
@@ -196,9 +201,16 @@ position = Vector2(-151, 105)
 
 [node name="baby_blue" parent="navigation_region_2d/stuff" instance=ExtResource("4_itw1b")]
 position = Vector2(78, -131)
+walk_speed = 1.0
 
 [node name="baby_orange" parent="navigation_region_2d/stuff" instance=ExtResource("5_bspgk")]
 position = Vector2(303, 109)
+walk_speed = 1.0
+
+[node name="baby_purple" parent="navigation_region_2d/stuff" instance=ExtResource("11_ohiml")]
+visible = false
+position = Vector2(-483, 440)
+walk_speed = 1.0
 
 [node name="pawn_marmot" parent="navigation_region_2d/stuff" node_paths=PackedStringArray("home_area") instance=ExtResource("2_5fs5m")]
 position = Vector2(-597, -963)
@@ -247,6 +259,11 @@ home_area = NodePath("../hole_3")
 [node name="pawn_marmot_6" parent="navigation_region_2d/stuff" node_paths=PackedStringArray("home_area") instance=ExtResource("2_5fs5m")]
 position = Vector2(696, -2299)
 home_area = NodePath("../hole_2")
+
+[node name="egg" parent="navigation_region_2d/stuff" node_paths=PackedStringArray("baby", "home_area") instance=ExtResource("12_8bhje")]
+position = Vector2(-498, -447)
+baby = NodePath("../baby_purple")
+home_area = NodePath("../../home_area")
 
 [node name="hole" parent="navigation_region_2d/stuff" instance=ExtResource("4_ggort")]
 position = Vector2(0, -959)
@@ -543,6 +560,12 @@ material = ExtResource("18_ugsmj")
 layout_mode = 2
 baby = NodePath("../../../../../navigation_region_2d/stuff/baby_orange")
 
+[node name="baby_status_4" parent="canvas_layer/control/margin_container/h_box_container" node_paths=PackedStringArray("baby") instance=ExtResource("16_bspgk")]
+visible = false
+material = ExtResource("25_vwkmd")
+layout_mode = 2
+baby = NodePath("../../../../../navigation_region_2d/stuff/baby_purple")
+
 [node name="pause_overlay" type="ColorRect" parent="canvas_layer/control"]
 visible = false
 layout_mode = 1
@@ -578,6 +601,9 @@ layout_mode = 2
 [node name="eggcelent" parent="canvas_layer/control" instance=ExtResource("24_s466y")]
 layout_mode = 1
 
+[node name="go" parent="canvas_layer/control" instance=ExtResource("25_pb5e4")]
+layout_mode = 1
+
 [node name="fadeout" parent="canvas_layer" instance=ExtResource("15_kxbfw")]
 offset_left = -2.0
 offset_top = -2.0
@@ -589,4 +615,7 @@ offset_bottom = -2.0
 [connection signal="game_end" from="game" to="navigation_region_2d/stuff/pawn_player" method="set" binds= [&"is_phased", true]]
 [connection signal="paused" from="game" to="canvas_layer/control/pause_overlay" method="set_visible"]
 [connection signal="paused" from="game" to="game/pause_audio" method="play" unbinds=1]
+[connection signal="timeout" from="music/timer" to="music" method="play"]
+[connection signal="died" from="navigation_region_2d/stuff/egg" to="canvas_layer/control/margin_container/h_box_container/baby_status_4" method="set_visible" binds= [true]]
+[connection signal="died" from="navigation_region_2d/stuff/egg" to="canvas_layer/control/eggcelent" method="set_visible" binds= [true]]
 [connection signal="finished" from="canvas_layer/fadeout" to="game" method="_on_fadeout_finished"]

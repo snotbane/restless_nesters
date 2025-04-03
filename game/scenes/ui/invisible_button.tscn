@@ -1,8 +1,12 @@
-[gd_scene load_steps=5 format=3 uid="uid://bqf840sp4thjl"]
+[gd_scene load_steps=9 format=3 uid="uid://bqf840sp4thjl"]
 
 [ext_resource type="AudioStream" uid="uid://d30lbtv8wimo2" path="res://game/audio/foley/menu_select.ogg" id="1_u2iob"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_u2iob"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5sxi7"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_l030n"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u2iob"]
 draw_center = false
@@ -16,6 +20,10 @@ corner_radius_top_right = 6
 corner_radius_bottom_right = 6
 corner_radius_bottom_left = 6
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mx8wr"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_15rca"]
+
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_07epn"]
 
 [node name="invisible_button" type="Button"]
@@ -23,7 +31,11 @@ offset_right = 100.0
 offset_bottom = 100.0
 mouse_default_cursor_shape = 2
 theme_override_styles/focus = SubResource("StyleBoxEmpty_u2iob")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_5sxi7")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_l030n")
 theme_override_styles/hover = SubResource("StyleBoxFlat_u2iob")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_mx8wr")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_15rca")
 theme_override_styles/normal = SubResource("StyleBoxEmpty_07epn")
 expand_icon = true
 

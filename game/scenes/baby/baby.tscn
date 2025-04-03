@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://cjjpsd347xnf7"]
+[gd_scene load_steps=38 format=3 uid="uid://cjjpsd347xnf7"]
 
 [ext_resource type="PackedScene" uid="uid://3xe1fxwafno0" path="res://game/scenes/pawn.tscn" id="1_xdrdn"]
 [ext_resource type="Material" uid="uid://bggrqfp8yx15h" path="res://game/shaders_materials/baby_red.tres" id="2_0sn24"]
@@ -15,11 +15,14 @@
 [ext_resource type="Texture2D" uid="uid://be1vt6xutlca4" path="res://game/sprites/baby/baby eating/baby eating final8.png" id="9_jdvna"]
 [ext_resource type="Texture2D" uid="uid://dserjc6geu218" path="res://game/sprites/baby/baby starved/baby starved2.png" id="12_vh4ay"]
 [ext_resource type="Texture2D" uid="uid://cmlcqxxequ3b7" path="res://game/sprites/baby/baby screaming/baby screaming final1.png" id="12_xtstd"]
-[ext_resource type="Texture2D" uid="uid://blxobvdkcrkdk" path="res://game/sprites/baby/baby final form.png" id="13_v6cmu"]
 [ext_resource type="Texture2D" uid="uid://c6smkj4g0lj72" path="res://game/sprites/baby/baby screaming/baby screaming final2.png" id="13_woo2a"]
+[ext_resource type="Texture2D" uid="uid://7tdypqxh1bqn" path="res://game/sprites/baby/baby idle final1.png" id="14_aws6g"]
 [ext_resource type="Texture2D" uid="uid://bffxlv58f6e4a" path="res://game/sprites/baby/baby screaming/baby screaming final3.png" id="14_jdvna"]
+[ext_resource type="Texture2D" uid="uid://obnudgdt13wx" path="res://game/sprites/baby/baby idle final2.png" id="15_37j5t"]
 [ext_resource type="Texture2D" uid="uid://v65buo625red" path="res://game/sprites/baby/baby screaming/baby grown screaming final1.png" id="15_jcl7y"]
+[ext_resource type="Texture2D" uid="uid://df6xq7mciiij4" path="res://game/sprites/baby/baby grown idle final1.png" id="16_5dmgo"]
 [ext_resource type="Texture2D" uid="uid://v2cw2547gnlh" path="res://game/sprites/baby/baby screaming/baby grown screaming final2.png" id="16_mxq27"]
+[ext_resource type="Texture2D" uid="uid://c6hv3b7ajhfgu" path="res://game/sprites/baby/baby grown idle final2.png" id="17_vcp6k"]
 [ext_resource type="Texture2D" uid="uid://daa6ho64e5stw" path="res://game/sprites/baby/baby screaming/baby grown screaming final3.png" id="17_vh4ay"]
 [ext_resource type="Texture2D" uid="uid://6lcg0grq2wm2" path="res://game/sprites/baby/baby starved/baby starved.png" id="19_n0g02"]
 [ext_resource type="Texture2D" uid="uid://b7o1jq5a8t103" path="res://game/sprites/baby/baby whining/baby whining final4.png" id="20_krpyc"]
@@ -37,7 +40,7 @@
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_e22wp")
+"texture": ExtResource("3_s62vi")
 }],
 "loop": false,
 "name": &"chirp",
@@ -281,19 +284,25 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("5_emqx0")
+"texture": ExtResource("14_aws6g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_37j5t")
 }],
 "loop": true,
 "name": &"idle",
-"speed": 5.0
+"speed": 12.0
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("13_v6cmu")
+"texture": ExtResource("16_5dmgo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_vcp6k")
 }],
 "loop": true,
 "name": &"idle_grown",
-"speed": 5.0
+"speed": 12.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -360,14 +369,12 @@ radius = 100.0
 
 [node name="baby" groups=["baby"] instance=ExtResource("1_xdrdn")]
 species_id = &"baby"
-walk_speed = 1.0
+walk_speed = 10.0
 
 [node name="sprite" parent="." index="0"]
 material = ExtResource("2_0sn24")
 sprite_frames = SubResource("SpriteFrames_3vul3")
-animation = &"consume_start"
-frame = 31
-frame_progress = 1.0
+animation = &"chirp"
 offset = Vector2(-280, -400)
 flip_h = true
 script = ExtResource("26_ytmaf")
@@ -400,8 +407,9 @@ animation_sounds = {
 &"whine": ExtResource("30_kksuj")
 }
 
-[node name="brain" parent="." index="2"]
+[node name="brain" parent="." index="2" node_paths=PackedStringArray("audio")]
 script = ExtResource("2_wyexy")
+audio = NodePath("../sprite/audio")
 add_scale_per_food = 0.25
 food_needed = 3
 wander_duration_min = 1.0
@@ -410,6 +418,12 @@ wander_duration_max = 1.0
 [node name="wander_timer" parent="brain" index="1"]
 one_shot = false
 
-[node name="hunger_timer" type="Timer" parent="brain" index="2"]
+[node name="chirp_timer" type="Timer" parent="brain" index="2"]
+one_shot = true
+autostart = true
+
+[node name="hunger_timer" type="Timer" parent="brain" index="3"]
 wait_time = 60.0
 one_shot = true
+
+[connection signal="timeout" from="brain/chirp_timer" to="brain" method="_on_chirp_timer_timeout"]
