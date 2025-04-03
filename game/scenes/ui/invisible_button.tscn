@@ -7,6 +7,7 @@
 [node name="invisible_button" type="Button"]
 offset_right = 100.0
 offset_bottom = 100.0
+mouse_default_cursor_shape = 2
 theme_override_styles/focus = SubResource("StyleBoxEmpty_u2iob")
 flat = true
 expand_icon = true
