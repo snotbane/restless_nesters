@@ -88,6 +88,7 @@ func _on_other_entered_our_zone(other: Pawn) -> void:
 		# 	state = STATE_AVOID
 
 		&"baby":
+			if other.brain.hunger <= 1: state = STATE_WANDER; return
 			if state > STATE_LURK: return
 			pawn.grabbed_pawn = other
 			state = STATE_FREEZE

@@ -374,7 +374,7 @@ walk_speed = 10.0
 [node name="sprite" parent="." index="0"]
 material = ExtResource("2_0sn24")
 sprite_frames = SubResource("SpriteFrames_3vul3")
-animation = &"dead"
+animation = &"idle"
 offset = Vector2(-280, -400)
 flip_h = true
 script = ExtResource("26_ytmaf")

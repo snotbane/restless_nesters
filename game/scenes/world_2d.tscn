@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=4 uid="uid://ri5kmtd4f554"]
+[gd_scene load_steps=36 format=4 uid="uid://ri5kmtd4f554"]
 
 [ext_resource type="PackedScene" uid="uid://dugum1qvra8cp" path="res://game/scenes/player/player.tscn" id="1_g6tk3"]
 [ext_resource type="AudioStream" uid="uid://dccdt4df70g2y" path="res://game/audio/foley/donk.ogg" id="1_imqfy"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://bwroaaxvf5i7k" path="res://game/sprites/background.png" id="5_5jids"]
 [ext_resource type="PackedScene" uid="uid://dxl7ei7v0e872" path="res://game/scenes/baby/baby_orange.tscn" id="5_bspgk"]
 [ext_resource type="PackedScene" uid="uid://btacon0cgft2g" path="res://game/scenes/hole_griptor.tscn" id="5_r4a53"]
+[ext_resource type="PackedScene" uid="uid://c01myoa3kcxtj" path="res://game/scenes/ui/bang.tscn" id="6_inq8t"]
 [ext_resource type="PackedScene" uid="uid://clbpih4u8gcmh" path="res://game/scenes/griptor/griptor.tscn" id="6_o53nx"]
 [ext_resource type="PackedScene" uid="uid://cjjpsd347xnf7" path="res://game/scenes/baby/baby.tscn" id="7_iunfk"]
 [ext_resource type="PackedScene" uid="uid://bkkssva7wccpt" path="res://game/scenes/decor/decor_fern.tscn" id="8_b0r63"]
@@ -167,6 +168,18 @@ home_area = NodePath("../../home_area")
 [node name="camera_2d" type="Camera2D" parent="navigation_region_2d/stuff/pawn_player"]
 position = Vector2(0, -220)
 zoom = Vector2(0.5, 0.5)
+
+[node name="bang" parent="navigation_region_2d/stuff/pawn_player/camera_2d" node_paths=PackedStringArray("baby") instance=ExtResource("6_inq8t")]
+baby = NodePath("../../../baby")
+
+[node name="bang_2" parent="navigation_region_2d/stuff/pawn_player/camera_2d" node_paths=PackedStringArray("baby") instance=ExtResource("6_inq8t")]
+baby = NodePath("../../../baby_blue")
+
+[node name="bang_3" parent="navigation_region_2d/stuff/pawn_player/camera_2d" node_paths=PackedStringArray("baby") instance=ExtResource("6_inq8t")]
+baby = NodePath("../../../baby_orange")
+
+[node name="bang_4" parent="navigation_region_2d/stuff/pawn_player/camera_2d" node_paths=PackedStringArray("baby") instance=ExtResource("6_inq8t")]
+baby = NodePath("../../../baby_purple")
 
 [node name="control" type="Control" parent="navigation_region_2d/stuff/pawn_player/camera_2d"]
 z_index = -1000

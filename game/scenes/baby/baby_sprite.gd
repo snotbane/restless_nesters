@@ -9,11 +9,7 @@ func _process_looping(delta: float) -> void:
 		2: anim = &"whine"
 		3: anim = &"idle"
 
-	if pawn.is_phased and pawn.grabbed_by:
-		match pawn.grabbed_by.species_id:
-			&"griptor": anim = &"scream"
-	else:
-		pass
+	if pawn.grabbed_by and pawn.grabbed_by.species_id == &"griptor": anim = &"scream"
 
 	if pawn.brain.is_grown and self.sprite_frames.has_animation(anim + "_grown"):
 		anim += "_grown"

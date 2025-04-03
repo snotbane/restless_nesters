@@ -1,0 +1,50 @@
+[gd_scene load_steps=5 format=3 uid="uid://c01myoa3kcxtj"]
+
+[ext_resource type="Texture2D" uid="uid://be6lr06npas24" path="res://game/sprites/ui/baby captured alarm1.png" id="1_ixe4g"]
+[ext_resource type="Texture2D" uid="uid://wx8wp0vs7ij" path="res://game/sprites/ui/baby captured alarm2.png" id="2_4uaqw"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1wsmo"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_ixe4g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_4uaqw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("1_ixe4g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_4uaqw")
+}, {
+"duration": 4.0,
+"texture": null
+}],
+"loop": true,
+"name": &"default",
+"speed": 24.0
+}]
+
+[sub_resource type="GDScript" id="GDScript_ixe4g"]
+script/source = "extends AnimatedSprite2D
+
+@export var baby : Pawn
+
+func _ready() -> void:
+	play(&\"default\")
+	
+
+func _process(delta: float) -> void:
+	if baby:
+		self.position = (baby.global_position - get_parent().global_position).normalized() * 500.0
+		self.visible = baby.grabbed_by and baby.grabbed_by.species_id == &\"griptor\" and (baby.global_position - get_parent().global_position).length() > 500.0
+	else:
+		self.queue_free()
+"
+
+[node name="bang" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_1wsmo")
+frame_progress = 0.691929
+offset = Vector2(319.69, -110.49)
+script = SubResource("GDScript_ixe4g")
