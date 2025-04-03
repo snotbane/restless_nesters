@@ -15,18 +15,13 @@ autoplay = false
 [node name="texture_rect" parent="." index="3"]
 texture = ExtResource("2_jrsbk")
 
-[node name="control" parent="." index="4"]
-visible = false
-
-[node name="invisible_button" parent="." index="5"]
-layout_mode = 1
+[node name="invisible_button" parent="." index="4"]
 anchors_preset = -1
-anchor_left = 0.636285
-anchor_top = 0.631173
-anchor_right = 0.877604
-anchor_bottom = 0.822531
-offset_right = 0.0
-offset_bottom = 0.0
-grow_horizontal = 2
-grow_vertical = 2
+anchor_left = 0.638889
+anchor_top = 0.675926
+anchor_right = 0.880244
+anchor_bottom = 0.791336
+offset_right = -8.04156
+offset_bottom = 25.2144
+rotation = -0.0919514
 metadata/_edit_use_anchors_ = true

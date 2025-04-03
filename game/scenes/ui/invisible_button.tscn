@@ -1,15 +1,30 @@
-[gd_scene load_steps=3 format=3 uid="uid://bqf840sp4thjl"]
+[gd_scene load_steps=5 format=3 uid="uid://bqf840sp4thjl"]
 
 [ext_resource type="AudioStream" uid="uid://d30lbtv8wimo2" path="res://game/audio/foley/menu_select.ogg" id="1_u2iob"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_u2iob"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u2iob"]
+draw_center = false
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_07epn"]
 
 [node name="invisible_button" type="Button"]
 offset_right = 100.0
 offset_bottom = 100.0
 mouse_default_cursor_shape = 2
 theme_override_styles/focus = SubResource("StyleBoxEmpty_u2iob")
-flat = true
+theme_override_styles/hover = SubResource("StyleBoxFlat_u2iob")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_07epn")
 expand_icon = true
 
 [node name="audio_stream_player" type="AudioStreamPlayer" parent="."]
