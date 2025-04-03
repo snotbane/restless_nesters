@@ -15,6 +15,7 @@ func _ready() -> void:
 	baby.died.connect($death_audio.play.bind())
 
 	baby.sprite.animation_changed.connect(_on_animation_changed)
+	$tab_container.current_tab = HAPPY
 	# for i in get_child(0).get_children():
 	# 	i.material = self.material
 

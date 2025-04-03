@@ -10,10 +10,10 @@ config_version=5
 
 [application]
 
-config/name="template"
-run/main_scene="uid://ciqb3vy1q1je"
+config/name="Restless Nesters"
+run/main_scene="uid://ri5kmtd4f554"
 config/features=PackedStringArray("4.4", "GL Compatibility")
-config/icon="res://icon.svg"
+config/icon="res://game/sprites/meta/app_icon.png"
 
 [autoload]
 
