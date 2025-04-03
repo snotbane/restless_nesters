@@ -30,10 +30,10 @@
 [ext_resource type="Texture2D" uid="uid://cotb2imqep18" path="res://game/sprites/baby/baby whining/baby whining final2.png" id="22_0sn24"]
 [ext_resource type="Texture2D" uid="uid://dedfv5wk2tm" path="res://game/sprites/baby/baby whining/baby whining final3.png" id="23_ytmaf"]
 [ext_resource type="Script" uid="uid://bg2yu1l6adrrs" path="res://game/scenes/baby/baby_sprite.gd" id="26_ytmaf"]
-[ext_resource type="AudioStream" path="res://game/audio/foley/baby_happy.tres" id="27_n7kpp"]
+[ext_resource type="AudioStream" uid="uid://uy3px2kf6kau" path="res://game/audio/foley/baby_happy.tres" id="27_n7kpp"]
 [ext_resource type="AudioStream" uid="uid://c4jru4ggtueid" path="res://game/audio/foley/GULUPLUP.ogg" id="28_idl6c"]
 [ext_resource type="AudioStream" uid="uid://oycy4xo8kfyo" path="res://game/audio/foley/baby_scream.tres" id="29_idl6c"]
-[ext_resource type="AudioStream" path="res://game/audio/foley/baby_hungry.tres" id="30_kksuj"]
+[ext_resource type="AudioStream" uid="uid://c7p5qfc7n3mxa" path="res://game/audio/foley/baby_hungry.tres" id="30_kksuj"]
 [ext_resource type="AudioStream" uid="uid://dxdmhfcxxnc56" path="res://game/audio/foley/baby_starving.tres" id="31_htno6"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_3vul3"]

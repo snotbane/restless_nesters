@@ -1,13 +1,11 @@
-[gd_resource type="AudioStreamRandomizer" load_steps=5 format=3 uid="uid://p4rwfclo0x8l"]
+[gd_resource type="AudioStreamRandomizer" load_steps=4 format=3 uid="uid://c7p5qfc7n3mxa"]
 
-[ext_resource type="AudioStream" uid="uid://0y5td3mmhcmi" path="res://assets/audio/baby_happy_00.ogg" id="1_247ul"]
-[ext_resource type="AudioStream" uid="uid://de8kpspeks4yl" path="res://assets/audio/baby_happy_01.ogg" id="2_5if3t"]
-[ext_resource type="AudioStream" uid="uid://c3trcdusihgou" path="res://assets/audio/baby_happy_02.ogg" id="3_3awal"]
-[ext_resource type="AudioStream" uid="uid://bm8ey828redql" path="res://assets/audio/baby_happy_03.ogg" id="4_lydg5"]
+[ext_resource type="AudioStream" uid="uid://cuivoha3v27fa" path="res://game/audio/foley/baby_hungry_00.ogg" id="1_pnsmf"]
+[ext_resource type="AudioStream" uid="uid://dkxyajfochcos" path="res://game/audio/foley/baby_hungry_01.ogg" id="2_v46uu"]
+[ext_resource type="AudioStream" uid="uid://cibuqf4v4rw8q" path="res://game/audio/foley/baby_hungry_02.ogg" id="3_k5h2x"]
 
 [resource]
-streams_count = 4
-stream_0/stream = ExtResource("1_247ul")
-stream_1/stream = ExtResource("2_5if3t")
-stream_2/stream = ExtResource("3_3awal")
-stream_3/stream = ExtResource("4_lydg5")
+streams_count = 3
+stream_0/stream = ExtResource("1_pnsmf")
+stream_1/stream = ExtResource("2_v46uu")
+stream_2/stream = ExtResource("3_k5h2x")

@@ -38,9 +38,6 @@ var hunger : int = HAPPY :
 		if _hunger == value or not pawn.visible	: return
 		_hunger = value
 
-		$hunger_timer.stop()
-		if not is_grown: $hunger_timer.start()
-
 		match _hunger:
 			DEAD:
 				pawn.is_phased = true
@@ -85,6 +82,8 @@ func consume(other: Node2D) -> void:
 	food_fed += 1
 	other.queue_free()
 	pawn.sprite.play(&"consume_start")
+	$hunger_timer.stop()
+	if not is_grown: $hunger_timer.start()
 
 
 func _on_other_entered_our_zone(other: Pawn) -> void:
