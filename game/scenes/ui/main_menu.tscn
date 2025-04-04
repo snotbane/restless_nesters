@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://ciqb3vy1q1je"]
+[gd_scene load_steps=16 format=3 uid="uid://ciqb3vy1q1je"]
 
 [ext_resource type="Texture2D" uid="uid://2jg3fqm40tf4" path="res://game/sprites/ui/mainmenu.jpeg" id="1_2axjx"]
 [ext_resource type="PackedScene" uid="uid://bqf840sp4thjl" path="res://game/scenes/ui/invisible_button.tscn" id="2_fdqrn"]
@@ -6,7 +6,9 @@
 [ext_resource type="PackedScene" uid="uid://b5m32fmtyuqhi" path="res://game/scenes/ui/credits_entry.tscn" id="4_pjsh0"]
 [ext_resource type="Texture2D" uid="uid://du1wubcyehxny" path="res://game/sprites/credits/credits_jozix_icon.png" id="5_viao6"]
 [ext_resource type="Texture2D" uid="uid://8o4ex1jttrg6" path="res://game/sprites/credits/credits_nulture_icon.png" id="6_lorn2"]
-[ext_resource type="Texture2D" uid="uid://cqmoc5146tw88" path="res://game/sprites/credits/credits_natesolio_icon.png" id="7_jyyef"]
+[ext_resource type="Texture2D" uid="uid://6b0sgxhkq0bw" path="res://game/sprites/credits/credits_natesolio_icon.jpg" id="7_bpqj4"]
+[ext_resource type="Texture2D" uid="uid://dj3lj5cw215i0" path="res://game/sprites/credits/credits_bigtext_icon.png" id="8_bpqj4"]
+[ext_resource type="Texture2D" uid="uid://btodot67063qa" path="res://game/sprites/credits/credits_andrew_icon.JPG" id="8_jyyef"]
 [ext_resource type="Texture2D" uid="uid://18y5gmi7r12q" path="res://game/sprites/x.png" id="8_lorn2"]
 
 [sub_resource type="Theme" id="Theme_fdqrn"]
@@ -27,6 +29,11 @@ func quit() -> void:
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_laa82"]
 bg_color = Color(0, 0, 0, 0.690196)
+
+[sub_resource type="LabelSettings" id="LabelSettings_bpqj4"]
+font_size = 48
+outline_size = 20
+outline_color = Color(0, 0, 0, 1)
 
 [node name="main_menu" type="Control"]
 layout_mode = 3
@@ -106,7 +113,6 @@ metadata/_edit_use_anchors_ = true
 layout_mode = 1
 
 [node name="credits" type="Control" parent="."]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -125,49 +131,89 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_laa82")
 
 [node name="margin_container" type="MarginContainer" parent="credits/panel_container"]
 layout_mode = 2
+size_flags_vertical = 4
 theme_override_constants/margin_left = 200
 theme_override_constants/margin_right = 200
 
 [node name="v_box_container" type="VBoxContainer" parent="credits/panel_container/margin_container"]
 layout_mode = 2
-size_flags_vertical = 4
 theme_override_constants/separation = 20
 
-[node name="credits_entry_2" parent="credits/panel_container/margin_container/v_box_container" instance=ExtResource("4_pjsh0")]
+[node name="label" type="Label" parent="credits/panel_container/margin_container/v_box_container"]
+layout_mode = 2
+text = "THE MAKERS"
+label_settings = SubResource("LabelSettings_bpqj4")
+horizontal_alignment = 1
+
+[node name="panel_container" type="PanelContainer" parent="credits/panel_container/margin_container/v_box_container"]
 layout_mode = 2
 size_flags_vertical = 4
 
-[node name="icon" parent="credits/panel_container/margin_container/v_box_container/credits_entry_2" index="0"]
+[node name="v_box_container" type="VBoxContainer" parent="credits/panel_container/margin_container/v_box_container/panel_container"]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="credits_entry" parent="credits/panel_container/margin_container/v_box_container/panel_container/v_box_container" instance=ExtResource("4_pjsh0")]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="icon" parent="credits/panel_container/margin_container/v_box_container/panel_container/v_box_container/credits_entry" index="0"]
 texture = ExtResource("5_viao6")
 expand_mode = 1
 
-[node name="rich_text_label" parent="credits/panel_container/margin_container/v_box_container/credits_entry_2" index="1"]
-text = "   [font_size=30][b]JOZIX[/b][/font_size]
-[i]Visionary, Game Design, Artwork"
+[node name="rich_text_label" parent="credits/panel_container/margin_container/v_box_container/panel_container/v_box_container/credits_entry" index="1"]
+text = "   [font_size=30][b][url=][hint=]JOZIX[/hint][/url][/b][/font_size]
+[i]Visionary, Game Design, Artwork, Voice Acting"
 
-[node name="credits_entry" parent="credits/panel_container/margin_container/v_box_container" instance=ExtResource("4_pjsh0")]
+[node name="credits_entry_2" parent="credits/panel_container/margin_container/v_box_container/panel_container/v_box_container" instance=ExtResource("4_pjsh0")]
 layout_mode = 2
 size_flags_vertical = 4
 
-[node name="icon" parent="credits/panel_container/margin_container/v_box_container/credits_entry" index="0"]
+[node name="icon" parent="credits/panel_container/margin_container/v_box_container/panel_container/v_box_container/credits_entry_2" index="0"]
 texture = ExtResource("6_lorn2")
 expand_mode = 1
 
-[node name="rich_text_label" parent="credits/panel_container/margin_container/v_box_container/credits_entry" index="1"]
-text = "   [font_size=30][b]GNUCKELL[/b][/font_size]
+[node name="rich_text_label" parent="credits/panel_container/margin_container/v_box_container/panel_container/v_box_container/credits_entry_2" index="1"]
+text = "   [font_size=30][b][url=https://gnuckell.carrd.co/][hint=https://gnuckell.carrd.co/]GNUCKELL[/hint][/url][/b][/font_size]
 [i]Codesmithing, Game Design"
 
-[node name="credits_entry_3" parent="credits/panel_container/margin_container/v_box_container" instance=ExtResource("4_pjsh0")]
+[node name="credits_entry_3" parent="credits/panel_container/margin_container/v_box_container/panel_container/v_box_container" instance=ExtResource("4_pjsh0")]
 layout_mode = 2
 size_flags_vertical = 4
 
-[node name="icon" parent="credits/panel_container/margin_container/v_box_container/credits_entry_3" index="0"]
-texture = ExtResource("7_jyyef")
+[node name="icon" parent="credits/panel_container/margin_container/v_box_container/panel_container/v_box_container/credits_entry_3" index="0"]
+texture = ExtResource("7_bpqj4")
 expand_mode = 1
 
-[node name="rich_text_label" parent="credits/panel_container/margin_container/v_box_container/credits_entry_3" index="1"]
-text = "   [font_size=30][b]NATESOLIO[/b][/font_size]
+[node name="rich_text_label" parent="credits/panel_container/margin_container/v_box_container/panel_container/v_box_container/credits_entry_3" index="1"]
+text = "   [font_size=30][b][url=https://natesolio.itch.io][hint=https://natesolio.itch.io]NATESOLIO[/hint][/url][/b][/font_size]
 [i]Music"
+
+[node name="credits_entry_4" parent="credits/panel_container/margin_container/v_box_container/panel_container/v_box_container" instance=ExtResource("4_pjsh0")]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="icon" parent="credits/panel_container/margin_container/v_box_container/panel_container/v_box_container/credits_entry_4" index="0"]
+texture = ExtResource("8_bpqj4")
+expand_mode = 1
+
+[node name="rich_text_label" parent="credits/panel_container/margin_container/v_box_container/panel_container/v_box_container/credits_entry_4" index="1"]
+text = "   [font_size=30][b]BIG TEXT[/b][/font_size]
+[i]Voice Acting"
+
+[node name="credits_entry_5" parent="credits/panel_container/margin_container/v_box_container/panel_container/v_box_container" instance=ExtResource("4_pjsh0")]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="icon" parent="credits/panel_container/margin_container/v_box_container/panel_container/v_box_container/credits_entry_5" index="0"]
+texture = ExtResource("8_jyyef")
+expand_mode = 1
+
+[node name="rich_text_label" parent="credits/panel_container/margin_container/v_box_container/panel_container/v_box_container/credits_entry_5" index="1"]
+text = "   [font_size=30][b][url=https://andrewsymes.github.io/AndrewGSymes_Portfolio/][hint=https://andrewsymes.github.io/AndrewGSymes_Portfolio/]ANDREW SYMES[/hint][/url][/b][/font_size]
+[i]Voice Acting"
 
 [node name="invisible_button" parent="credits" instance=ExtResource("2_fdqrn")]
 layout_mode = 0
@@ -189,6 +235,8 @@ expand_mode = 1
 [connection signal="finished" from="fadeout" to="." method="start"]
 [connection signal="pressed" from="credits/invisible_button" to="credits" method="set_visible" binds= [false]]
 
-[editable path="credits/panel_container/margin_container/v_box_container/credits_entry_2"]
-[editable path="credits/panel_container/margin_container/v_box_container/credits_entry"]
-[editable path="credits/panel_container/margin_container/v_box_container/credits_entry_3"]
+[editable path="credits/panel_container/margin_container/v_box_container/panel_container/v_box_container/credits_entry"]
+[editable path="credits/panel_container/margin_container/v_box_container/panel_container/v_box_container/credits_entry_2"]
+[editable path="credits/panel_container/margin_container/v_box_container/panel_container/v_box_container/credits_entry_3"]
+[editable path="credits/panel_container/margin_container/v_box_container/panel_container/v_box_container/credits_entry_4"]
+[editable path="credits/panel_container/margin_container/v_box_container/panel_container/v_box_container/credits_entry_5"]

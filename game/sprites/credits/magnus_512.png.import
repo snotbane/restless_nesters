@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/magnus_512.png-5c61aa3c250a4d43915bfd50ba3509
 
 [params]
 
-compress/mode=0
+compress/mode=4
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

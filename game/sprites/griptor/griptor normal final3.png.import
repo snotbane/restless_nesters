@@ -3,21 +3,19 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bcnao7nxn6por"
-path.s3tc="res://.godot/imported/griptor normal final3.png-22cae680739f93c233ceaeaef43c4f95.s3tc.ctex"
-path.etc2="res://.godot/imported/griptor normal final3.png-22cae680739f93c233ceaeaef43c4f95.etc2.ctex"
+path="res://.godot/imported/griptor normal final3.png-22cae680739f93c233ceaeaef43c4f95.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc", "etc2_astc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
 source_file="res://game/sprites/griptor/griptor normal final3.png"
-dest_files=["res://.godot/imported/griptor normal final3.png-22cae680739f93c233ceaeaef43c4f95.s3tc.ctex", "res://.godot/imported/griptor normal final3.png-22cae680739f93c233ceaeaef43c4f95.etc2.ctex"]
+dest_files=["res://.godot/imported/griptor normal final3.png-22cae680739f93c233ceaeaef43c4f95.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=4
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

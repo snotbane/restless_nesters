@@ -112,7 +112,6 @@ animation_sounds = {
 }
 
 [node name="brain" parent="." index="2"]
-debug_enabled = true
 script = ExtResource("2_mrb8l")
 lurk_duration_min = 30.0
 lurk_duration_max = 60.0

@@ -1,4 +1,11 @@
-[gd_scene format=3 uid="uid://b5m32fmtyuqhi"]
+[gd_scene load_steps=2 format=3 uid="uid://b5m32fmtyuqhi"]
+
+[sub_resource type="GDScript" id="GDScript_1n1lu"]
+script/source = "extends RichTextLabel
+
+func _on_meta_clicked(meta: Variant) -> void:
+	OS.shell_open(str(meta))
+"
 
 [node name="credits_entry" type="HBoxContainer"]
 theme_override_constants/separation = 20
@@ -12,3 +19,6 @@ layout_mode = 2
 size_flags_horizontal = 3
 bbcode_enabled = true
 fit_content = true
+script = SubResource("GDScript_1n1lu")
+
+[connection signal="meta_clicked" from="rich_text_label" to="rich_text_label" method="_on_meta_clicked"]

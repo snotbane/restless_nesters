@@ -72,6 +72,8 @@ sprite = NodePath("..")
 shape = SubResource("RectangleShape2D_yde1k")
 
 [node name="brain" type="NavigationAgent2D" parent="."]
+path_desired_distance = 25.0
+path_postprocessing = 2
 script = ExtResource("1_niafa")
 
 [node name="nav_timer" type="Timer" parent="brain"]

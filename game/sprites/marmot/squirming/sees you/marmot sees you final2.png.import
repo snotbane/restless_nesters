@@ -3,21 +3,19 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bj38g4weapvb4"
-path.s3tc="res://.godot/imported/marmot sees you final2.png-e6dd2bedfcf8dea032f0c5a597d1e2d7.s3tc.ctex"
-path.etc2="res://.godot/imported/marmot sees you final2.png-e6dd2bedfcf8dea032f0c5a597d1e2d7.etc2.ctex"
+path="res://.godot/imported/marmot sees you final2.png-e6dd2bedfcf8dea032f0c5a597d1e2d7.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc", "etc2_astc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
 source_file="res://game/sprites/marmot/squirming/sees you/marmot sees you final2.png"
-dest_files=["res://.godot/imported/marmot sees you final2.png-e6dd2bedfcf8dea032f0c5a597d1e2d7.s3tc.ctex", "res://.godot/imported/marmot sees you final2.png-e6dd2bedfcf8dea032f0c5a597d1e2d7.etc2.ctex"]
+dest_files=["res://.godot/imported/marmot sees you final2.png-e6dd2bedfcf8dea032f0c5a597d1e2d7.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=4
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/credits_jozix_icon.png-fd11a8660a8ae2bdcb31dd
 
 [params]
 
-compress/mode=0
+compress/mode=4
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

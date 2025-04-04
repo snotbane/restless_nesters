@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/baby final form.png-f2d314758447465c3d5f948fc
 
 [params]
 
-compress/mode=0
+compress/mode=4
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

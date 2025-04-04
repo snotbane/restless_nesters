@@ -3,21 +3,19 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://v65buo625red"
-path.s3tc="res://.godot/imported/baby grown screaming final1.png-a68f8859a77c1e6d81c4fca3d5014ffd.s3tc.ctex"
-path.etc2="res://.godot/imported/baby grown screaming final1.png-a68f8859a77c1e6d81c4fca3d5014ffd.etc2.ctex"
+path="res://.godot/imported/baby grown screaming final1.png-a68f8859a77c1e6d81c4fca3d5014ffd.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc", "etc2_astc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
 source_file="res://game/sprites/baby/baby screaming/baby grown screaming final1.png"
-dest_files=["res://.godot/imported/baby grown screaming final1.png-a68f8859a77c1e6d81c4fca3d5014ffd.s3tc.ctex", "res://.godot/imported/baby grown screaming final1.png-a68f8859a77c1e6d81c4fca3d5014ffd.etc2.ctex"]
+dest_files=["res://.godot/imported/baby grown screaming final1.png-a68f8859a77c1e6d81c4fca3d5014ffd.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=4
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

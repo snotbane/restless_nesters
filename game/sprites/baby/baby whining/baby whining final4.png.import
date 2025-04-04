@@ -3,21 +3,19 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://b7o1jq5a8t103"
-path.s3tc="res://.godot/imported/baby whining final4.png-5bf867046b18406b24e77856a6a1e0e3.s3tc.ctex"
-path.etc2="res://.godot/imported/baby whining final4.png-5bf867046b18406b24e77856a6a1e0e3.etc2.ctex"
+path="res://.godot/imported/baby whining final4.png-5bf867046b18406b24e77856a6a1e0e3.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc", "etc2_astc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
 source_file="res://game/sprites/baby/baby whining/baby whining final4.png"
-dest_files=["res://.godot/imported/baby whining final4.png-5bf867046b18406b24e77856a6a1e0e3.s3tc.ctex", "res://.godot/imported/baby whining final4.png-5bf867046b18406b24e77856a6a1e0e3.etc2.ctex"]
+dest_files=["res://.godot/imported/baby whining final4.png-5bf867046b18406b24e77856a6a1e0e3.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=4
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

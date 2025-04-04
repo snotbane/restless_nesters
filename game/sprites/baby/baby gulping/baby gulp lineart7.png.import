@@ -3,21 +3,19 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://c8wx5fm5x7v1i"
-path.s3tc="res://.godot/imported/baby gulp lineart7.png-30d70cb21080118a7c258e4885490fec.s3tc.ctex"
-path.etc2="res://.godot/imported/baby gulp lineart7.png-30d70cb21080118a7c258e4885490fec.etc2.ctex"
+path="res://.godot/imported/baby gulp lineart7.png-30d70cb21080118a7c258e4885490fec.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc", "etc2_astc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
 source_file="res://game/sprites/baby/baby gulping/baby gulp lineart7.png"
-dest_files=["res://.godot/imported/baby gulp lineart7.png-30d70cb21080118a7c258e4885490fec.s3tc.ctex", "res://.godot/imported/baby gulp lineart7.png-30d70cb21080118a7c258e4885490fec.etc2.ctex"]
+dest_files=["res://.godot/imported/baby gulp lineart7.png-30d70cb21080118a7c258e4885490fec.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=4
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

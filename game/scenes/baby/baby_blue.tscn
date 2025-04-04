@@ -18,5 +18,8 @@ func _ready() -> void:
 material = ExtResource("2_vbnwy")
 
 [node name="brain" parent="." index="2"]
+path_desired_distance = 20.0
+path_max_distance = 100.0
+path_postprocessing = 0
 script = SubResource("GDScript_4v0gj")
 _hunger = 3

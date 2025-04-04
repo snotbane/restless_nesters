@@ -412,6 +412,7 @@ script = ExtResource("2_wyexy")
 audio = NodePath("../sprite/audio")
 add_scale_per_food = 0.25
 food_needed = 3
+_hunger = 3
 
 [node name="chirp_timer" type="Timer" parent="brain" index="2"]
 one_shot = true

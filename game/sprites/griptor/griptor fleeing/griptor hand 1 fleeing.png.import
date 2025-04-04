@@ -3,21 +3,19 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dgmger0pn5xl0"
-path.s3tc="res://.godot/imported/griptor hand 1 fleeing.png-c971a305d11e4ee4fa7e74f8b8a7d78d.s3tc.ctex"
-path.etc2="res://.godot/imported/griptor hand 1 fleeing.png-c971a305d11e4ee4fa7e74f8b8a7d78d.etc2.ctex"
+path="res://.godot/imported/griptor hand 1 fleeing.png-c971a305d11e4ee4fa7e74f8b8a7d78d.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc", "etc2_astc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
 source_file="res://game/sprites/griptor/griptor fleeing/griptor hand 1 fleeing.png"
-dest_files=["res://.godot/imported/griptor hand 1 fleeing.png-c971a305d11e4ee4fa7e74f8b8a7d78d.s3tc.ctex", "res://.godot/imported/griptor hand 1 fleeing.png-c971a305d11e4ee4fa7e74f8b8a7d78d.etc2.ctex"]
+dest_files=["res://.godot/imported/griptor hand 1 fleeing.png-c971a305d11e4ee4fa7e74f8b8a7d78d.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=4
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

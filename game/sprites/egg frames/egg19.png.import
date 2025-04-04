@@ -3,21 +3,19 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cc11pd37wvxc3"
-path.s3tc="res://.godot/imported/egg19.png-5e81be625ec46eb62fc3a2f868b6ce8e.s3tc.ctex"
-path.etc2="res://.godot/imported/egg19.png-5e81be625ec46eb62fc3a2f868b6ce8e.etc2.ctex"
+path="res://.godot/imported/egg19.png-5e81be625ec46eb62fc3a2f868b6ce8e.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc", "etc2_astc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
 source_file="res://game/sprites/egg frames/egg19.png"
-dest_files=["res://.godot/imported/egg19.png-5e81be625ec46eb62fc3a2f868b6ce8e.s3tc.ctex", "res://.godot/imported/egg19.png-5e81be625ec46eb62fc3a2f868b6ce8e.etc2.ctex"]
+dest_files=["res://.godot/imported/egg19.png-5e81be625ec46eb62fc3a2f868b6ce8e.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=4
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

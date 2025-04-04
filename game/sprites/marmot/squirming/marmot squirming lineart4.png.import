@@ -3,21 +3,19 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dwvchjas6kjuv"
-path.s3tc="res://.godot/imported/marmot squirming lineart4.png-dc1af0b5be326c9e1c5e9be2ff29e2ed.s3tc.ctex"
-path.etc2="res://.godot/imported/marmot squirming lineart4.png-dc1af0b5be326c9e1c5e9be2ff29e2ed.etc2.ctex"
+path="res://.godot/imported/marmot squirming lineart4.png-dc1af0b5be326c9e1c5e9be2ff29e2ed.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc", "etc2_astc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
 source_file="res://game/sprites/marmot/squirming/marmot squirming lineart4.png"
-dest_files=["res://.godot/imported/marmot squirming lineart4.png-dc1af0b5be326c9e1c5e9be2ff29e2ed.s3tc.ctex", "res://.godot/imported/marmot squirming lineart4.png-dc1af0b5be326c9e1c5e9be2ff29e2ed.etc2.ctex"]
+dest_files=["res://.godot/imported/marmot squirming lineart4.png-dc1af0b5be326c9e1c5e9be2ff29e2ed.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=4
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

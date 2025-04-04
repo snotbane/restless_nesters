@@ -3,21 +3,19 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cbas3jyhwmb03"
-path.s3tc="res://.godot/imported/marmot fleeing final2.png-395e9948785a898147867101e9d54eaa.s3tc.ctex"
-path.etc2="res://.godot/imported/marmot fleeing final2.png-395e9948785a898147867101e9d54eaa.etc2.ctex"
+path="res://.godot/imported/marmot fleeing final2.png-395e9948785a898147867101e9d54eaa.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc", "etc2_astc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
 source_file="res://game/sprites/marmot/squirming/fleeing/marmot fleeing final2.png"
-dest_files=["res://.godot/imported/marmot fleeing final2.png-395e9948785a898147867101e9d54eaa.s3tc.ctex", "res://.godot/imported/marmot fleeing final2.png-395e9948785a898147867101e9d54eaa.etc2.ctex"]
+dest_files=["res://.godot/imported/marmot fleeing final2.png-395e9948785a898147867101e9d54eaa.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=4
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
