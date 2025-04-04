@@ -2,12 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://du1wubcyehxny"
-valid=false
+uid="uid://c1txtrfjyu8n0"
+path="res://.godot/imported/credits_snotbane_icon.png-ca1826a52db9d8b7ac10cefee7590467.ctex"
+metadata={
+"vram_texture": false
+}
 
 [deps]
 
-source_file="res://game/sprites/credits/credits_jozix_icon.png"
+source_file="res://game/sprites/credits/credits_snotbane_icon.png"
+dest_files=["res://.godot/imported/credits_snotbane_icon.png-ca1826a52db9d8b7ac10cefee7590467.ctex"]
 
 [params]
 
@@ -15,7 +19,7 @@ compress/mode=4
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
-compress/normal_map=0
+compress/normal_map=2
 compress/channel_pack=0
 mipmaps/generate=false
 mipmaps/limit=-1

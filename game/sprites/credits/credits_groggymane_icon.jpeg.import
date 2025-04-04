@@ -2,12 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://du1wubcyehxny"
-valid=false
+uid="uid://dpu1hq80ciuuj"
+path="res://.godot/imported/credits_groggymane_icon.jpeg-e5e4f0c8961881ea5718642b6f82cf13.ctex"
+metadata={
+"vram_texture": false
+}
 
 [deps]
 
-source_file="res://game/sprites/credits/credits_jozix_icon.png"
+source_file="res://game/sprites/credits/credits_groggymane_icon.jpeg"
+dest_files=["res://.godot/imported/credits_groggymane_icon.jpeg-e5e4f0c8961881ea5718642b6f82cf13.ctex"]
 
 [params]
 
@@ -15,7 +19,7 @@ compress/mode=4
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
-compress/normal_map=0
+compress/normal_map=2
 compress/channel_pack=0
 mipmaps/generate=false
 mipmaps/limit=-1
