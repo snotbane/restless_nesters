@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://b8m7cg7x3g8an" path="res://game/scenes/ui/fadeout.tscn" id="3_laa82"]
 [ext_resource type="FontFile" uid="uid://hc1p2n3siov2" path="res://game/fonts/WalterTurncoat-Regular.ttf" id="4_cvypo"]
 [ext_resource type="PackedScene" uid="uid://b5m32fmtyuqhi" path="res://game/scenes/ui/credits_entry.tscn" id="4_pjsh0"]
-[ext_resource type="Texture2D" uid="uid://dpu1hq80ciuuj" path="res://game/sprites/credits/credits_groggymane_icon.jpeg" id="5_bpqj4"]
+[ext_resource type="Texture2D" uid="uid://dpu1hq80ciuuj" path="res://game/sprites/credits/credits_groggyman_icon.jpeg" id="5_bpqj4"]
 [ext_resource type="Texture2D" uid="uid://6b0sgxhkq0bw" path="res://game/sprites/credits/credits_natesolio_icon.jpg" id="7_bpqj4"]
 [ext_resource type="Texture2D" uid="uid://c1txtrfjyu8n0" path="res://game/sprites/credits/credits_snotbane_icon.png" id="7_cvypo"]
 [ext_resource type="Texture2D" uid="uid://dj3lj5cw215i0" path="res://game/sprites/credits/credits_bigtext_icon.png" id="8_bpqj4"]
@@ -134,7 +134,6 @@ metadata/_edit_use_anchors_ = true
 layout_mode = 1
 
 [node name="credits" type="Control" parent="."]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -190,7 +189,7 @@ texture = ExtResource("5_bpqj4")
 expand_mode = 1
 
 [node name="rich_text_label" parent="credits/panel_container/margin_container/v_box_container/panel_container/margin_container/v_box_container/credits_entry" index="1"]
-text = "   [font_size=30][b]GROGGYMANE[/b][/font_size]
+text = "   [font_size=30][b]GROGGYMAN[/b][/font_size]
 [i]Visionary, Game Design, Artwork, Voice Acting"
 
 [node name="credits_entry_2" parent="credits/panel_container/margin_container/v_box_container/panel_container/margin_container/v_box_container" instance=ExtResource("4_pjsh0")]
