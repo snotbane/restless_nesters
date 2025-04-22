@@ -190,7 +190,7 @@ texture = ExtResource("5_bpqj4")
 expand_mode = 1
 
 [node name="rich_text_label" parent="credits/panel_container/margin_container/v_box_container/panel_container/margin_container/v_box_container/credits_entry" index="1"]
-text = "   [font_size=30][b]GROGGYMAN[/b][/font_size]
+text = "   [font_size=30][b]SCHNOZIX[/b][/font_size]
 [i]Visionary, Game Design, Artwork, Voice Acting"
 
 [node name="credits_entry_2" parent="credits/panel_container/margin_container/v_box_container/panel_container/margin_container/v_box_container" instance=ExtResource("4_pjsh0")]
